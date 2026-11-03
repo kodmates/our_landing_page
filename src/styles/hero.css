@@ -8,46 +8,75 @@
 .hero-section {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - var(--km-header-height));
+  height: calc(100vh - var(--km-header-height));
+  min-height: 620px;
+  max-height: 1080px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--km-bg-canvas);
   overflow: hidden;
-  padding: 16px 0 28px 0;
+  padding: 0;
 }
 
-/* Subtle Warm Atmospheric Bloom behind the 3D Ecosystem */
+/* Cinematic Warm Atmospheric Bloom behind the 3D Ecosystem */
 .hero-ambient-glow {
   position: absolute;
-  top: 10%;
-  right: 5%;
-  width: 680px;
-  height: 680px;
-  background: radial-gradient(
-    circle at center,
-    rgba(254, 239, 184, 0.058) 0%,
-    rgba(254, 239, 184, 0.016) 45%,
-    transparent 72%
-  );
-  filter: blur(64px);
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    /* Wide, soft, atmospheric bronze horizon glow behind the lower portion of the globe and platform */
+    radial-gradient(
+      ellipse 760px 180px at 73% 66%,
+      rgba(165, 110, 55, 0.28) 0%,
+      rgba(110, 72, 36, 0.16) 38%,
+      rgba(55, 38, 25, 0.04) 65%,
+      transparent 82%
+    ),
+    /* Warm golden reflection near the platform pedestal and ground terrain */
+    radial-gradient(
+      ellipse 520px 85px at 73% 76%,
+      rgba(145, 95, 45, 0.24) 0%,
+      rgba(85, 55, 28, 0.08) 48%,
+      transparent 72%
+    );
+  filter: blur(32px);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
+  mix-blend-mode: screen;
 }
 
-/* Cinematic Dark Mountain Horizon Silhouette (Extremely low contrast, subtle depth) */
+/* Cinematic Dark Mountain Horizon Silhouette (Blueprint exact continuous mountain backdrop) */
 .hero-ambient-landscape {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 320px;
+  height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.13;
+  opacity: 1;
   overflow: hidden;
-  mask-image: linear-gradient(180deg, transparent 0%, black 50%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 50%, transparent 100%);
+}
+
+/* Left-column subtle vignette overlay ensuring quiet near-black charcoal background behind typography */
+.hero-ambient-landscape::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 9, 10, 0.72) 0%,
+    rgba(7, 9, 10, 0.45) 28%,
+    rgba(7, 9, 10, 0.15) 50%,
+    transparent 68%
+  );
+  pointer-events: none;
 }
 
 .hero-landscape-img {
@@ -55,31 +84,32 @@
   height: 100%;
   object-fit: cover;
   object-position: center bottom;
+  filter: contrast(1.15) brightness(1.32) saturate(1.10);
 }
 
-/* Centered Max-Width Hero Container */
+/* Centered Max-Width Hero Container (scales naturally to 1520px on wide screens) */
 .hero-container {
   position: relative;
-  max-width: var(--km-header-max-width);
+  max-width: min(1520px, 92vw);
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   padding: 0 var(--km-header-padding-x);
   z-index: 1;
-  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* Main Grid Layout (Left ~46%, Right ~54%) Centered Vertically */
+/* Main Grid Layout (Left ~43%, Right ~57%) Filling Available Viewport Height */
 .hero-main-grid {
+  flex: 1;
+  min-height: 0;
   display: grid;
-  grid-template-columns: 46% 54%;
+  grid-template-columns: 40% 60%;
   align-items: center;
-  gap: 24px;
-  min-height: 530px;
-  margin-top: auto;
-  margin-bottom: auto;
+  gap: 20px;
+  padding: 6px 0 0 0;
 }
 
 /* ==================================================
@@ -96,82 +126,128 @@
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--km-accent-primary);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--km-accent-primary, #FEEFB8);
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.15em;
   margin-bottom: 18px;
   opacity: 0.95;
+  text-shadow: 0 0 12px rgba(254, 239, 184, 0.25);
 }
 
 .hero-title {
-  font-size: clamp(46px, 4.5vw, 66px);
-  font-weight: 750;
-  line-height: 1.03;
-  letter-spacing: -0.025em;
+  font-size: clamp(36px, 4.4vw, 60px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
   color: #FFFFFF;
-  margin: 0 0 20px 0;
+  margin: 0 0 18px 0;
+}
+
+.hero-title-line {
+  display: block;
 }
 
 .hero-title-accent {
-  color: var(--km-accent-primary);
-  font-weight: 750;
+  background: linear-gradient(135deg, #FFF8DC 0%, #FEEFB8 50%, #D8B468 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .hero-description {
-  font-size: clamp(16px, 1.2vw, 18px);
-  font-weight: 400;
-  line-height: 1.62;
-  color: rgba(246, 244, 236, 0.78);
-  max-width: 530px;
-  margin: 0 0 32px 0;
+  font-size: clamp(14.5px, 1.15vw, 16.5px);
+  line-height: 1.6;
+  color: var(--km-text-secondary);
+  max-width: 520px;
+  margin: 0 0 30px 0;
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .hero-cta-primary {
-  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0B0E0F;
+  background: linear-gradient(135deg, #FFF1C5 0%, #FEEFB8 50%, #E8C87A 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--km-radius-md);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 16px rgba(254, 239, 184, 0.22),
+    0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: transform var(--km-transition-fast), box-shadow var(--km-transition-fast), filter var(--km-transition-fast);
+}
+
+.hero-cta-primary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.04);
+  box-shadow: 
+    0 6px 22px rgba(254, 239, 184, 0.32),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.hero-cta-primary:active {
+  transform: translateY(0);
+}
+
+.hero-cta-primary .cta-arrow {
+  transition: transform var(--km-transition-fast);
+}
+
+.hero-cta-primary:hover .cta-arrow {
+  transform: translateX(3px);
 }
 
 .hero-cta-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: var(--km-cta-height);
-  padding: 0 var(--km-cta-padding-x);
-  background: rgba(255, 255, 255, 0.035);
-  color: #ECE8DC;
-  font-family: var(--km-font-family);
-  font-size: var(--km-font-size-cta);
+  padding: 13px 24px;
+  font-size: 14px;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  color: #FFFFFF;
+  background: rgba(18, 22, 24, 0.6);
+  border: 1px solid rgba(254, 239, 184, 0.35);
+  border-radius: var(--km-radius-md);
   text-decoration: none;
-  border-radius: var(--km-cta-radius);
-  border: 1px solid rgba(254, 239, 184, 0.22);
   cursor: pointer;
-  line-height: 1;
-  transition: 
-    background-color var(--km-transition-fast),
-    border-color var(--km-transition-fast),
-    transform var(--km-transition-fast),
-    color var(--km-transition-fast);
-  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background var(--km-transition-fast), border-color var(--km-transition-fast), color var(--km-transition-fast), transform var(--km-transition-fast);
 }
 
 .hero-cta-secondary:hover {
-  background: rgba(254, 239, 184, 0.06);
-  border-color: rgba(254, 239, 184, 0.42);
-  color: var(--km-accent-primary);
+  background: rgba(254, 239, 184, 0.08);
+  border-color: rgba(254, 239, 184, 0.60);
+  color: #FFFFFF;
   transform: translateY(-1px);
 }
 
 .hero-cta-secondary:active {
   transform: translateY(0);
+}
+
+.hero-cta-play-icon {
+  margin-right: 8px;
+  flex-shrink: 0;
+  color: var(--km-accent-primary, #FEEFB8);
+  transition: transform var(--km-transition-fast);
+}
+
+.hero-cta-secondary:hover .hero-cta-play-icon {
+  transform: scale(1.08);
 }
 
 /* ==================================================
@@ -182,8 +258,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 550px;
+  height: 100%;
+  min-height: 0;
   z-index: 2;
+  width: 100%;
 }
 
 .hero-3d-wrapper {
@@ -228,8 +306,8 @@
    ================================================== */
 .hero-capabilities-container {
   width: 100%;
-  margin-top: 18px;
-  padding-top: 24px;
+  flex-shrink: 0;
+  padding: 14px 0 16px 0;
   background-image: linear-gradient(
     90deg,
     transparent 0%,
@@ -319,6 +397,9 @@
 
 @media (max-width: 900px) {
   .hero-section {
+    height: auto;
+    min-height: calc(100vh - var(--km-header-height));
+    max-height: none;
     padding: 20px 0 32px 0;
   }
 
@@ -326,11 +407,16 @@
     grid-template-columns: 1fr;
     text-align: center;
     gap: 24px;
+    flex: initial;
   }
 
   .hero-content-col {
     align-items: center;
     padding-right: 0;
+  }
+
+  .hero-title-line {
+    display: inline;
   }
 
   .hero-description {
@@ -345,6 +431,11 @@
     height: 420px;
   }
 
+  .hero-capabilities-container {
+    margin-top: 24px;
+    padding: 18px 0 12px 0;
+  }
+
   .hero-capabilities-track {
     grid-template-columns: repeat(3, 1fr);
     row-gap: 18px;
@@ -352,8 +443,23 @@
 }
 
 @media (max-width: 600px) {
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-align: center;
+    justify-content: center;
+  }
+
   .hero-title {
-    font-size: 38px;
+    font-size: clamp(28px, 8vw, 34px);
+    line-height: 1.12;
+    overflow-wrap: break-word;
+  }
+
+  .hero-description {
+    font-size: 14.5px;
+    line-height: 1.55;
+    padding: 0 4px;
   }
 
   .hero-actions {
@@ -368,11 +474,210 @@
   }
 
   .hero-visual-col {
-    height: 340px;
+    height: 360px;
   }
 
   .hero-capabilities-track {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
+  }
+}
+
+/* ==================================================
+   PHASE N — BLUEPRINT ANNOTATION LAYER
+   Exact engineering schematic callout overlays
+   ================================================== */
+.hero-blueprint-annotations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.bp-annotation {
+  position: absolute;
+  pointer-events: none;
+  font-family: var(--km-font-sans, "Plus Jakarta Sans", "Inter", sans-serif);
+}
+
+.bp-anno-header {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--km-accent-primary, #FEEFB8);
+  margin-bottom: 3px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+
+.bp-anno-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bp-anno-list li {
+  font-size: 10px;
+  line-height: 1.45;
+  color: rgba(220, 226, 232, 0.78);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.95);
+}
+
+.bp-anno-list li::before {
+  content: '•';
+  color: var(--km-accent-primary, #FEEFB8);
+  font-size: 10px;
+}
+
+.bp-leader-line {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+  filter: drop-shadow(0 0 3px rgba(254, 239, 184, 0.45));
+}
+
+/* Callout Coordinates matching blueprint reference exactly */
+.bp-anno-web {
+  top: 4%;
+  left: 0%;
+}
+.bp-anno-web .bp-leader-line {
+  top: 10px;
+  left: 100%;
+  width: 115px;
+  height: 68px;
+}
+
+.bp-anno-core {
+  top: 36%;
+  left: 0%;
+}
+.bp-anno-core .bp-leader-line {
+  top: 12px;
+  left: 100%;
+  width: 105px;
+  height: 18px;
+}
+
+.bp-anno-business {
+  top: 68%;
+  left: 0%;
+}
+.bp-anno-business .bp-leader-line {
+  top: 10px;
+  left: 100%;
+  width: 165px;
+  height: 18px;
+}
+
+.bp-anno-android {
+  top: 3%;
+  right: 28%;
+}
+.bp-anno-android .bp-leader-line {
+  top: 10px;
+  right: 100%;
+  width: 110px;
+  height: 45px;
+}
+
+.bp-anno-cloud {
+  top: 24%;
+  right: 2%;
+}
+.bp-anno-cloud .bp-leader-line {
+  top: 10px;
+  right: 100%;
+  width: 65px;
+  height: 35px;
+}
+
+.bp-anno-api {
+  top: 54%;
+  right: 2%;
+}
+.bp-anno-api .bp-leader-line {
+  top: 10px;
+  right: 100%;
+  width: 65px;
+  height: 18px;
+}
+
+.bp-anno-platform {
+  top: 78%;
+  right: 3%;
+}
+.bp-anno-platform .bp-leader-line {
+  top: 8px;
+  right: 100%;
+  width: 85px;
+  height: 32px;
+}
+
+/* Responsive scaling & clean mobile behavior */
+@media (max-width: 1366px) {
+  .bp-anno-header {
+    font-size: 10px;
+  }
+  .bp-anno-list li {
+    font-size: 8.5px;
+    line-height: 1.35;
+  }
+  .bp-anno-web {
+    top: 3%;
+    left: -2%;
+  }
+  .bp-anno-web .bp-leader-line {
+    width: 95px;
+    height: 56px;
+  }
+  .bp-anno-core {
+    top: 34%;
+    left: -4%;
+  }
+  .bp-anno-core .bp-leader-line {
+    width: 85px;
+  }
+  .bp-anno-business {
+    top: 67%;
+    left: -4%;
+  }
+  .bp-anno-business .bp-leader-line {
+    width: 135px;
+  }
+  .bp-anno-android {
+    top: 3%;
+    right: 24%;
+  }
+  .bp-anno-android .bp-leader-line {
+    width: 90px;
+  }
+  .bp-anno-cloud {
+    top: 24%;
+    right: 1%;
+  }
+  .bp-anno-api {
+    top: 53%;
+    right: 1%;
+  }
+  .bp-anno-platform {
+    top: 76%;
+    right: 1%;
+  }
+  .bp-anno-platform .bp-leader-line {
+    width: 75px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero-blueprint-annotations {
+    display: none !important;
   }
 }

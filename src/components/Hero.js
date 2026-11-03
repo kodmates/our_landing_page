@@ -20,7 +20,7 @@ export class Hero {
         <!-- Subtle dark landscape horizon & ambient warm atmospheric illumination -->
         <div class="hero-ambient-glow" aria-hidden="true"></div>
         <div class="hero-ambient-landscape" aria-hidden="true">
-          <img src="/assets/hero-bg-landscape.jpg" alt="" class="hero-landscape-img" loading="eager" />
+          <img src="/assets/hero-bg-landscape.jpg?v=3" alt="" class="hero-landscape-img" loading="eager" />
         </div>
 
         <div class="hero-container">
@@ -28,15 +28,17 @@ export class Hero {
             <!-- Left Column: Typography & CTAs (~46%) -->
             <div class="hero-content-col">
               <div class="hero-eyebrow">
-                DIGITAL SYSTEMS • WEB • MOBILE • SOFTWARE
+                DIGITAL SOLUTIONS FOR A SMARTER TOMORROW
               </div>
 
               <h1 class="hero-title">
-                Software Built Around <span class="hero-title-accent">Your Business.</span>
+                <span class="hero-title-line">Software Built</span>
+                <span class="hero-title-line">Around <span class="hero-title-accent">Your</span></span>
+                <span class="hero-title-line"><span class="hero-title-accent">Business.</span></span>
               </h1>
 
               <p class="hero-description">
-                We design and develop software, web applications, Android apps and business systems that solve real operational problems.
+                We design and develop custom web applications, Android apps and business systems that solve real problems and create real growth.
               </p>
 
               <div class="hero-actions">
@@ -46,6 +48,10 @@ export class Hero {
                 </a>
 
                 <a href="#projects" class="hero-cta-secondary" id="hero-secondary-cta">
+                  <svg class="hero-cta-play-icon" viewBox="0 0 20 20" fill="none" width="18" height="18" aria-hidden="true">
+                    <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/>
+                    <polygon points="8,6.5 14.5,10 8,13.5" fill="currentColor"/>
+                  </svg>
                   <span>View Our Work</span>
                 </a>
               </div>
@@ -64,6 +70,115 @@ export class Hero {
                     height="620" 
                     loading="eager" 
                   />
+                </div>
+              </div>
+
+              <!-- Blueprint Annotation Layer (Phase N Engineering Blueprint Match) -->
+              <div class="hero-blueprint-annotations" aria-hidden="true">
+                <!-- 1. Web Module -->
+                <div class="bp-annotation bp-anno-web">
+                  <div class="bp-anno-header">WEB MODULE</div>
+                  <ul class="bp-anno-list">
+                    <li>3D metallic module</li>
+                    <li>Icon + Label</li>
+                    <li>Glowing edge</li>
+                    <li>Data connection</li>
+                  </ul>
+                  <svg class="bp-leader-line" viewBox="0 0 120 70">
+                    <path d="M0,12 L60,12 L112,62" fill="none" stroke="rgba(254, 239, 184, 0.75)" stroke-width="1.2"/>
+                    <circle cx="112" cy="62" r="2.5" fill="#FEEFB8"/>
+                  </svg>
+                </div>
+
+                <!-- 2. Android Module -->
+                <div class="bp-annotation bp-anno-android">
+                  <div class="bp-anno-header">ANDROID MODULE</div>
+                  <ul class="bp-anno-list">
+                    <li>3D metallic module</li>
+                    <li>Icon + Label</li>
+                    <li>Glowing edge</li>
+                    <li>Data connection</li>
+                  </ul>
+                  <svg class="bp-leader-line" viewBox="0 0 120 50">
+                    <path d="M120,15 L45,15 L6,42" fill="none" stroke="rgba(254, 239, 184, 0.75)" stroke-width="1.2"/>
+                    <circle cx="6" cy="42" r="2.5" fill="#FEEFB8"/>
+                  </svg>
+                </div>
+
+                <!-- 3. Central Core -->
+                <div class="bp-annotation bp-anno-core">
+                  <div class="bp-anno-header">CENTRAL CORE</div>
+                  <ul class="bp-anno-list">
+                    <li>Dark metallic sphere</li>
+                    <li>Internal network grid</li>
+                    <li>Recessed K logo</li>
+                    <li>Gold illumination</li>
+                    <li>System lines &amp; nodes</li>
+                  </ul>
+                  <svg class="bp-leader-line" viewBox="0 0 115 20">
+                    <path d="M0,8 L104,8" fill="none" stroke="rgba(254, 239, 184, 0.75)" stroke-width="1.2"/>
+                    <circle cx="104" cy="8" r="2.5" fill="#FEEFB8"/>
+                  </svg>
+                </div>
+
+                <!-- 4. Cloud Module -->
+                <div class="bp-annotation bp-anno-cloud">
+                  <div class="bp-anno-header">CLOUD MODULE</div>
+                  <ul class="bp-anno-list">
+                    <li>3D metallic module</li>
+                    <li>Icon + Label</li>
+                    <li>Glowing edge</li>
+                    <li>Data connection</li>
+                  </ul>
+                  <svg class="bp-leader-line" viewBox="0 0 80 40">
+                    <path d="M80,15 L30,15 L6,30" fill="none" stroke="rgba(254, 239, 184, 0.75)" stroke-width="1.2"/>
+                    <circle cx="6" cy="30" r="2.5" fill="#FEEFB8"/>
+                  </svg>
+                </div>
+
+                <!-- 5. API Module -->
+                <div class="bp-annotation bp-anno-api">
+                  <div class="bp-anno-header">API MODULE</div>
+                  <ul class="bp-anno-list">
+                    <li>3D metallic module</li>
+                    <li>Icon + Label</li>
+                    <li>Glowing edge</li>
+                    <li>Data connection</li>
+                  </ul>
+                  <svg class="bp-leader-line" viewBox="0 0 80 20">
+                    <path d="M75,8 L6,8" fill="none" stroke="rgba(254, 239, 184, 0.75)" stroke-width="1.2"/>
+                    <circle cx="6" cy="8" r="2.5" fill="#FEEFB8"/>
+                  </svg>
+                </div>
+
+                <!-- 6. Business Module -->
+                <div class="bp-annotation bp-anno-business">
+                  <div class="bp-anno-header">BUSINESS MODULE</div>
+                  <ul class="bp-anno-list">
+                    <li>3D metallic module</li>
+                    <li>Icon + Label</li>
+                    <li>Glowing edge</li>
+                    <li>Data connection</li>
+                  </ul>
+                  <svg class="bp-leader-line" viewBox="0 0 170 20">
+                    <path d="M0,8 L162,8" fill="none" stroke="rgba(254, 239, 184, 0.75)" stroke-width="1.2"/>
+                    <circle cx="162" cy="8" r="2.5" fill="#FEEFB8"/>
+                  </svg>
+                </div>
+
+                <!-- 7. Platform Base -->
+                <div class="bp-annotation bp-anno-platform">
+                  <div class="bp-anno-header">PLATFORM BASE</div>
+                  <ul class="bp-anno-list">
+                    <li>Metallic platform</li>
+                    <li>Subtle glow</li>
+                    <li>Grounded composition</li>
+                    <li>Reflection and shadow</li>
+                  </ul>
+                  <svg class="bp-leader-line" viewBox="0 0 100 35">
+                    <path d="M95,8 L40,8 L8,28" fill="none" stroke="rgba(254, 239, 184, 0.75)" stroke-width="1.2"/>
+                    <circle cx="8" cy="28" r="2.5" fill="#FEEFB8"/>
+                  </svg>
                 </div>
               </div>
             </div>
@@ -104,7 +219,8 @@ export class Hero {
         const { HeroEcosystem3D } = await import('./HeroEcosystem3D.js');
         this.ecosystem3D = new HeroEcosystem3D({
           container: wrapper,
-          fallbackEl: fallback
+          fallbackEl: fallback,
+          heroSectionEl: this.heroEl
         });
         this.ecosystem3D.init();
       } catch (err) {

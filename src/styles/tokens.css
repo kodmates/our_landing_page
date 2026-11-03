@@ -49,4 +49,10 @@
   /* Elevation & Z-index */
   --km-z-header: 1000;
   --km-z-mobile-drawer: 1100;
+
+  /* Status & Feedback Indicators */
+  --km-status-success: #34D399;
+  --km-status-success-bg: rgba(52, 211, 153, 0.08);
+  --km-status-success-border: rgba(52, 211, 153, 0.22);
+  --km-status-error: #F87171;
 }
