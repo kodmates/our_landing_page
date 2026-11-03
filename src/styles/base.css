@@ -30,11 +30,26 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+/* Accessible Visually Hidden Utility */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
+}
+
 /* Page Shell with Cinematic Ambient Illumination (near-black with soft warm ivory/gold light) */
 .page-viewport {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-color: var(--km-bg-canvas);
   background-image: 
     radial-gradient(1100px 380px at 50% 0%, rgba(254, 239, 184, 0.038) 0%, rgba(254, 239, 184, 0.012) 45%, transparent 75%),

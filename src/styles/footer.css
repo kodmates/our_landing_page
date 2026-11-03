@@ -1,0 +1,156 @@
+/* ==================================================
+   KODMATES — Shared Footer Styles
+   Dark Tech Aesthetic: #050707 Canvas, #252C2B Separators,
+   #F4D779 Champagne Gold Accents & Clean Alignment
+   ================================================== */
+
+.site-footer {
+  position: relative;
+  width: 100%;
+  background-color: #050707;
+  border-top: 1px solid #252C2B;
+  padding: 64px 0 32px 0;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.site-footer__ambient {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 240px;
+  background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(244, 215, 121, 0.025) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.site-footer__container {
+  max-width: var(--km-header-max-width);
+  margin: 0 auto;
+  padding: 0 var(--km-header-padding-x);
+  position: relative;
+  z-index: 1;
+}
+
+.site-footer__top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid #252C2B;
+}
+
+.site-footer__brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.site-footer__tagline-text {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: #A7ADAB;
+  max-width: 320px;
+  margin: 0;
+}
+
+.site-footer__col-heading {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #F5F5F2;
+  margin-bottom: 16px;
+}
+
+.site-footer__link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-link {
+  font-size: 13.5px;
+  color: #A7ADAB;
+  text-decoration: none;
+  transition: color var(--km-transition-fast), transform var(--km-transition-fast);
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: #F4D779;
+  transform: translateX(2px);
+}
+
+.footer-static-item {
+  font-size: 13.5px;
+  color: #A7ADAB;
+}
+
+/* Contact column in footer */
+.footer-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #A7ADAB;
+  text-decoration: none;
+  transition: color var(--km-transition-fast);
+}
+
+.footer-contact-link:hover {
+  color: #F4D779;
+}
+
+.footer-contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #A7ADAB;
+}
+
+.footer-contact-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-svg-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.site-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  font-size: 12px;
+  color: #A7ADAB;
+}
+
+@media (max-width: 960px) {
+  .site-footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 580px) {
+  .site-footer__top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .site-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

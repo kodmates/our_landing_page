@@ -25,7 +25,7 @@ export class Header {
   renderHTML() {
     const logoHtml = createLogo({ withTagline: true });
     const navigationHtml = createNavigation({ activePage: this.activePage });
-    const ctaButtonHtml = createCTAButton({ label: 'Start a Project', href: '#contact' });
+    const ctaButtonHtml = createCTAButton({ label: 'Start a Project', href: '/contact' });
     const { toggleButtonHtml, drawerHtml } = createMobileMenu({ activePage: this.activePage });
 
     return `

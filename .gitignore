@@ -6,6 +6,14 @@ node_modules/
 # Production build
 dist/
 
+# Scratch & artifacts
+scratch/
+.planning/
+*.blend1
+*.blend@
+*.backup*
+*.step*backup*
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
