@@ -152,14 +152,14 @@ function EcosystemModel({ prefersReducedMotion, isMobile }) {
           // Step 2: Use low envMapIntensity (0.35) so dark platform and graphite sphere do not reflect as white
           child.material.envMapIntensity = 0.35;
 
-          // Core Body: dark charcoal graphite sphere with fine gold network lines (subtle emissive 0.6)
+          // Core Body: dark charcoal graphite sphere with fine gold network lines (subtle emissive 0.55)
           if (child.name === 'CoreBody') {
             child.material.color.set(0x101416);
             child.material.metalness = 1.0;
             child.material.roughness = 0.35;
             if (child.material.emissive) {
-              child.material.emissive.set('#FFB92E');
-              child.material.emissiveIntensity = 0.6;
+              child.material.emissive.set('#D9A441');
+              child.material.emissiveIntensity = 0.55;
             }
           }
 
@@ -183,29 +183,29 @@ function EcosystemModel({ prefersReducedMotion, isMobile }) {
             }
           }
 
-          // Refined soft gold emissive calibrations:
+          // Warmer, less saturated gold emissive calibrations:
           if (child.name === 'CoreK') {
-            // Brightest element: K (1.8-2.2)
+            // K emblem: warmer #F2B544 gold at intensity 1.8
             if (child.material.emissive) {
-              child.material.emissive.set('#FFD27A');
-              child.material.emissiveIntensity = 2.0;
+              child.material.emissive.set('#F2B544');
+              child.material.emissiveIntensity = 1.8;
             }
           } else if (child.name === 'CoreRingOuter' || child.name === 'CoreRingInner') {
             if (child.material.emissive) {
-              child.material.emissive.set('#FFD27A');
-              child.material.emissiveIntensity = 1.0;
-            }
-          } else if (child.name.startsWith('OrbitRing')) {
-            // Orbit rings: 0.6-0.9
-            if (child.material.emissive) {
-              child.material.emissive.set('#FFB92E');
+              child.material.emissive.set('#D9A441');
               child.material.emissiveIntensity = 0.75;
             }
-          } else if (child.name.includes('EdgeGlow')) {
-            // Module edge glow: 0.8-1.2
+          } else if (child.name.startsWith('OrbitRing')) {
+            // Orbit lines: #D9A441 with emissive intensity 0.6-0.9 (0.70)
             if (child.material.emissive) {
-              child.material.emissive.set('#FFB92E');
-              child.material.emissiveIntensity = 0.95;
+              child.material.emissive.set('#D9A441');
+              child.material.emissiveIntensity = 0.70;
+            }
+          } else if (child.name.includes('EdgeGlow')) {
+            // Module edge glow: #D9A441 with emissive intensity 0.6-0.9 (0.80)
+            if (child.material.emissive) {
+              child.material.emissive.set('#D9A441');
+              child.material.emissiveIntensity = 0.80;
             }
           } else if (
             child.name.startsWith('PlatformLine') ||
@@ -213,10 +213,10 @@ function EcosystemModel({ prefersReducedMotion, isMobile }) {
             child.name === 'Ring2' ||
             child.name === 'Ring3'
           ) {
-            // Platform rings: 0.8-1.1
+            // Platform rings: #D9A441 with emissive lowered by 25% to 0.68 (reads as dark metal with thin gold trim)
             if (child.material.emissive) {
-              child.material.emissive.set('#FFB92E');
-              child.material.emissiveIntensity = 0.9;
+              child.material.emissive.set('#D9A441');
+              child.material.emissiveIntensity = 0.68;
             }
           } else if (
             child.name.includes('Icon') ||
@@ -227,23 +227,35 @@ function EcosystemModel({ prefersReducedMotion, isMobile }) {
             child.name.includes('Equator') ||
             child.name.includes('Ant')
           ) {
-            // Icons: 1.0-1.4
+            // Icons: #D9A441 with emissive intensity 0.6-0.9 (0.85)
             if (child.material.emissive) {
-              child.material.emissive.set('#FFB92E');
-              child.material.emissiveIntensity = 1.2;
+              child.material.emissive.set('#D9A441');
+              child.material.emissiveIntensity = 0.85;
+            }
+          } else if (child.name.startsWith('InterModuleArc')) {
+            // Thin orbit arcs linking neighbouring modules: #D9A441 at emissive 0.60
+            if (child.material.emissive) {
+              child.material.emissive.set('#D9A441');
+              child.material.emissiveIntensity = 0.60;
+            }
+          } else if (child.name.includes('Node')) {
+            // End nodes: warm gold at 1.10
+            if (child.material.emissive) {
+              child.material.emissive.set('#F2B544');
+              child.material.emissiveIntensity = 1.10;
             }
           } else if (
             child.name.includes('Connection') ||
             child.name.includes('Grid') ||
             child.name.includes('Pulse') ||
-            child.name.includes('Node') ||
             child.name.includes('Glow') ||
             child.name.includes('Loop') ||
             child.name.includes('Band')
           ) {
+            // Radial connection curves & pulses: #D9A441 at 0.70
             if (child.material.emissive) {
-              child.material.emissive.set('#FFB92E');
-              child.material.emissiveIntensity = 0.85;
+              child.material.emissive.set('#D9A441');
+              child.material.emissiveIntensity = 0.70;
             }
           }
         }
@@ -363,9 +375,9 @@ function EcosystemModel({ prefersReducedMotion, isMobile }) {
 
       mod.traverse((child) => {
         if (child.isMesh && child.material && child.material.emissive) {
-          const targetIntensity = isTarget ? 1.6 : 0.95;
+          const targetIntensity = isTarget ? 1.2 : 0.8;
           child.material.emissiveIntensity = THREE.MathUtils.lerp(
-            child.material.emissiveIntensity || 0.95,
+            child.material.emissiveIntensity || 0.8,
             targetIntensity,
             0.1
           );
@@ -426,7 +438,27 @@ export default function HeroScene({ className = '', style = {} }) {
         ...style
       }}
     >
+      {/* Soft warm haze behind the model (amber radial gradient at ~8% opacity, zero hard edges) */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: isMobile ? '380px' : '560px',
+          height: isMobile ? '380px' : '560px',
+          borderRadius: '50%',
+          background:
+            'radial-gradient(circle at 50% 50%, rgba(242, 181, 68, 0.08) 0%, rgba(217, 164, 65, 0.05) 35%, rgba(217, 164, 65, 0.02) 55%, transparent 70%)',
+          filter: 'blur(45px)',
+          pointerEvents: 'none',
+          zIndex: 0
+        }}
+      />
+
       <Canvas
+        style={{ position: 'relative', zIndex: 1 }}
         gl={{
           antialias: true,
           alpha: true,
@@ -483,7 +515,7 @@ export default function HeroScene({ className = '', style = {} }) {
         {enableBloom && (
           <EffectComposer multisampling={0}>
             <Bloom
-              intensity={0.3}
+              intensity={0.28}
               luminanceThreshold={1.0}
               luminanceSmoothing={0.15}
               mipmapBlur

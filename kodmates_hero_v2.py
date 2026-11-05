@@ -97,22 +97,23 @@ COL_PLAT = new_col("Platform")
 COL_ENV = new_col("Backdrop")
 CUR = COL_CORE
 
-# ---- palette (reference sheet) ----
-GOLD_EMIT = "FFB92E"      # saturated amber so it does not blow out to white
+# ---- palette (reference sheet - warm amber/gold) ----
+GOLD_EMIT = "D9A441"      # warm gold, less saturated amber
 GOLD_CREAM = "FFE3A0"
 
 M_GRAPHITE = make_mat("Graphite", "101416", 1.0, 0.30)
 M_GOLD = make_mat("GoldMetal", "D9A441", 1.0, 0.22)
-M_GOLD_LINE = make_mat("GoldLine", "D9A441", 1.0, 0.3, GOLD_EMIT, 2.2)
-M_GOLD_GLOW = make_mat("GoldGlow", "D9A441", 1.0, 0.3, GOLD_EMIT, 1.8)
-M_K = make_mat("KGlow", "D9A441", 1.0, 0.25, GOLD_CREAM, 3.2)
-M_NODE = make_mat("NodeGlow", "D9A441", 1.0, 0.3, GOLD_CREAM, 6.0)
-M_LABEL = make_mat("Label", "D9A441", 0.2, 0.4, "FFF1C9", 1.4)
+M_GOLD_LINE = make_mat("GoldLine", "D9A441", 1.0, 0.3, GOLD_EMIT, 1.6)
+M_GOLD_GLOW = make_mat("GoldGlow", "D9A441", 1.0, 0.3, GOLD_EMIT, 1.3)
+M_PLATFORM_LINE = make_mat("PlatformRing", "D9A441", 1.0, 0.3, GOLD_EMIT, 1.1)
+M_K = make_mat("KGlow", "D9A441", 1.0, 0.25, "F2B544", 1.8)
+M_NODE = make_mat("NodeGlow", "D9A441", 1.0, 0.3, "F2B544", 2.8)
+M_LABEL = make_mat("Label", "D9A441", 0.2, 0.4, "FFF1C9", 1.2)
 M_BRUSHED = make_mat("BrushedMetal", "2A2F32", 1.0, 0.38)
 M_DARK = make_mat("DarkMetal", "0A0D0E", 0.9, 0.25)
 M_FACE = make_mat("ModuleFace", "0A0D0E", 0.85, 0.3)
 M_GROUND = make_mat("Ground", "050607", 0.9, 0.12)
-M_MOUNTAIN = make_mat("Mountain", "0B0C0D", 0.1, 0.75)
+M_MOUNTAIN = make_mat("Mountain", "0B0C0D", 0.05, 0.80)
 
 
 def core_material():
@@ -124,13 +125,13 @@ def core_material():
         tc = nt.nodes.new("ShaderNodeTexCoord")
         vor = nt.nodes.new("ShaderNodeTexVoronoi")
         vor.feature = 'DISTANCE_TO_EDGE'
-        vor.inputs["Scale"].default_value = 6.0
+        vor.inputs["Scale"].default_value = 4.5
         nt.links.new(tc.outputs["Object"], vor.inputs["Vector"])
         ramp = nt.nodes.new("ShaderNodeValToRGB")
         ramp.color_ramp.elements[0].position = 0.0
         ramp.color_ramp.elements[0].color = (1, 1, 1, 1)
         # Thinner Voronoi lines so vast majority of sphere shows dark graphite metal
-        ramp.color_ramp.elements[1].position = 0.025
+        ramp.color_ramp.elements[1].position = 0.022
         ramp.color_ramp.elements[1].color = (0, 0, 0, 1)
         nt.links.new(vor.outputs["Distance"], ramp.inputs["Fac"])
         mix = nt.nodes.new("ShaderNodeMixRGB")
@@ -236,7 +237,8 @@ def drive(obj, prop, index, expr):
 # CORE  (collection: Core)
 # ----------------------------------------------------------------------------
 CUR = COL_CORE
-CORE_R = 2.6
+# Sphere 12% larger (2.6 * 1.12 = 2.912) so it dominates like in reference
+CORE_R = 2.91
 
 core_body_obj = put(uv_sphere(CORE_R, seg=96, rings=48), "CoreBody", mat=M_CORE)
 
@@ -323,13 +325,13 @@ COL_CORE.objects.link(cn)
 for i, (tx, tz) in enumerate(((pi / 4, 0.4), (pi / 2, 0.0), (pi / 3, -0.5), (pi / 3, 0.6), (-pi / 3, -0.6))):
     put(torus(CORE_R + 0.03, 0.011, rot=(tx, 0, tz), maj_seg=160, min_seg=6), f"CoreBand{i + 1}", mat=M_GOLD_LINE)
 
-# recessed K logo on the camera side (-Y)
+# recessed K logo on the camera side (-Y), scaled proportionally with core
 FY = -CORE_R
-put(cylinder(1.5, 0.1, loc=(0, FY + 0.02, 0), rot=(pi / 2, 0, 0)), "CoreRecess", mat=M_FACE)
-put(torus(1.6, 0.11, loc=(0, FY - 0.03, 0), rot=(pi / 2, 0, 0), min_seg=14), "CoreBezel", mat=M_BRUSHED)
-put(torus(1.42, 0.03, loc=(0, FY - 0.08, 0), rot=(pi / 2, 0, 0)), "CoreRingOuter", mat=M_GOLD_LINE)
-put(torus(1.12, 0.022, loc=(0, FY - 0.09, 0), rot=(pi / 2, 0, 0)), "CoreRingInner", mat=M_GOLD_LINE)
-k = text("K", 2.0, loc=(0, FY - 0.12, 0), extrude=0.12)
+put(cylinder(1.68, 0.11, loc=(0, FY + 0.02, 0), rot=(pi / 2, 0, 0)), "CoreRecess", mat=M_FACE)
+put(torus(1.79, 0.12, loc=(0, FY - 0.03, 0), rot=(pi / 2, 0, 0), min_seg=14), "CoreBezel", mat=M_BRUSHED)
+put(torus(1.59, 0.03, loc=(0, FY - 0.08, 0), rot=(pi / 2, 0, 0)), "CoreRingOuter", mat=M_GOLD_LINE)
+put(torus(1.25, 0.022, loc=(0, FY - 0.09, 0), rot=(pi / 2, 0, 0)), "CoreRingInner", mat=M_GOLD_LINE)
+k = text("K", 2.24, loc=(0, FY - 0.12, 0), extrude=0.13)
 k.data.materials.append(M_K)
 put(k, "CoreK")
 
@@ -345,7 +347,7 @@ COL_CORE.objects.link(glo)
 # MODULES  (collection: Modules)
 # ----------------------------------------------------------------------------
 CUR = COL_MODS
-FRONT = -0.36
+FRONT = -0.39
 
 
 def icon_web(root):
@@ -406,14 +408,16 @@ def make_module(name, loc, icon_fn, yaw, phase):
     root.rotation_euler = (0, 0, yaw)
     COL_MODS.objects.link(root)
 
-    put(box(1.68, 0.5, 1.68, loc=(0, 0.06, 0), bevel=0.14, seg=6), f"{name}_GoldShell", parent=root, mat=M_GOLD)
-    put(box(1.58, 0.62, 1.58, bevel=0.14, seg=6), f"{name}_Body", parent=root, mat=M_BRUSHED)
+    # Solid metallic block proportions with 0.18 bevel width
+    put(box(1.68, 0.58, 1.68, loc=(0, 0.07, 0), bevel=0.18, seg=6), f"{name}_GoldShell", parent=root, mat=M_GOLD)
+    put(box(1.58, 0.72, 1.58, bevel=0.18, seg=6), f"{name}_Body", parent=root, mat=M_BRUSHED)
     # Thin glowing gold rim framing each module face
-    put(box(1.42, 0.03, 1.42, loc=(0, -0.32, 0), bevel=0.02, seg=3), f"{name}_EdgeGlow", parent=root, mat=M_GOLD_GLOW)
-    put(box(1.28, 0.05, 1.28, loc=(0, -0.33, 0), bevel=0.03, seg=3), f"{name}_Face", parent=root, mat=M_FACE)
+    put(box(1.42, 0.03, 1.42, loc=(0, -0.37, 0), bevel=0.02, seg=3), f"{name}_EdgeGlow", parent=root, mat=M_GOLD_GLOW)
+    put(box(1.28, 0.05, 1.28, loc=(0, -0.38, 0), bevel=0.03, seg=3), f"{name}_Face", parent=root, mat=M_FACE)
 
-    # Label inside bottom of dark face with clear space above it
-    lbl = text(name, 0.22, loc=(0, FRONT - 0.04, -0.50), extrude=0.015)
+    # Face front surface is at y = -0.38 - 0.025 = -0.405.
+    # Label is placed at y = -0.430 (at least 0.025 in front of face plate) with 0.02 extrude
+    lbl = text(name, 0.22, loc=(0, -0.430, -0.50), extrude=0.02)
     lbl.data.materials.append(M_LABEL)
     put(lbl, f"{name}_Label", parent=root)
 
@@ -422,14 +426,14 @@ def make_module(name, loc, icon_fn, yaw, phase):
     return root
 
 
-# positions measured from the reference sheet (core radius = 2.6 units)
+# positions measured from the reference sheet (moved ~8% closer to dominant core)
 MODULE_SPECS = [
-    ("Web",      (-4.10, -0.9,  2.25), icon_web,       0.32, 0.0),
-    ("Android",  ( 0.55, -0.9,  3.55), icon_android,   0.00, 1.1),
-    ("Cloud",    ( 4.20, -0.6,  1.10), icon_cloud,    -0.32, 2.2),
-    ("Database", (-4.10, -0.9, -1.55), icon_database,  0.32, 3.3),
-    ("API",      ( 4.20, -0.9, -1.65), icon_api,      -0.32, 4.4),
-    ("Business", (-0.50, -1.9, -2.95), icon_business,  0.00, 5.5),
+    ("Web",      (-3.77, -0.9,  2.07), icon_web,       0.32, 0.0),
+    ("Android",  ( 0.51, -0.9,  3.78), icon_android,   0.00, 1.1),
+    ("Cloud",    ( 3.86, -0.6,  1.01), icon_cloud,    -0.32, 2.2),
+    ("Database", (-3.77, -0.9, -1.43), icon_database,  0.32, 3.3),
+    ("API",      ( 3.86, -0.9, -1.52), icon_api,      -0.32, 4.4),
+    ("Business", (-0.46, -1.9, -3.12), icon_business,  0.00, 5.5),
 ]
 for n, p, fn, yaw, ph in MODULE_SPECS:
     make_module(n, p, fn, yaw, ph)
@@ -470,16 +474,29 @@ MODULE_INNER_OFFSETS = {
     "API":      Vector((-0.84, 0.0, 0.0)),  # inner left edge
 }
 
+# Curved radial arcs with higher bend (bezier midpoint offset ~1.2)
+BEND_OFFSETS = {
+    "Web":      Vector((-0.6, 0.0,  1.0)).normalized() * 1.2,
+    "Android":  Vector(( 0.9, 0.0,  0.4)).normalized() * 1.2,
+    "Cloud":    Vector(( 0.5, 0.0,  1.0)).normalized() * 1.2,
+    "API":      Vector(( 0.5, 0.0, -1.0)).normalized() * 1.2,
+    "Database": Vector((-0.5, 0.0, -1.0)).normalized() * 1.2,
+    "Business": Vector((-0.9, 0.0, -0.3)).normalized() * 1.2,
+}
+
 for idx, (n, p, _, _, _) in enumerate(MODULE_SPECS):
     P = Vector(p)
     end = P + MODULE_INNER_OFFSETS.get(n, Vector((0, 0, 0)))
     start = end.normalized() * (CORE_R + 0.02)
-    mid = (start + end) / 2 + Vector((0, -0.15, 0))
-    cobj = bezier_curve(f"{n}Connection", (start, mid, end), depth=0.025)
+    bend = BEND_OFFSETS.get(n, Vector((0, 0, 0)))
+    mid = (start + end) / 2 + bend
+    # Soft, thin curved connection arc (depth 0.016)
+    cobj = bezier_curve(f"{n}Connection", (start, mid, end), depth=0.016)
 
-    put(uv_sphere(0.08, loc=end, seg=16, rings=8), f"{n}Node", mat=M_NODE)
+    # Brighter end node
+    put(uv_sphere(0.09, loc=end, seg=16, rings=8), f"{n}Node", mat=M_NODE)
 
-    pulse = uv_sphere(0.065, seg=16, rings=8)
+    pulse = uv_sphere(0.07, seg=16, rings=8)
     put(pulse, f"{n}Pulse", mat=M_NODE)
     try:
         con = pulse.constraints.new('FOLLOW_PATH')
@@ -492,13 +509,25 @@ for idx, (n, p, _, _, _) in enumerate(MODULE_SPECS):
     except Exception as e:
         print("pulse constraint skipped:", e)
 
+# 2 thin orbit arcs linking neighbouring modules (Web-to-Android, Android-to-Cloud)
+# Depth 0.006, emissive ~0.6 configured in HeroScene.jsx
+p_web = Vector((-3.77, -0.9, 2.91))
+p_and_l = Vector((-0.33, -0.9, 3.78))
+mid1 = Vector((-2.2, -0.85, 4.25))
+bezier_curve("InterModuleArc1", (p_web, mid1, p_and_l), depth=0.006, col=COL_ORB)
+
+p_and_r = Vector((1.35, -0.9, 3.78))
+p_cld = Vector((3.86, -0.6, 1.85))
+mid2 = Vector((2.9, -0.75, 3.55))
+bezier_curve("InterModuleArc2", (p_and_r, mid2, p_cld), depth=0.006, col=COL_ORB)
+
 # ----------------------------------------------------------------------------
 # ORBITS  (collection: Orbits)
 # ----------------------------------------------------------------------------
 CUR = COL_ORB
-# 3 thin, elegant orbit rings hugging the central core (radius 3.2-3.8, inside module circle)
-for i, (rx, ry, rz, rad) in enumerate(((1.15, 0.15, 0.0, 3.2), (0.55, -0.45, 0.8, 3.5),
-                                       (0.80, -0.30, 0.6, 3.8))):
+# 3 thin, elegant orbit rings hugging the enlarged core (radius 3.45-4.15, inside module circle)
+for i, (rx, ry, rz, rad) in enumerate(((1.15, 0.15, 0.0, 3.45), (0.55, -0.45, 0.8, 3.80),
+                                       (0.80, -0.30, 0.6, 4.15))):
     r = torus(rad, 0.007, rot=(rx, ry, rz), maj_seg=220, min_seg=6)
     put(r, f"OrbitRing{i + 1}", mat=M_GOLD_LINE)
     drive(r, "rotation_euler", 2, f"{rz}+frame*{0.0015 * (i + 1)}")
@@ -526,17 +555,17 @@ put(cylinder(5.0, 0.4, loc=(0, 0, -4.7)), "Base", mat=M_DARK)
 put(cylinder(4.2, 0.3, loc=(0, 0, -4.35)), "BaseMid", mat=M_DARK)
 # Dark top surface as requested
 put(cylinder(3.4, 0.25, loc=(0, 0, -4.12)), "BaseTop", mat=M_DARK)
-# Thin gold ring trims (minor radius 0.02)
-put(torus(5.0, 0.02, loc=(0, 0, -4.5), maj_seg=192), "Ring", mat=M_GOLD_LINE)
-put(torus(4.2, 0.02, loc=(0, 0, -4.2), maj_seg=192), "Ring2", mat=M_GOLD_LINE)
-put(torus(3.4, 0.02, loc=(0, 0, -3.99), maj_seg=192), "Ring3", mat=M_GOLD_LINE)
+# Thin gold ring trims (minor radius 0.02) - emissive lowered ~25%
+put(torus(5.0, 0.02, loc=(0, 0, -4.5), maj_seg=192), "Ring", mat=M_PLATFORM_LINE)
+put(torus(4.2, 0.02, loc=(0, 0, -4.2), maj_seg=192), "Ring2", mat=M_PLATFORM_LINE)
+put(torus(3.4, 0.02, loc=(0, 0, -3.99), maj_seg=192), "Ring3", mat=M_PLATFORM_LINE)
 # 2 thin PlatformLine rings (minor radius 0.007)
 for i, r in enumerate((2.8, 1.8)):
-    put(torus(r, 0.007, loc=(0, 0, -3.995), maj_seg=160, min_seg=6), f"PlatformLine{i + 1}", mat=M_GOLD_LINE)
+    put(torus(r, 0.007, loc=(0, 0, -3.995), maj_seg=160, min_seg=6), f"PlatformLine{i + 1}", mat=M_PLATFORM_LINE)
 
 pg = bpy.data.lights.new("PlatformGlow", 'POINT')
-pg.energy = 1200
-pg.color = (1.0, 0.65, 0.25)
+pg.energy = 850
+pg.color = (0.95, 0.70, 0.27)
 pg.shadow_soft_size = 1.0
 pgo = bpy.data.objects.new("PlatformGlow", pg)
 pgo.location = (0, -2.0, -3.7)
@@ -546,24 +575,27 @@ COL_PLAT.objects.link(pgo)
 # BACKDROP  (collection: Backdrop - NOT exported)
 # ----------------------------------------------------------------------------
 CUR = COL_ENV
-bpy.ops.mesh.primitive_plane_add(size=300, location=(0, 0, -4.95))
+bpy.ops.mesh.primitive_plane_add(size=300, location=(0, 0, -5.0))
 put(bpy.context.active_object, "Ground", mat=M_GROUND)
 
 if MOUNTAINS:
-    bpy.ops.mesh.primitive_grid_add(x_subdivisions=200, y_subdivisions=100, size=1, location=(0, 55, -6))
+    # Mountain grid moved far behind the scene (near edge at y >= 35, center y=95)
+    # Nothing from Backdrop is within 30 units of the core, modules or platform
+    bpy.ops.mesh.primitive_grid_add(x_subdivisions=200, y_subdivisions=100, size=1, location=(0, 95, -7.5))
     mt = bpy.context.active_object
-    mt.data.transform(Matrix.Diagonal(Vector((260, 120, 1, 1))))
+    mt.data.transform(Matrix.Diagonal(Vector((280, 120, 1, 1))))
     smooth(mt)
     tex = bpy.data.textures.new("MtnTex", 'CLOUDS')
-    tex.noise_scale = 22
+    tex.noise_scale = 18
     tex.noise_depth = 4
     dm = mt.modifiers.new("Displace", 'DISPLACE')
     dm.texture = tex
-    dm.strength = 24
-    dm.mid_level = 0.35
+    dm.strength = 5.2
+    dm.mid_level = 0.0
+    # Deep dark silhouette (#0B0C0D, roughness 0.8)
     put(mt, "BG_Mountains", mat=M_MOUNTAIN)
 
-    # warm sun glow behind the mountains (radial falloff emission)
+    # Warm sun glow behind the mountain ridge (at y = 165)
     sg = bpy.data.materials.new("SunGlow")
     sg.use_nodes = True
     nt = sg.node_tree
@@ -574,7 +606,7 @@ if MOUNTAINS:
     tr = nt.nodes.new("ShaderNodeBsdfTransparent")
     em = nt.nodes.new("ShaderNodeEmission")
     em.inputs["Color"].default_value = (*hx("FF8A1F"), 1)
-    em.inputs["Strength"].default_value = 3.0
+    em.inputs["Strength"].default_value = 3.5
     tcn = nt.nodes.new("ShaderNodeTexCoord")
     mp = nt.nodes.new("ShaderNodeMapping")
     mp.inputs["Scale"].default_value = (2, 2, 2)
@@ -583,7 +615,7 @@ if MOUNTAINS:
     gr.gradient_type = 'SPHERICAL'
     pw = nt.nodes.new("ShaderNodeMath")
     pw.operation = 'POWER'
-    pw.inputs[1].default_value = 2.5
+    pw.inputs[1].default_value = 2.2
     nt.links.new(tcn.outputs["Generated"], mp.inputs["Vector"])
     nt.links.new(mp.outputs["Vector"], gr.inputs["Vector"])
     nt.links.new(gr.outputs["Fac"], pw.inputs[0])
@@ -596,9 +628,9 @@ if MOUNTAINS:
             setattr(sg, attr, val)
         except Exception:
             pass
-    bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 125, -2), rotation=(pi / 2, 0, 0))
+    bpy.ops.mesh.primitive_plane_add(size=1, location=(0, 165, -0.5), rotation=(pi / 2, 0, 0))
     sp_ = bpy.context.active_object
-    sp_.scale = (230, 70, 1)
+    sp_.scale = (280, 50, 1)
     put(sp_, "SunGlow", mat=sg)
 
 # ----------------------------------------------------------------------------
@@ -674,11 +706,36 @@ else:
 
 
 def add_glare():
-    """compositor glare (bloom). API differs per version -> best effort."""
+    """compositor glare (bloom) for Blender 5.x and 4.x."""
     try:
-        tree = getattr(scene, "node_tree", None)
-        if tree is None and hasattr(scene, "compositing_node_group"):
-            return  # Blender 5.x: AG should wire this up if desired
+        if hasattr(scene, "compositing_node_group"):
+            # Blender 5.x compositor API
+            ng = bpy.data.node_groups.new('CompositingTree', 'CompositorNodeTree')
+            scene.compositing_node_group = ng
+            ng.interface.new_socket(name='Image', in_out='OUTPUT', socket_type='NodeSocketColor')
+            rl = ng.nodes.new('CompositorNodeRLayers')
+            out = ng.nodes.new('NodeGroupOutput')
+            gl_ = ng.nodes.new('CompositorNodeGlare')
+            try:
+                gl_.inputs['Type'].default_value = 'Bloom'
+            except Exception:
+                pass
+            try:
+                gl_.inputs['Quality'].default_value = 'High'
+            except Exception:
+                pass
+            try:
+                gl_.inputs['Threshold'].default_value = 0.85
+                gl_.inputs['Strength'].default_value = 0.55
+                gl_.inputs['Size'].default_value = 8
+            except Exception:
+                pass
+            ng.links.new(rl.outputs['Image'], gl_.inputs['Image'])
+            ng.links.new(gl_.outputs['Image'], out.inputs['Image'])
+            print("✓ Blender 5.x Compositor Bloom glare configured successfully")
+            return
+
+        # Fallback for 4.x
         scene.use_nodes = True
         tree = scene.node_tree
         tree.nodes.clear()
@@ -702,7 +759,7 @@ for area in (bpy.context.screen.areas if bpy.context.screen else []):
                 sp.region_3d.view_perspective = 'CAMERA'
 
 # ----------------------------------------------------------------------------
-# RENDER (front / left / right)  -> compare with the reference sheet
+# RENDER (front / left / right / topdown / closeups)
 # ----------------------------------------------------------------------------
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -713,6 +770,49 @@ if DO_RENDER:
         scene.render.filepath = os.path.join(OUT_DIR, f"render_{name}.png")
         bpy.ops.render.render(write_still=True)
         print("rendered", scene.render.filepath)
+
+    # Top-down render to verify zero geometry in front of platform
+    cam.location = (0, 0, 26)
+    cam.rotation_euler = (0, 0, 0)
+    scene.render.filepath = os.path.join(OUT_DIR, "render_topdown.png")
+    bpy.ops.render.render(write_still=True)
+    print("rendered topdown", scene.render.filepath)
+
+    # Reset camera
+    cam.location = (0, -22, -0.25)
+    cam.rotation_euler = (pi / 2, 0, 0)
+
+    # Close-ups of all 6 modules with Backdrop hidden to confirm zero label clipping
+    col_back = bpy.data.collections.get("Backdrop")
+    if col_back:
+        col_back.hide_render = True
+    orig_res_x = scene.render.resolution_x
+    orig_res_y = scene.render.resolution_y
+    scene.render.resolution_x = 800
+    scene.render.resolution_y = 800
+    modules = ["Web", "Android", "Cloud", "API", "Database", "Business"]
+    for mod_name in modules:
+        mod = bpy.data.objects.get(mod_name)
+        if not mod:
+            continue
+        bpy.context.view_layer.update()
+        target_local = Vector((0, -0.38, -0.15))
+        cam_local = Vector((0, -3.2, -0.15))
+        target_world = mod.matrix_world @ target_local
+        cam_world = mod.matrix_world @ cam_local
+        cam.location = cam_world
+        direction = target_world - cam_world
+        rot_quat = direction.to_track_quat('-Z', 'Y')
+        cam.rotation_euler = rot_quat.to_euler()
+        scene.render.filepath = os.path.join(OUT_DIR, f"closeup_{mod_name}.png")
+        bpy.ops.render.render(write_still=True)
+        print("rendered closeup", scene.render.filepath)
+
+    # Restore backdrop and camera resolution
+    if col_back:
+        col_back.hide_render = False
+    scene.render.resolution_x = orig_res_x
+    scene.render.resolution_y = orig_res_y
     cam.location = (0, -22, -0.25)
     cam.rotation_euler = (pi / 2, 0, 0)
 
