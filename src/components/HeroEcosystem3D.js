@@ -2079,6 +2079,14 @@ export class HeroEcosystem3D {
     }
   }
 
+  pause() {
+    this._pauseAnimation();
+  }
+
+  resume() {
+    this._resumeAnimation();
+  }
+
   _pauseAnimation() {
     if (this._pauseStart === null) {
       this._pauseStart = performance.now();

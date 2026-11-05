@@ -1,0 +1,186 @@
+{
+  "canvasStatus": {
+    "wrapperFound": true,
+    "canvasFound": true,
+    "canvasWidth": 878,
+    "canvasHeight": 901,
+    "fallbackVisible": false,
+    "r3fFallbackPresent": false
+  },
+  "networkLogs": [
+    {
+      "url": "http://localhost:5173/src/components/HeroSceneMount.jsx?t=1793861832749",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/src/components/HeroScene.jsx?t=1793861832749",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/assets/kodmates_hero.glb",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/draco/gltf/draco_wasm_wrapper.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/draco/gltf/draco_decoder.wasm",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:5173/src/components/HeroSceneMount.jsx?t=1793861832749",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/src/components/HeroSceneMount.jsx?t=1793861832749",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/src/components/HeroScene.jsx?t=1793861832749",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/assets/kodmates_hero.glb",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/draco/gltf/draco_wasm_wrapper.js",
+      "status": 304
+    },
+    {
+      "url": "http://localhost:5173/draco/gltf/draco_decoder.wasm",
+      "status": 304
+    }
+  ],
+  "consoleLogs": [
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warn",
+      "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+    },
+    {
+      "type": "error",
+      "text": "Attempted to synchronously unmount a root while React was already rendering. React cannot finish unmounting the root until the current render has completed, which may lead to a race condition."
+    },
+    {
+      "type": "log",
+      "text": ">>> [HERO 3D] Scene Traversed. Modules: [array Array] | Rings: 3 | K Emblem Found: true"
+    },
+    {
+      "type": "pageerror",
+      "text": "DOMException: NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node."
+    },
+    {
+      "type": "warn",
+      "text": "%s\n\n%s\n An error occurred in the <div> component. Consider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries."
+    },
+    {
+      "type": "log",
+      "text": ">>> [HERO 3D] GLB Bounding Box:"
+    },
+    {
+      "type": "log",
+      "text": "    Min:    [ -6.07 -6.16 -5.02 ]"
+    },
+    {
+      "type": "log",
+      "text": "    Max:    [ 6.12 5.41 5.02 ]"
+    },
+    {
+      "type": "log",
+      "text": "    Size:   [ 12.19 11.58 10.04 ]"
+    },
+    {
+      "type": "log",
+      "text": "    Center: [ 0.02 -0.37 0.00 ]"
+    },
+    {
+      "type": "log",
+      "text": ">>> [HERO 3D] Camera Fitted Position: [ 0.00 -0.22 22.90 ]"
+    },
+    {
+      "type": "log",
+      "text": ">>> [HERO 3D] Camera FOV: 32 | Canvas Aspect: 0.97 | Margin: 1.05"
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connecting..."
+    },
+    {
+      "type": "debug",
+      "text": "[vite] connected."
+    },
+    {
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "type": "warn",
+      "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+    },
+    {
+      "type": "error",
+      "text": "Attempted to synchronously unmount a root while React was already rendering. React cannot finish unmounting the root until the current render has completed, which may lead to a race condition."
+    },
+    {
+      "type": "log",
+      "text": ">>> [HERO 3D] Scene Traversed. Modules: [array Array] | Rings: 3 | K Emblem Found: true"
+    },
+    {
+      "type": "pageerror",
+      "text": "DOMException: NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node."
+    },
+    {
+      "type": "warn",
+      "text": "%s\n\n%s\n An error occurred in the <div> component. Consider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries."
+    },
+    {
+      "type": "log",
+      "text": ">>> [HERO 3D] GLB Bounding Box:"
+    },
+    {
+      "type": "log",
+      "text": "    Min:    [ -6.07 -6.16 -5.02 ]"
+    },
+    {
+      "type": "log",
+      "text": "    Max:    [ 6.12 5.41 5.02 ]"
+    },
+    {
+      "type": "log",
+      "text": "    Size:   [ 12.19 11.58 10.04 ]"
+    },
+    {
+      "type": "log",
+      "text": "    Center: [ 0.02 -0.37 0.00 ]"
+    },
+    {
+      "type": "log",
+      "text": ">>> [HERO 3D] Camera Fitted Position: [ 0.00 -0.22 26.48 ]"
+    },
+    {
+      "type": "log",
+      "text": ">>> [HERO 3D] Camera FOV: 35 | Canvas Aspect: 0.76 | Margin: 1.04"
+    }
+  ]
+}

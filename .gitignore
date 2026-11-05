@@ -13,6 +13,28 @@ scratch/
 *.blend@
 *.backup*
 *.step*backup*
+*.phase1_audit*
+*.iter*backup*
+*.targeted_pass_backup*
+*.visual_polish_backup*
+*.visual_refinement_backup*
+
+# Temporary Blender checkpoints & working scripts
+blender.zip
+kodmates_hero.blend
+kodmates_hero_preview.png
+kodmates_hero_review_large.png
+reference_live_candidate_comparison.png
+Cinematic Software Ecosystem Blueprint.png
+blender/rebuild_*.blend
+blender/candidate_*.blend
+blender/legacy_archive/
+blender/scripts/build_checkpoint_*.py
+blender/scripts/build_rebuild_blockout.py
+blender/kodmates_hero_*.png
+blender/export/candidate_*.glb
+blender/export/kodmates_hero_candidate.glb
+public/assets/candidate_kodmates_hero.glb
 
 # Logs
 npm-debug.log*
