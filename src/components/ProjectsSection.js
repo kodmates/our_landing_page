@@ -222,7 +222,7 @@ function openProjectModal(project, triggerElement = null) {
       <div class="project-tech-stack">${techChips}</div>
     </div>
 
-    <a href="#contact" class="cta-button" style="display: inline-flex;" onclick="document.getElementById('project-modal').classList.remove('is-open');">
+    <a href="#contact" class="cta-button" style="display: inline-flex;" onclick="document.getElementById('project-modal').classList.remove('is-open'); document.body.style.overflow = '';">
       <span>Discuss a Similar System</span>
       <span aria-hidden="true">→</span>
     </a>

@@ -12,6 +12,7 @@
 
 import './styles/tokens.css';
 import './styles/base.css';
+import './styles/theme.css';
 import './styles/header.css';
 import './styles/hero.css';
 import './styles/sections.css';
@@ -346,19 +347,32 @@ function setupNavigation() {
       return;
     }
 
-    // Homepage Section Anchors (#services, #projects, #process, #about, #blog, #contact)
+    // In-page section anchors
     if (href.startsWith('#') && !href.startsWith('#/')) {
       const anchorId = href.substring(1);
       const targetEl = document.getElementById(anchorId);
+      const onHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
 
-      // If currently on a subpage, navigate back to homepage anchor
-      if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+      // 1. In-page anchor on the current page: scroll locally without page transition
+      if (targetEl && targetEl.offsetParent !== null) {
+        e.preventDefault();
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (onHome) {
+          window.history.pushState({}, '', href);
+          header.setActivePage(anchorId);
+        }
+        return;
+      }
+
+      // 2. Otherwise, if on subpage and target is on homepage, navigate to homepage anchor
+      if (!onHome) {
         e.preventDefault();
         window.history.pushState({}, '', '/' + href);
         renderRoute();
         return;
       }
 
+      // 3. Target on homepage
       if (targetEl) {
         e.preventDefault();
         window.history.pushState({}, '', href);

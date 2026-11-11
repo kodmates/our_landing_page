@@ -1,0 +1,508 @@
+/* ==========================================================================
+   KODMATES — Light / Dark Theme Architecture (theme.css)
+   Guarantees WCAG AAA legibility, rich contrast, and seamless switching
+   ========================================================================== */
+
+/* 1. Header Theme Toggle Button */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin-right: 14px;
+  border-radius: var(--km-cta-radius);
+  background: rgba(254, 239, 184, 0.05);
+  border: 1px solid rgba(254, 239, 184, 0.16);
+  color: var(--km-accent-primary);
+  cursor: pointer;
+  transition: all var(--km-transition-fast);
+  outline: none;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(254, 239, 184, 0.12);
+  border-color: rgba(254, 239, 184, 0.35);
+  transform: translateY(-1px);
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--km-border-focus);
+  outline-offset: 2px;
+}
+
+/* Icon Switching: Default Dark shows Sun, Light shows Moon */
+.theme-icon {
+  width: 19px;
+  height: 19px;
+  transition: transform 220ms ease;
+}
+
+[data-theme="dark"] .theme-icon-moon,
+:root:not([data-theme="light"]) .theme-icon-moon {
+  display: none !important;
+}
+
+[data-theme="dark"] .theme-icon-sun,
+:root:not([data-theme="light"]) .theme-icon-sun {
+  display: block !important;
+}
+
+[data-theme="light"] .theme-icon-sun {
+  display: none !important;
+}
+
+[data-theme="light"] .theme-icon-moon {
+  display: block !important;
+}
+
+/* Mobile Drawer Theme Toggle */
+.mobile-theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  margin-bottom: 12px;
+  border-radius: var(--km-cta-radius);
+  background: rgba(254, 239, 184, 0.05);
+  border: 1px solid rgba(254, 239, 184, 0.14);
+  color: var(--km-text-light);
+  font-family: var(--km-font-family);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mobile-theme-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--km-accent-primary);
+}
+
+/* ==========================================================================
+   2. LIGHT THEME FULL STYLING & HIGH-CONTRAST OVERRIDES
+   ========================================================================== */
+[data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="light"] .page-viewport {
+  background-color: #F8FAFC !important;
+  background-image: 
+    radial-gradient(1100px 380px at 50% 0%, rgba(180, 83, 9, 0.04) 0%, transparent 65%),
+    linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%) !important;
+  color: #0F172A !important;
+}
+
+/* Header in Light Mode */
+[data-theme="light"] .site-header {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+}
+
+[data-theme="light"] .site-header--scrolled {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .site-header::before {
+  display: none !important;
+}
+
+[data-theme="light"] .site-logo__text {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .site-logo__tagline {
+  color: #64748B !important;
+}
+
+[data-theme="light"] .nav-link {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .nav-link:hover {
+  color: #B45309 !important;
+}
+
+[data-theme="light"] .nav-link.is-active {
+  color: #B45309 !important;
+}
+
+[data-theme="light"] .nav-link.is-active::after {
+  background-color: #B45309 !important;
+  box-shadow: 0 0 6px rgba(180, 83, 9, 0.4) !important;
+}
+
+[data-theme="light"] .theme-toggle-btn {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .theme-toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(0, 0, 0, 0.20) !important;
+}
+
+/* Primary CTA Button in Light Mode */
+[data-theme="light"] .cta-button {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 60%, #B45309 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(180, 83, 9, 0.4) !important;
+  box-shadow: 0 2px 10px rgba(180, 83, 9, 0.25) !important;
+}
+
+[data-theme="light"] .cta-button:hover {
+  background: linear-gradient(135deg, #FBBF24 0%, #D97706 60%, #92400E 100%) !important;
+  box-shadow: 0 4px 14px rgba(180, 83, 9, 0.35) !important;
+}
+
+/* Mobile Drawer */
+[data-theme="light"] .mobile-drawer {
+  background: #FFFFFF !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+[data-theme="light"] .mobile-nav-link {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .mobile-nav-link:hover,
+[data-theme="light"] .mobile-nav-link.is-active {
+  color: #B45309 !important;
+}
+
+[data-theme="light"] .mobile-toggle {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-theme="light"] .hamburger-line {
+  background-color: #0F172A !important;
+}
+
+[data-theme="light"] .mobile-theme-toggle {
+  background: #F1F5F9 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .mobile-theme-icon-wrap {
+  color: #B45309 !important;
+}
+
+/* Hero Section in Light Mode */
+[data-theme="light"] .hero-eyebrow {
+  color: #B45309 !important;
+}
+
+[data-theme="light"] .hero-title {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .hero-title-accent {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 60%, #92400E 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+[data-theme="light"] .hero-description {
+  color: #334155 !important;
+  font-weight: 500 !important;
+}
+
+[data-theme="light"] .hero-cta-secondary {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .hero-cta-secondary:hover {
+  border-color: #B45309 !important;
+  color: #B45309 !important;
+  background: #FFFBEB !important;
+}
+
+[data-theme="light"] .hero-ambient-landscape {
+  opacity: 0.15 !important;
+  filter: grayscale(100%) contrast(1.2) !important;
+}
+
+[data-theme="light"] .hero-ambient-glow {
+  opacity: 0.12 !important;
+}
+
+/* Capabilities Row */
+[data-theme="light"] .capability-item {
+  background: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .capability-item:hover {
+  border-color: rgba(180, 83, 9, 0.35) !important;
+  box-shadow: 0 6px 18px rgba(180, 83, 9, 0.08) !important;
+}
+
+[data-theme="light"] .capability-label {
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .capability-icon svg path,
+[data-theme="light"] .capability-icon svg circle,
+[data-theme="light"] .capability-icon svg rect {
+  stroke: #B45309 !important;
+}
+
+/* Sections & Typography */
+[data-theme="light"] .km-section {
+  border-bottom-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .km-eyebrow {
+  color: #B45309 !important;
+}
+
+[data-theme="light"] .km-eyebrow::before {
+  background-color: #B45309 !important;
+  box-shadow: 0 0 8px rgba(180, 83, 9, 0.45) !important;
+}
+
+[data-theme="light"] .km-section-title {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .km-section-title-accent {
+  background: linear-gradient(135deg, #B45309 0%, #D97706 60%, #92400E 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+[data-theme="light"] .km-section-desc {
+  color: #334155 !important;
+}
+
+/* Cards (Services, Projects, Process, About, Blog, Contact) */
+[data-theme="light"] .service-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .process-step-card,
+[data-theme="light"] .about-pillar-card,
+[data-theme="light"] .about-stat-card,
+[data-theme="light"] .blog-card,
+[data-theme="light"] .contact-card,
+[data-theme="light"] .contact-channel-card,
+[data-theme="light"] .contact-form-container,
+[data-theme="light"] .contact-info-card,
+[data-theme="light"] .contact-process-step,
+[data-theme="light"] .project-detail-card,
+[data-theme="light"] .project-summary-box,
+[data-theme="light"] .services-tier-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .service-card:hover,
+[data-theme="light"] .project-card:hover,
+[data-theme="light"] .process-step-card:hover,
+[data-theme="light"] .blog-card:hover {
+  border-color: rgba(180, 83, 9, 0.35) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08), 0 0 16px rgba(180, 83, 9, 0.06) !important;
+}
+
+[data-theme="light"] .service-card-title,
+[data-theme="light"] .project-card-title,
+[data-theme="light"] .process-step-title,
+[data-theme="light"] .about-pillar-title,
+[data-theme="light"] .about-stat-number,
+[data-theme="light"] .blog-card-title,
+[data-theme="light"] .contact-info-title,
+[data-theme="light"] .contact-form-title {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .service-card-desc,
+[data-theme="light"] .project-card-desc,
+[data-theme="light"] .process-step-desc,
+[data-theme="light"] .about-pillar-desc,
+[data-theme="light"] .about-stat-label,
+[data-theme="light"] .blog-card-excerpt,
+[data-theme="light"] .contact-info-desc,
+[data-theme="light"] .contact-form-subtitle {
+  color: #334155 !important;
+}
+
+/* Badges & Tags */
+[data-theme="light"] .service-tag,
+[data-theme="light"] .project-tag,
+[data-theme="light"] .tech-chip,
+[data-theme="light"] .blog-card-tag,
+[data-theme="light"] .blog-tag {
+  background: #F1F5F9 !important;
+  color: #334155 !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Filter Buttons */
+[data-theme="light"] .projects-filter-bar .filter-btn,
+[data-theme="light"] .blog-filters .filter-btn,
+[data-theme="light"] .filter-btn {
+  background: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  color: #334155 !important;
+}
+
+[data-theme="light"] .projects-filter-bar .filter-btn:hover,
+[data-theme="light"] .blog-filters .filter-btn:hover,
+[data-theme="light"] .filter-btn:hover {
+  border-color: rgba(180, 83, 9, 0.35) !important;
+  color: #B45309 !important;
+}
+
+[data-theme="light"] .projects-filter-bar .filter-btn.is-active,
+[data-theme="light"] .blog-filters .filter-btn.is-active,
+[data-theme="light"] .filter-btn.is-active {
+  background: #B45309 !important;
+  color: #FFFFFF !important;
+  border-color: #B45309 !important;
+  box-shadow: 0 2px 10px rgba(180, 83, 9, 0.25) !important;
+}
+
+/* Inputs & Forms */
+[data-theme="light"] input[type="text"],
+[data-theme="light"] input[type="email"],
+[data-theme="light"] input[type="tel"],
+[data-theme="light"] textarea,
+[data-theme="light"] select,
+[data-theme="light"] .contact-input,
+[data-theme="light"] .contact-textarea,
+[data-theme="light"] .blog-search-input {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1px solid rgba(0, 0, 0, 0.16) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] input::placeholder,
+[data-theme="light"] textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+[data-theme="light"] input:focus,
+[data-theme="light"] textarea:focus,
+[data-theme="light"] select:focus {
+  border-color: #B45309 !important;
+  outline: 2px solid rgba(180, 83, 9, 0.25) !important;
+}
+
+/* Project Modal Dialog in Light Mode */
+[data-theme="light"] .project-modal-dialog {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.18) !important;
+}
+
+[data-theme="light"] .project-modal-title {
+  color: #0F172A !important;
+}
+
+[data-theme="light"] .project-modal-desc {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .project-modal-close {
+  background: #F1F5F9 !important;
+  color: #0F172A !important;
+  border-color: rgba(0, 0, 0, 0.10) !important;
+}
+
+[data-theme="light"] .project-modal-close:hover {
+  background: #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+/* Process Timeline */
+[data-theme="light"] .process-step-number {
+  color: #B45309 !important;
+  background: rgba(180, 83, 9, 0.08) !important;
+  border-color: rgba(180, 83, 9, 0.2) !important;
+}
+
+/* 3D Hero Module Interactive Tooltip */
+.hero-module-tooltip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(14, 18, 19, 0.90);
+  border: 1px solid rgba(254, 239, 184, 0.35);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55), 0 0 16px rgba(254, 239, 184, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #FFFFFF;
+  font-family: var(--km-font-heading, 'Plus Jakarta Sans', sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  transform: translateY(-8px);
+  animation: kmTooltipPop 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: none;
+  user-select: none;
+}
+
+[data-theme="light"] .hero-module-tooltip {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(180, 83, 9, 0.32);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14), 0 0 12px rgba(180, 83, 9, 0.15);
+  color: #0F172A;
+}
+
+.hero-module-tooltip-arrow {
+  font-size: 11px;
+  color: var(--km-accent-primary, #FEEFB8);
+  font-weight: 700;
+}
+
+[data-theme="light"] .hero-module-tooltip-arrow {
+  color: #B45309;
+}
+
+@keyframes kmTooltipPop {
+  from {
+    opacity: 0;
+    transform: translateY(2px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-8px) scale(1);
+  }
+}
+
+/* Service Card Click Highlight (from 3D module interaction) */
+.service-card--highlighted {
+  border-color: var(--km-accent-primary, #FEEFB8) !important;
+  box-shadow: 0 0 35px rgba(254, 239, 184, 0.35), 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(-6px) scale(1.02) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-theme="light"] .service-card--highlighted {
+  border-color: #B45309 !important;
+  box-shadow: 0 0 30px rgba(180, 83, 9, 0.25), 0 16px 32px rgba(15, 23, 42, 0.12) !important;
+}
+
+

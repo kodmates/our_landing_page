@@ -202,7 +202,7 @@
   margin-bottom: 44px;
 }
 
-.filter-btn {
+.projects-filter-bar .filter-btn {
   background: rgba(14, 18, 18, 0.5);
   border: 1px solid rgba(254, 239, 184, 0.08);
   color: rgba(240, 242, 238, 0.72);
@@ -215,25 +215,25 @@
   font-family: inherit;
 }
 
-.filter-btn:hover {
+.projects-filter-bar .filter-btn:hover {
   color: var(--km-accent-primary);
   border-color: rgba(254, 239, 184, 0.22);
 }
 
-.filter-btn.is-active {
+.projects-filter-bar .filter-btn.is-active {
   background: var(--km-accent-primary);
   color: var(--km-text-dark-cta);
   border-color: var(--km-accent-primary);
   box-shadow: 0 0 16px rgba(254, 239, 184, 0.28);
 }
 
-.projects-grid {
+#projects .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 28px;
 }
 
-.project-card {
+#projects .project-card {
   position: relative;
   background: rgba(12, 15, 16, 0.75);
   border: 1px solid rgba(254, 239, 184, 0.09);
@@ -244,7 +244,7 @@
   flex-direction: column;
 }
 
-.project-card:hover {
+#projects .project-card:hover {
   transform: translateY(-5px);
   border-color: rgba(254, 239, 184, 0.32);
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), 0 0 30px rgba(254, 239, 184, 0.07);
@@ -409,12 +409,11 @@
   left: 36px;
   right: 36px;
   height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(254, 239, 184, 0.18) 12%, 
-    rgba(254, 239, 184, 0.18) 88%, 
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(254, 239, 184, 0.18) 12%,
+      rgba(254, 239, 184, 0.18) 88%,
+      transparent 100%);
   pointer-events: none;
   z-index: 0;
 }
@@ -829,21 +828,21 @@
   gap: 20px;
 }
 
-.form-group {
+.contact-form-card .form-group {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.form-label {
+.contact-form-card .form-label {
   font-size: 13px;
   font-weight: 600;
   color: rgba(240, 242, 238, 0.88);
 }
 
-.form-input,
-.form-select,
-.form-textarea {
+.contact-form-card .form-input,
+.contact-form-card .form-select,
+.contact-form-card .form-textarea {
   width: 100%;
   background: rgba(8, 10, 11, 0.75);
   border: 1px solid rgba(254, 239, 184, 0.12);
@@ -855,17 +854,17 @@
   transition: border-color var(--km-transition-fast), box-shadow var(--km-transition-fast);
 }
 
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
+.contact-form-card .form-input:focus,
+.contact-form-card .form-select:focus,
+.contact-form-card .form-textarea:focus {
   outline: none;
   border-color: var(--km-accent-primary);
   box-shadow: 0 0 12px rgba(254, 239, 184, 0.20);
 }
 
-.form-input:focus-visible,
-.form-select:focus-visible,
-.form-textarea:focus-visible {
+.contact-form-card .form-input:focus-visible,
+.contact-form-card .form-select:focus-visible,
+.contact-form-card .form-textarea:focus-visible {
   outline: 2px solid var(--km-border-focus);
   outline-offset: 1px;
   border-color: var(--km-accent-primary);
@@ -1047,15 +1046,19 @@
   .services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .process-timeline {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .process-timeline::before {
     display: none;
   }
+
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .footer-main-grid {
     grid-template-columns: 1fr 1fr;
     gap: 36px;
@@ -1066,13 +1069,16 @@
   .km-section {
     padding: 76px 0;
   }
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
+
   .about-grid {
     grid-template-columns: 1fr;
     gap: 36px;
   }
+
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -1083,32 +1089,41 @@
   .km-section {
     padding: 60px 0;
   }
+
   .services-grid {
     grid-template-columns: 1fr;
   }
+
   .process-timeline {
     grid-template-columns: 1fr;
   }
+
   .blog-grid {
     grid-template-columns: 1fr;
   }
+
   .about-pillars-grid {
     grid-template-columns: 1fr;
   }
+
   .about-stats-panel {
     grid-template-columns: 1fr;
     padding: 24px;
   }
+
   .form-row-2 {
     grid-template-columns: 1fr;
   }
+
   .contact-form-card {
     padding: 24px 20px;
   }
+
   .footer-main-grid {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+
   .footer-bottom-bar {
     flex-direction: column;
     align-items: flex-start;
@@ -1117,6 +1132,7 @@
 
 /* Reduced Motion Compliance */
 @media (prefers-reduced-motion: reduce) {
+
   .service-card,
   .project-card,
   .process-card,

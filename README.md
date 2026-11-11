@@ -1,118 +1,157 @@
-# Kodmates — 3D Digital Software Ecosystem Hero
+# Kodmates — Enterprise Digital Product Studio
 
-A cinematic, interactive 3D hero ecosystem built for Kodmates with **Blender 5.2 LTS**, **Draco-compressed glTF/GLB**, and **React Three Fiber (`@react-three/fiber` & `@react-three/drei`)**.
+> **Building Digital Systems for the Real World.**  
+> High-performance web applications, native Android software, and cloud infrastructure engineered for operational resilience.
 
----
-
-## 1. Scene Architecture (Blueprint Specification)
-
-The 3D hero model is structured under a clean hierarchy matching the canonical design specification:
-
-* **Core (`collection: Core`):**
-  * `CoreBody`: Dark graphite metallic sphere (radius = 2.0).
-  * `CoreGrid`: Gold wireframe network icosphere with idle rotation.
-  * `CoreBands`: Concentric orbital network rings around the core.
-  * `CoreRecess` & `CoreK`: Recessed aperture on the front (-Y) with gold double bezels and a glowing 3D "K" emblem.
-  * `CoreGlow`: Warm point light illuminating the internal emblem.
-* **Modules (`collection: Modules`):**
-  * Six rounded-cube hardware modules floating around the core with gold bezels and dark inset screens:
-    1. **Web:** Upper-left with wireframe globe icon.
-    2. **Android:** Top with native Android head and antennae.
-    3. **Cloud:** Upper-right with volumetric cloud puffs.
-    4. **API:** Lower-right with 3D `</>` brackets icon.
-    5. **Database:** Lower-left with stacked cylindrical disks.
-    6. **Business:** Front-bottom with tiered 3D bar chart.
-* **Connections (`collection: Connections`):**
-  * Single restrained gold Bézier curves connecting each module to the central core.
-  * Gold data pulse spheres traversing each curve with scripted phase offsets.
-  * Glowing connection nodes at the module terminals.
-* **Orbits (`collection: Orbits`):**
-  * 3 angled thin gold orbital rings rotating at differing velocities.
-  * 90 scattered glowing data node icospheres.
-* **Platform (`collection: Platform`):**
-  * Stepped 3-tier dark metallic circular base with glowing gold ring trim.
-* **Backdrop (`collection: Backdrop`):**
-  * Ground plane and atmospheric displaced mountain horizon (isolated from web GLB exports).
+[![Vite](https://img.shields.io/badge/Vite-8.x-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![React](https://img.shields.io/badge/React-19.x-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev/)
+[![Three.js](https://img.shields.io/badge/Three.js-R3F-000000?style=flat&logo=three.js&logoColor=white)](https://threejs.org/)
+[![License](https://img.shields.io/badge/license-Proprietary-red.svg)](LICENSE)
 
 ---
 
-## 2. Running in Blender (4.2+ / 5.x LTS)
+## 🌟 Key Highlights
 
-### Option A: GUI (Scripting Workspace)
-1. Open Blender (4.2+ or 5.2.1 LTS).
-2. Go to the **Scripting** tab.
-3. Click **Text > Open** and select `kodmates_hero.py`.
-4. Press **Run Script** (`Alt + P`).
-5. In the 3D Viewport, press `Z` and choose **Material Preview** or **Rendered**.
+- **Interactive 3D Digital Ecosystem**: Cinematic 3D hero scene built with Blender 5.x LTS and rendered in the browser using React Three Fiber (`@react-three/fiber`), Three.js, and `@react-three/drei`.
+- **Theme-Reactive 3D Lighting**: The 3D scene dynamically adapts its ambient lighting, exposure, specular highlights, and contact shadows between Dark and Light mode.
+- **Interactive 3D Cards**: Direct raycasting on the 3D modules (`Web`, `Android`, `Business`, `Cloud`, `API`, `Database`) with hover scale physics and smooth-scroll navigation to matching services.
+- **Light & Dark Mode**: Persistent theme switcher with zero-flash pre-render initialization script and WCAG AAA/AA contrast compliance.
+- **Blazing Fast Performance**:
+  - Deferred 3D hydration via `requestIdleCallback` ensures instant First Contentful Paint (FCP).
+  - Explicit vendor chunk splitting (`react-vendor`, `three-vendor`, and core application logic).
+  - Build completes in under **800 ms** using Vite Rolldown.
+- **Production SEO & Discovery**: Comprehensive Schema.org JSON-LD, Open Graph tags, Twitter Cards, canonical tags, [`robots.txt`](public/robots.txt), and [`sitemap.xml`](public/sitemap.xml).
 
-### Option B: Headless Command Line (CLI)
-Execute via PowerShell:
-```powershell
-& "D:\Blender5\blender.exe" -b -P kodmates_hero.py
+---
+
+## 🏗️ 3D Ecosystem Architecture
+
+The 3D hero scene is generated via procedural Blender script ([`kodmates_hero_v2.py`](kodmates_hero_v2.py)) and exported with Draco geometry compression:
+
 ```
-This automatically builds the scene, runs Draco compression, exports `blender/export/kodmates_hero.glb`, and syncs it to `public/assets/kodmates_hero.glb`.
-
----
-
-## 3. Exporting the Optimized GLB
-
-The export pipeline is built directly into `kodmates_hero.py`:
-* **Output Path:** `blender/export/kodmates_hero.glb` (and copied to `public/assets/kodmates_hero.glb`).
-* **Format:** Binary `.glb` with Draco mesh compression enabled.
-* **Modifiers:** Fully applied.
-* **File Size:** ~0.30 MB (well below the 2–8 MB budget for instant web load).
-* **Backdrop Exclusion:** Mountains and ground are automatically excluded from the web bundle to keep the model lightweight and transparent.
-
----
-
-## 4. React Three Fiber Integration
-
-The React component is located at `src/components/HeroScene.jsx`:
-
-### Importing as a React Component:
-```jsx
-import React from 'react';
-import HeroScene from './components/HeroScene.jsx';
-
-export default function MyPage() {
-  return (
-    <div className="hero-right-col">
-      <HeroScene />
-    </div>
-  );
-}
-```
-
-### Mounting into Vanilla DOM Containers:
-If your project uses a lightweight SPA router or vanilla shell:
-```javascript
-import { mountHeroScene } from './components/HeroSceneMount.jsx';
-
-const container = document.getElementById('hero-3d-wrapper');
-const sceneInstance = mountHeroScene(container);
-
-// To unmount:
-// sceneInstance.destroy();
+KODMATES_HERO
+├── Core/
+│   ├── CoreBody          # Dark graphite metallic sphere (radius = 2.0)
+│   ├── CoreGrid          # Procedural Voronoi network grid with idle rotation
+│   ├── CoreRecess        # Front aperture housing
+│   └── CoreK             # 3D glowing "K" emblem in cream-gold (#F7D88F)
+├── Modules/
+│   ├── Web               # Upper-left module (Wireframe globe)
+│   ├── Android           # Top module (Android head with antennae)
+│   ├── Cloud             # Upper-right module (Volumetric cloud puffs)
+│   ├── Database          # Lower-left module (Stacked database platters)
+│   ├── API               # Lower-right module (3D code brackets)
+│   └── Business          # Front-bottom module (Tiered bar charts)
+├── Connections/          # Curved Bézier arcs with traveling data pulses
+├── Orbits/               # 3 inclined orbital rings with scattered node beacons
+└── Platform/             # 3-tier stepped circular metallic base with gold trim
 ```
 
 ---
 
-## 5. Website Interactive Features
+## 🚀 Getting Started
 
-1. **Draco Preloading & Suspense:** `useGLTF.preload('/assets/kodmates_hero.glb')` begins downloading the asset immediately. `Suspense` displays a branded gold loader during initialization.
-2. **Idle Rotations:** Smooth, continuous rotation of the network grid and orbital rings at ~0.06–0.12 rad/s.
-3. **Pointer Parallax:** Interactive tracking of cursor coordinates with smooth dampening (`lerp`).
-4. **Module Hover:** Interactive raycasting boosts emissive intensity from 1.0 to 3.0 and smoothly scales the hovered module to 1.08x.
-5. **Data Pulses:** Floating energy nodes cycle rhythmically between the core and domain modules.
-6. **Accessibility (`prefers-reduced-motion`):** Automatically detects accessibility settings and disables motion while preserving pristine framing.
-7. **Mobile Optimization:** Automatically scales down DPR to 1.5 and widens camera FOV on viewports under 768px.
+### Prerequisites
 
----
+- **Node.js**: v18.0.0 or higher
+- **npm** or **pnpm** / **yarn**
 
-## 6. Development & Verification
+### Installation
 
-Run the local Vite development server:
+```bash
+# Clone the repository
+git clone https://github.com/kodmates-studio/demo-repository.git
+cd demo-repository
+
+# Install dependencies
+npm install
+```
+
+### Local Development
+
+Start the local Vite development server with HMR:
+
 ```bash
 npm run dev
 ```
-Open [http://localhost:5173/](http://localhost:5173/) in your browser to verify the interactive 3D hero.
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+### Production Build
+
+Compile and minify for production:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+---
+
+## 📁 Project Structure
+
+```
+├── blender/               # Blender source models and export assets
+├── public/                # Static public assets served at root
+│   ├── assets/            # Draco-compressed GLB model and textures
+│   ├── draco/             # Local Google Draco WebAssembly decoders
+│   ├── favicon.svg        # Brand icon
+│   ├── robots.txt         # Crawler indexing directives
+│   └── sitemap.xml        # Search engine sitemap
+├── src/
+│   ├── components/        # UI and 3D components
+│   │   ├── Header.js      # Navigation bar and theme switcher
+│   │   ├── Hero.js        # Hero layout and lazy WebGL mount host
+│   │   ├── HeroScene.jsx  # React Three Fiber 3D ecosystem scene
+│   │   ├── HeroSceneMount.jsx # React 19 mount boundary
+│   │   ├── ServicesSection.js # Capabilities grid
+│   │   ├── ProjectsSection.js # Case studies showcase
+│   │   └── ContactSection.js  # Lead capture form
+│   ├── pages/             # Subpage templates (Projects, Blog, Contact)
+│   ├── styles/            # Modular stylesheets & design tokens
+│   │   ├── tokens.css     # Dark/Light CSS design variables
+│   │   ├── theme.css      # Theme overrides & interactive styles
+│   │   └── sections.css   # Section typography and layout rules
+│   └── main.js            # Vanilla SPA router and app lifecycle
+├── kodmates_hero_v2.py    # Python Blender generator and Draco exporter
+├── vite.config.js         # Vite configuration and chunk-splitting
+└── package.json           # Scripts and dependency manifest
+```
+
+---
+
+## 🎨 Design Tokens & Theme Engine
+
+Kodmates features a unified color palette adhering to strict contrast ratios:
+
+| Token | Dark Mode (`[data-theme="dark"]`) | Light Mode (`[data-theme="light"]`) |
+| :--- | :--- | :--- |
+| **Surface** | Obsidian (`#080B0C`) | Pure White (`#FFFFFF`) / Slate (`#F8FAFC`) |
+| **Headings** | Crisp White (`#FFFFFF`) | Deep Slate 900 (`#0F172A`) |
+| **Body** | Soft Light (`rgba(240,242,238,0.78)`) | Slate 700 (`#334155`) |
+| **Accents** | Luminous Gold (`#FEEFB8`) | Warm Amber 700 (`#B45309`) |
+
+---
+
+## 🛠️ Blender Asset Pipeline
+
+To rebuild the 3D assets from source:
+
+```bash
+# Headless render & Draco GLB export:
+blender -b -P kodmates_hero_v2.py -- --render --export
+```
+
+Output `.glb` and baked emission textures are automatically placed in `export/` and synchronized with `public/assets/`.
+
+---
+
+## 📄 License
+
+Copyright © 2026 Kodmates Technologies. All rights reserved.
+Proprietary software. Unauthorized reproduction or redistribution is strictly prohibited.

@@ -37,6 +37,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
 
+  <!-- Theme Initializer (prevents flash of wrong theme) -->
+  <script>
+    (function() {
+      try {
+        const saved = localStorage.getItem('kodmates-theme');
+        const theme = saved || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Structured Data: JSON-LD Schemas -->
   <script type="application/ld+json">
   {
@@ -48,7 +59,7 @@
         "name": "Kodmates",
         "legalName": "Kodmates Technologies",
         "url": "https://kodmates.com/",
-        "logo": "https://kodmates.com/src/assets/logo.svg",
+        "logo": "https://kodmates.com/logo.svg",
         "description": "Premium digital product studio and enterprise software engineering consultancy.",
         "address": {
           "@type": "PostalAddress",
@@ -158,8 +169,6 @@
                     loading="eager" 
                   />
                 </div>
-              </div>
-
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-theme="dark"] {
   /* Brand Colors */
   --km-accent-primary: #FEEFB8;
   --km-accent-primary-hover: #FFF5CE;
@@ -12,14 +13,20 @@
   --km-bg-header-scrolled: rgba(8, 10, 10, 0.88);
   --km-bg-mobile-menu: #080A0A;
   --km-bg-card: rgba(14, 18, 18, 0.65);
+  --km-bg-surface: #0a0d0e;
+  --km-bg-surface-elevated: #111517;
 
   /* Borders */
   --km-border-header: rgba(254, 239, 184, 0.07);
   --km-border-header-scrolled: rgba(254, 239, 184, 0.11);
+  --km-border-card: rgba(254, 239, 184, 0.08);
   --km-border-focus: #FEEFB8;
 
   /* Typography Colors */
   --km-text-light: #FFFFFF;
+  --km-text-primary: #FFFFFF;
+  --km-text-secondary: rgba(240, 242, 238, 0.78);
+  --km-text-muted: rgba(240, 242, 238, 0.52);
   --km-text-brand: #FEEFB8;
   --km-text-nav-default: rgba(246, 244, 236, 0.82);
   --km-text-nav-hover: #FEEFB8;
@@ -55,4 +62,39 @@
   --km-status-success-bg: rgba(52, 211, 153, 0.08);
   --km-status-success-border: rgba(52, 211, 153, 0.22);
   --km-status-error: #F87171;
+}
+
+[data-theme="light"] {
+  /* Brand Colors - High contrast warm gold/amber */
+  --km-accent-primary: #B45309;
+  --km-accent-primary-hover: #92400E;
+  --km-accent-primary-glow: rgba(180, 83, 9, 0.18);
+  --km-accent-champagne: #78350F;
+  --km-accent-subtle: rgba(180, 83, 9, 0.08);
+
+  /* Light Theme Surfaces */
+  --km-bg-canvas: #F8FAFC;
+  --km-bg-header-initial: rgba(255, 255, 255, 0.85);
+  --km-bg-header-scrolled: rgba(255, 255, 255, 0.95);
+  --km-bg-mobile-menu: #FFFFFF;
+  --km-bg-card: #FFFFFF;
+  --km-bg-surface: #FFFFFF;
+  --km-bg-surface-elevated: #F1F5F9;
+
+  /* Borders */
+  --km-border-header: rgba(0, 0, 0, 0.07);
+  --km-border-header-scrolled: rgba(0, 0, 0, 0.12);
+  --km-border-card: rgba(0, 0, 0, 0.08);
+  --km-border-focus: #B45309;
+
+  /* Typography Colors - Rich Slate */
+  --km-text-light: #0F172A;
+  --km-text-primary: #0F172A;
+  --km-text-secondary: #334155;
+  --km-text-muted: #64748B;
+  --km-text-brand: #A16207;
+  --km-text-nav-default: #334155;
+  --km-text-nav-hover: #A16207;
+  --km-text-tagline: #64748B;
+  --km-text-dark-cta: #FFFFFF;
 }

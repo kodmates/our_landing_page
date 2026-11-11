@@ -1,0 +1,7 @@
+# Kodmates robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kodmates.com/sitemap.xml
+

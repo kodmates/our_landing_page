@@ -109,6 +109,23 @@ export class Header {
       });
     }
 
+    // Theme Switcher Binding (Light / Dark mode)
+    const bindTheme = (btn) => {
+      if (!btn) return;
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        try {
+          localStorage.setItem('kodmates-theme', nextTheme);
+        } catch (err) {}
+      });
+    };
+
+    bindTheme(this.headerEl.querySelector('#theme-toggle'));
+    bindTheme(this.headerEl.querySelector('#mobile-theme-toggle'));
+
     // Keyboard accessibility: ESC key closes mobile menu
     window.addEventListener('keydown', this._handleKeyDown);
   }

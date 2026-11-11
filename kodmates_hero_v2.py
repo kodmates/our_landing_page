@@ -101,14 +101,15 @@ CUR = COL_CORE
 GOLD_EMIT = "D9A441"      # warm gold, less saturated amber
 GOLD_CREAM = "FFE3A0"
 
-M_GRAPHITE = make_mat("Graphite", "101416", 1.0, 0.30)
+M_GRAPHITE = make_mat("Graphite", "101416", 1.0, 0.18)
 M_GOLD = make_mat("GoldMetal", "D9A441", 1.0, 0.22)
 M_GOLD_LINE = make_mat("GoldLine", "D9A441", 1.0, 0.3, GOLD_EMIT, 1.6)
 M_GOLD_GLOW = make_mat("GoldGlow", "D9A441", 1.0, 0.3, GOLD_EMIT, 1.3)
 M_PLATFORM_LINE = make_mat("PlatformRing", "D9A441", 1.0, 0.3, GOLD_EMIT, 1.1)
-M_K = make_mat("KGlow", "D9A441", 1.0, 0.25, "F2B544", 1.8)
-M_NODE = make_mat("NodeGlow", "D9A441", 1.0, 0.3, "F2B544", 2.8)
-M_LABEL = make_mat("Label", "D9A441", 0.2, 0.4, "FFF1C9", 1.2)
+M_K = make_mat("KGlow", "D9A441", 1.0, 0.25, "F7D88F", 1.6)
+M_NODE = make_mat("NodeGlow", "D9A441", 1.0, 0.3, "FFE3A0", 2.5)
+M_LABEL = make_mat("Label", "D9A441", 0.2, 0.4, "F2CF85", 1.2)
+M_ICON = make_mat("IconGlow", "D9A441", 1.0, 0.3, "F2CF85", 1.3)
 M_BRUSHED = make_mat("BrushedMetal", "2A2F32", 1.0, 0.38)
 M_DARK = make_mat("DarkMetal", "0A0D0E", 0.9, 0.25)
 M_FACE = make_mat("ModuleFace", "0A0D0E", 0.85, 0.3)
@@ -118,32 +119,54 @@ M_MOUNTAIN = make_mat("Mountain", "0B0C0D", 0.05, 0.80)
 
 def core_material():
     """graphite sphere with voronoi 'internal network grid' lines glowing gold"""
-    m = make_mat("CoreGraphite", "101416", 1.0, 0.32)
+    m = make_mat("CoreGraphite", "101416", 1.0, 0.18)
     try:
         nt = m.node_tree
         b = nt.nodes["Principled BSDF"]
         tc = nt.nodes.new("ShaderNodeTexCoord")
         vor = nt.nodes.new("ShaderNodeTexVoronoi")
         vor.feature = 'DISTANCE_TO_EDGE'
-        vor.inputs["Scale"].default_value = 4.5
+        vor.inputs["Scale"].default_value = 7.5
         nt.links.new(tc.outputs["Object"], vor.inputs["Vector"])
         ramp = nt.nodes.new("ShaderNodeValToRGB")
         ramp.color_ramp.elements[0].position = 0.0
         ramp.color_ramp.elements[0].color = (1, 1, 1, 1)
-        # Thinner Voronoi lines so vast majority of sphere shows dark graphite metal
-        ramp.color_ramp.elements[1].position = 0.022
+        # Finer and more regular Voronoi lines: ramp end 0.015
+        ramp.color_ramp.elements[1].position = 0.015
         ramp.color_ramp.elements[1].color = (0, 0, 0, 1)
         nt.links.new(vor.outputs["Distance"], ramp.inputs["Fac"])
+
+        # Faint latitude lines
+        wave_lat = nt.nodes.new("ShaderNodeTexWave")
+        wave_lat.wave_type = 'BANDS'
+        wave_lat.bands_direction = 'Z'
+        wave_lat.inputs["Scale"].default_value = 14.0
+        wave_lat.inputs["Distortion"].default_value = 0.0
+        nt.links.new(tc.outputs["Object"], wave_lat.inputs["Vector"])
+
+        wave_ramp = nt.nodes.new("ShaderNodeValToRGB")
+        wave_ramp.color_ramp.elements[0].position = 0.0
+        wave_ramp.color_ramp.elements[0].color = (0.20, 0.20, 0.20, 1)
+        wave_ramp.color_ramp.elements[1].position = 0.06
+        wave_ramp.color_ramp.elements[1].color = (0, 0, 0, 1)
+        nt.links.new(wave_lat.outputs["Fac"], wave_ramp.inputs["Fac"])
+
+        add_lines = nt.nodes.new("ShaderNodeMixRGB")
+        add_lines.blend_type = 'ADD'
+        add_lines.inputs["Fac"].default_value = 1.0
+        nt.links.new(ramp.outputs["Color"], add_lines.inputs["Color1"])
+        nt.links.new(wave_ramp.outputs["Color"], add_lines.inputs["Color2"])
+
         mix = nt.nodes.new("ShaderNodeMixRGB")
         mix.blend_type = 'MULTIPLY'
         mix.inputs["Fac"].default_value = 1.0
         mix.inputs["Color2"].default_value = (*hx(GOLD_EMIT), 1)
-        nt.links.new(ramp.outputs["Color"], mix.inputs["Color1"])
+        nt.links.new(add_lines.outputs["Color"], mix.inputs["Color1"])
         for nm in ("Emission Color", "Emission"):
             if nm in b.inputs:
                 nt.links.new(mix.outputs["Color"], b.inputs[nm])
                 break
-        setin(b, ["Emission Strength"], 1.6)
+        setin(b, ["Emission Strength"], 0.8)
     except Exception as e:
         print("core_material fallback:", e)
     return m
@@ -293,9 +316,9 @@ def bake_core_texture(body_obj, mat):
     # Wire image texture directly into Principled BSDF emission for glTF PBR export
     emit_slot = "Emission Color" if "Emission Color" in b.inputs else "Emission"
     nt.links.new(tex_node.outputs["Color"], b.inputs[emit_slot])
-    setin(b, ["Emission Strength"], 1.8)
+    setin(b, ["Emission Strength"], 0.8)
     setin(b, ["Metallic"], 1.0)
-    setin(b, ["Roughness"], 0.35)
+    setin(b, ["Roughness"], 0.18)
 
 bake_core_texture(core_body_obj, M_CORE)
 
@@ -347,57 +370,86 @@ COL_CORE.objects.link(glo)
 # MODULES  (collection: Modules)
 # ----------------------------------------------------------------------------
 CUR = COL_MODS
-FRONT = -0.39
+FRONT = -0.48
 
 
 def icon_web(root):
-    # Scaled 0.85 and moved up +0.12 to z=0.27
-    g = ico_sphere(0.36, loc=(0, FRONT - 0.08, 0.27), sub=2)
-    wire(g, 0.018)
-    put(g, "Web_Icon", parent=root, mat=M_GOLD_GLOW)
-    put(torus(0.37, 0.013, loc=(0, FRONT - 0.08, 0.27), rot=(pi / 2, 0, 0), min_seg=6), "Web_Equator",
-        parent=root, mat=M_GOLD_GLOW)
+    # Scaled +15% (0.42 radius) and moved up to z=0.27
+    g = ico_sphere(0.42, loc=(0, FRONT - 0.08, 0.27), sub=2)
+    wire(g, 0.020)
+    put(g, "Web_Icon", parent=root, mat=M_ICON)
+    put(torus(0.43, 0.015, loc=(0, FRONT - 0.08, 0.27), rot=(pi / 2, 0, 0), min_seg=6), "Web_Equator",
+        parent=root, mat=M_ICON)
 
 
 def icon_android(root):
-    # Scaled 0.85 and moved up +0.12 to z=0.22
-    head = uv_sphere(0.29, loc=(0, FRONT - 0.07, 0.22), seg=32, rings=16)
+    # Scaled +15% (0.33 radius) and moved up to z=0.22
+    head = uv_sphere(0.33, loc=(0, FRONT - 0.07, 0.22), seg=32, rings=16)
     head.scale.z = 0.8
-    put(head, "Android_Head", parent=root, mat=M_GOLD_GLOW)
+    put(head, "Android_Head", parent=root, mat=M_ICON)
     for s in (-1, 1):
-        put(uv_sphere(0.038, loc=(0.11 * s, FRONT - 0.32, 0.28), seg=12, rings=8), f"Android_Eye{s}",
+        put(uv_sphere(0.042, loc=(0.12 * s, FRONT - 0.35, 0.28), seg=12, rings=8), f"Android_Eye{s}",
             parent=root, mat=M_FACE)
-        put(cylinder(0.013, 0.22, loc=(0.17 * s, FRONT - 0.07, 0.50), rot=(0, 0.55 * s, 0), verts=12),
-            f"Android_Ant{s}", parent=root, mat=M_GOLD_GLOW)
+        put(cylinder(0.015, 0.25, loc=(0.18 * s, FRONT - 0.07, 0.52), rot=(0, 0.55 * s, 0), verts=12),
+            f"Android_Ant{s}", parent=root, mat=M_ICON)
 
 
 def icon_cloud(root):
-    # Scaled 0.85 and moved up +0.12
-    for i, (x, z, r) in enumerate(((-0.20, 0.18, 0.19), (0.0, 0.30, 0.25), (0.21, 0.18, 0.19))):
+    # Scaled +15%
+    for i, (x, z, r) in enumerate(((-0.23, 0.18, 0.22), (0.0, 0.31, 0.29), (0.24, 0.18, 0.22))):
         s = uv_sphere(r, loc=(x, FRONT - 0.07, z), seg=32, rings=16)
         s.scale.y = 0.45
-        put(s, f"Cloud_Puff{i}", parent=root, mat=M_GOLD_GLOW)
+        put(s, f"Cloud_Puff{i}", parent=root, mat=M_ICON)
 
 
 def icon_api(root):
-    # Scaled 0.85 and moved up +0.12 to z=0.24
-    t = text("</>", 0.52, loc=(0, FRONT - 0.05, 0.24), extrude=0.04)
-    t.data.materials.append(M_GOLD_GLOW)
+    # Scaled +15% (0.60 text size)
+    t = text("</>", 0.60, loc=(0, FRONT - 0.05, 0.24), extrude=0.045)
+    t.data.materials.append(M_ICON)
     put(t, "API_Icon", parent=root)
 
 
 def icon_database(root):
-    # Scaled 0.85 and moved up +0.12 (lowest disk at z=0.04, clear space above z=-0.58)
-    for i, z in enumerate((0.44, 0.25, 0.06)):
-        put(cylinder(0.29, 0.11, loc=(0, FRONT - 0.2, z), verts=48), f"Database_Disk{i}",
-            parent=root, mat=M_GOLD_GLOW)
+    # Scaled +15% (0.33 radius disks)
+    for i, z in enumerate((0.46, 0.26, 0.06)):
+        put(cylinder(0.33, 0.125, loc=(0, FRONT - 0.2, z), verts=48), f"Database_Disk{i}",
+            parent=root, mat=M_ICON)
 
 
 def icon_business(root):
-    # Scaled 0.85 and moved up +0.12 (base at z=-0.06, clear space above z=-0.58)
-    for i, (x, h) in enumerate(((-0.21, 0.25), (0.0, 0.42), (0.21, 0.60))):
-        put(box(0.14, 0.08, h, loc=(x, FRONT - 0.06, -0.06 + h / 2), bevel=0.01, seg=2),
-            f"Business_Bar{i}", parent=root, mat=M_GOLD_GLOW)
+    # Scaled +15% (bars up to h=0.69)
+    for i, (x, h) in enumerate(((-0.24, 0.29), (0.0, 0.48), (0.24, 0.69))):
+        put(box(0.16, 0.08, h, loc=(x, FRONT - 0.06, -0.06 + h / 2), bevel=0.01, seg=2),
+            f"Business_Bar{i}", parent=root, mat=M_ICON)
+
+
+def square_frame(name, size, depth, y_pos, parent=None, mat=M_GOLD_LINE):
+    hs = size / 2.0
+    pts = [
+        Vector((-hs, y_pos,  hs)),
+        Vector(( hs, y_pos,  hs)),
+        Vector(( hs, y_pos, -hs)),
+        Vector((-hs, y_pos, -hs)),
+    ]
+    cu = bpy.data.curves.new(name + "Curve", 'CURVE')
+    cu.dimensions = '3D'
+    cu.bevel_depth = depth
+    cu.bevel_resolution = 4
+    cu.resolution_u = 4
+    sp = cu.splines.new('BEZIER')
+    sp.bezier_points.add(len(pts) - 1)
+    for bp, co in zip(sp.bezier_points, pts):
+        bp.co = co
+        bp.handle_left_type = 'VECTOR'
+        bp.handle_right_type = 'VECTOR'
+    sp.use_cyclic_u = True
+    o = bpy.data.objects.new(name, cu)
+    o.data.materials.append(mat)
+    COL_MODS.objects.link(o)
+    if parent:
+        o.parent = parent
+    cu.splines.update()
+    return o
 
 
 def make_module(name, loc, icon_fn, yaw, phase):
@@ -408,16 +460,18 @@ def make_module(name, loc, icon_fn, yaw, phase):
     root.rotation_euler = (0, 0, yaw)
     COL_MODS.objects.link(root)
 
-    # Solid metallic block proportions with 0.18 bevel width
-    put(box(1.68, 0.58, 1.68, loc=(0, 0.07, 0), bevel=0.18, seg=6), f"{name}_GoldShell", parent=root, mat=M_GOLD)
-    put(box(1.58, 0.72, 1.58, bevel=0.18, seg=6), f"{name}_Body", parent=root, mat=M_BRUSHED)
-    # Thin glowing gold rim framing each module face
-    put(box(1.42, 0.03, 1.42, loc=(0, -0.37, 0), bevel=0.02, seg=3), f"{name}_EdgeGlow", parent=root, mat=M_GOLD_GLOW)
-    put(box(1.28, 0.05, 1.28, loc=(0, -0.38, 0), bevel=0.03, seg=3), f"{name}_Face", parent=root, mat=M_FACE)
+    # Chunkier module body with bevel width 0.22, depth ~0.9
+    put(box(1.72, 0.76, 1.72, loc=(0, 0.07, 0), bevel=0.22, seg=6), f"{name}_GoldShell", parent=root, mat=M_GOLD)
+    put(box(1.60, 0.90, 1.60, bevel=0.22, seg=6), f"{name}_Body", parent=root, mat=M_BRUSHED)
+    # Dark matte-charcoal face plate
+    put(box(1.36, 0.04, 1.36, loc=(0, -0.47, 0), bevel=0.03, seg=3), f"{name}_Face", parent=root, mat=M_FACE)
+    # Glowing gold outer rim framing each module face (hollow beveled perimeter)
+    square_frame(f"{name}_EdgeGlow", 1.40, 0.016, -0.485, parent=root, mat=M_GOLD_GLOW)
+    # Thin inner gold frame line around dark face (hollow beveled perimeter)
+    square_frame(f"{name}_InnerFrame", 1.20, 0.010, -0.495, parent=root, mat=M_GOLD_LINE)
 
-    # Face front surface is at y = -0.38 - 0.025 = -0.405.
-    # Label is placed at y = -0.430 (at least 0.025 in front of face plate) with 0.02 extrude
-    lbl = text(name, 0.22, loc=(0, -0.430, -0.50), extrude=0.02)
+    # Bolder label placed in front of face plate at y = -0.53 with 0.035 extrude
+    lbl = text(name, 0.23, loc=(0, -0.53, -0.51), extrude=0.035)
     lbl.data.materials.append(M_LABEL)
     put(lbl, f"{name}_Label", parent=root)
 
@@ -520,6 +574,83 @@ p_and_r = Vector((1.35, -0.9, 3.78))
 p_cld = Vector((3.86, -0.6, 1.85))
 mid2 = Vector((2.9, -0.75, 3.55))
 bezier_curve("InterModuleArc2", (p_and_r, mid2, p_cld), depth=0.006, col=COL_ORB)
+
+# ----------------------------------------------------------------------------
+# 28 EXTRA THIN GLOWING ARCS (Arc01..Arc28) - in Connections collection
+# ----------------------------------------------------------------------------
+CUR = COL_CONN
+arc_rng = random.Random(42)
+
+# 1. 12 great-circle arcs wrapping the sphere at radius CORE_R*1.12 to CORE_R*1.6
+for k in range(1, 13):
+    arc_name = f"Arc{k:02d}"
+    r_base = CORE_R * arc_rng.uniform(1.12, 1.58)
+    lift = arc_rng.uniform(0.18, 0.42)
+    while True:
+        v1 = Vector((arc_rng.gauss(0, 1), arc_rng.gauss(0, 1), arc_rng.gauss(0, 1))).normalized()
+        v2 = Vector((arc_rng.gauss(0, 1), arc_rng.gauss(0, 1), arc_rng.gauss(0, 1))).normalized()
+        angle = v1.angle(v2)
+        if 1.1 < angle < 2.7:
+            break
+
+    pts = []
+    num_pts = 7
+    for step in range(num_pts):
+        t = step / (num_pts - 1)
+        dir_v = v1.slerp(v2, t).normalized()
+        r = r_base + math.sin(t * math.pi) * lift
+        pts.append(dir_v * r)
+
+    c_obj = bezier_curve(arc_name, pts, depth=0.005, mat=M_GOLD_LINE, col=COL_CONN)
+    put(uv_sphere(arc_rng.uniform(0.032, 0.048), loc=pts[0], seg=12, rings=6), f"{arc_name}_NodeStart", mat=M_NODE)
+    put(uv_sphere(arc_rng.uniform(0.035, 0.050), loc=pts[num_pts // 2], seg=12, rings=6), f"{arc_name}_NodeMid", mat=M_NODE)
+    put(uv_sphere(arc_rng.uniform(0.032, 0.048), loc=pts[-1], seg=12, rings=6), f"{arc_name}_NodeEnd", mat=M_NODE)
+
+# 2. 10 arcs linking each module to its two neighbours and to the core
+mod_coords = [Vector(spec[1]) for spec in MODULE_SPECS]
+inter_links = [
+    (0, 1),  # Web -> Android
+    (1, 2),  # Android -> Cloud
+    (2, 3),  # Cloud -> API
+    (3, 4),  # API -> Business
+    (4, 5),  # Business -> Database
+    (5, 0),  # Database -> Web
+    (0, 4),  # Web -> Business
+    (2, 5),  # Cloud -> Database
+    (1, 3),  # Android -> API
+    (1, 5),  # Android -> Database
+]
+
+for k, (m1, m2) in enumerate(inter_links, start=13):
+    arc_name = f"Arc{k:02d}"
+    p1 = mod_coords[m1] + MODULE_INNER_OFFSETS[MODULE_SPECS[m1][0]] * 0.7
+    p2 = mod_coords[m2] + MODULE_INNER_OFFSETS[MODULE_SPECS[m2][0]] * 0.7
+    mid_vec = (p1 + p2) * 0.5
+    mid_dir = mid_vec.normalized()
+    lift_rad = max(CORE_R * 1.25, mid_vec.length * 1.15)
+    mid_pt = mid_dir * lift_rad + Vector((0, arc_rng.uniform(-0.25, 0.25), 0))
+    pts = [p1, mid_pt, p2]
+    c_obj = bezier_curve(arc_name, pts, depth=0.005, mat=M_GOLD_LINE, col=COL_CONN)
+    put(uv_sphere(arc_rng.uniform(0.035, 0.048), loc=mid_pt, seg=12, rings=6), f"{arc_name}_NodeMid", mat=M_NODE)
+
+# 3. 6 long orbit arcs that sweep behind the sphere and come back in front
+for k in range(23, 29):
+    arc_name = f"Arc{k:02d}"
+    tilt_x = arc_rng.uniform(-0.6, 0.6)
+    tilt_z = arc_rng.uniform(-0.6, 0.6)
+    rot_m = Matrix.Rotation(tilt_x, 4, 'X') @ Matrix.Rotation(tilt_z, 4, 'Z')
+    r_orbit = CORE_R * arc_rng.uniform(1.35, 1.70)
+
+    pts = []
+    start_phi = arc_rng.uniform(0, math.pi * 2)
+    arc_span = arc_rng.uniform(math.pi * 1.25, math.pi * 1.55)
+    for step in range(8):
+        phi = start_phi + (step / 7.0) * arc_span
+        local_p = Vector((r_orbit * math.cos(phi), r_orbit * math.sin(phi) * 0.85, math.sin(phi * 2.0) * 0.45))
+        world_p = rot_m @ local_p
+        pts.append(world_p)
+    c_obj = bezier_curve(arc_name, pts, depth=0.005, mat=M_GOLD_LINE, col=COL_CONN)
+    put(uv_sphere(arc_rng.uniform(0.035, 0.046), loc=pts[3], seg=12, rings=6), f"{arc_name}_NodeMid", mat=M_NODE)
 
 # ----------------------------------------------------------------------------
 # ORBITS  (collection: Orbits)
@@ -796,8 +927,8 @@ if DO_RENDER:
         if not mod:
             continue
         bpy.context.view_layer.update()
-        target_local = Vector((0, -0.38, -0.15))
-        cam_local = Vector((0, -3.2, -0.15))
+        target_local = Vector((0, -0.48, -0.15))
+        cam_local = Vector((0, -3.4, -0.15))
         target_world = mod.matrix_world @ target_local
         cam_world = mod.matrix_world @ cam_local
         cam.location = cam_world

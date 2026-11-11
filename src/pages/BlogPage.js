@@ -22,6 +22,16 @@ import { createBlogFilters } from '../components/blog/BlogFilters.js';
 import { createBlogCard } from '../components/blog/BlogCard.js';
 import { updateBlogListingSEO } from '../components/blog/BlogSEO.js';
 
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 export class BlogPage {
   constructor(options = {}) {
     this.target = options.target || document.getElementById('main-content');
@@ -104,7 +114,7 @@ export class BlogPage {
           </div>
           <h3 class="blog-empty-state__title">No articles found</h3>
           <p class="blog-empty-state__desc">
-            No engineering publications matched the query "${this.searchQuery || this.activeCategory}". Try adjusting your keywords or clearing the category filter.
+            No engineering publications matched the query "${escapeHtml(this.searchQuery || this.activeCategory)}". Try adjusting your keywords or clearing the category filter.
           </p>
           <button type="button" class="cta-button blog-empty-state__reset" id="blog-reset-filters-btn">
             Reset Filters
@@ -319,7 +329,7 @@ export class BlogPage {
             </div>
             <h3 class="blog-empty-state__title">No articles found</h3>
             <p class="blog-empty-state__desc">
-              No engineering publications matched the query "${this.searchQuery || this.activeCategory}". Try adjusting your keywords or clearing the category filter.
+              No engineering publications matched the query "${escapeHtml(this.searchQuery || this.activeCategory)}". Try adjusting your keywords or clearing the category filter.
             </p>
             <button type="button" class="cta-button blog-empty-state__reset" id="blog-reset-filters-btn">
               Reset Filters

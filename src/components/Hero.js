@@ -72,8 +72,6 @@ export class Hero {
                   />
                 </div>
               </div>
-
-              </div>
             </div>
           </div>
 
@@ -106,26 +104,38 @@ export class Hero {
     const wrapper = this.heroEl.querySelector('#hero-3d-wrapper');
     const fallback = this.heroEl.querySelector('#hero-fallback');
 
-    if (wrapper) {
+    if (!wrapper) return;
+
+    // Check WebGL availability before attempting heavy load
+    const isWebGLAvailable = () => {
       try {
-        // Mount React Three Fiber HeroScene component
+        const canvas = document.createElement('canvas');
+        return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+      } catch (e) {
+        return false;
+      }
+    };
+
+    if (!isWebGLAvailable()) {
+      if (fallback) fallback.style.display = 'block';
+      return;
+    }
+
+    // Defer heavy 3D loading until main thread is idle to guarantee immediate FCP & blazing load times
+    const loadR3F = async () => {
+      try {
         const { mountHeroScene } = await import('./HeroSceneMount.jsx');
         this.reactHeroRoot = mountHeroScene(wrapper);
       } catch (err) {
-        console.warn('Failed to load React Three Fiber module, falling back to Vanilla Three.js engine:', err);
-        try {
-          const { HeroEcosystem3D } = await import('./HeroEcosystem3D.js');
-          this.ecosystem3D = new HeroEcosystem3D({
-            container: wrapper,
-            fallbackEl: fallback,
-            heroSectionEl: this.heroEl
-          });
-          this.ecosystem3D.init();
-        } catch (innerErr) {
-          console.warn('Failed to load 3D engine, displaying static fallback:', innerErr);
-          if (fallback) fallback.style.display = 'block';
-        }
+        console.warn('3D Hero Scene fallback activated:', err);
+        if (fallback) fallback.style.display = 'block';
       }
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => loadR3F(), { timeout: 1200 });
+    } else {
+      setTimeout(loadR3F, 100);
     }
   }
 
