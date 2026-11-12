@@ -60,8 +60,8 @@ KODMATES_HERO
 
 ```bash
 # Clone the repository
-git clone https://github.com/kodmates-studio/demo-repository.git
-cd demo-repository
+git clone https://github.com/kodmates/our_landing_page.git
+cd our_landing_page
 
 # Install dependencies
 npm install
