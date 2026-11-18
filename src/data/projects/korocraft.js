@@ -12,7 +12,7 @@ export const korocraft = {
     'An automated e-commerce operations and fulfillment platform integrating supplier APIs, real-time inventory tracking, and dynamic order dispatching.',
   fullDescription:
     'KoroCraft is an enterprise-grade automated dropshipping and multi-channel fulfillment engine designed for high-throughput online merchants. Built to eliminate manual order management and inventory sync delays, the platform connects digital storefronts directly with global manufacturing and dropshipping networks (including CJ Dropshipping API). It features automated SKU mapping, real-time stock and pricing synchronization, sub-second webhook-driven order ingestion, and automated tracking dispatch back to end consumers.',
-  featured: false,
+  featured: true,
   technologies: [
     'Node.js',
     'TypeScript',

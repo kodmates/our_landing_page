@@ -2,7 +2,7 @@
  * KodMates Services Data
  * 
  * Central data architecture for the refined, visual Services Page.
- * Strictly grounded in verified engineering capabilities and active projects (GatePass, KoroCraft, ASUTI).
+ * Strictly grounded in verified engineering capabilities and active projects (KoroCraft, ASUTI, TinyTots).
  */
 
 export const servicesData = {
@@ -305,17 +305,6 @@ export const servicesData = {
   // Proven Execution in Production (Featured Case Studies with Visual Preview Data)
   featuredCaseStudies: [
     {
-      slug: 'gatepass',
-      title: 'GatePass',
-      category: 'Business Software',
-      tagline: 'Visitor & Gate Management System',
-      description:
-        'Perimeter security platform uniting a Laravel 11 REST API, administrative web portal, and native Android app with CameraX QR validation.',
-      tech: ['Laravel 11', 'React', 'Kotlin', 'CameraX', 'Sanctum'],
-      route: '/projects/gatepass',
-      previewType: 'gatepass'
-    },
-    {
       slug: 'korocraft',
       title: 'KoroCraft',
       category: 'E-Commerce & Automation',
@@ -336,6 +325,17 @@ export const servicesData = {
       tech: ['Vanilla ESNext', 'Modular CSS', 'Headless E-Commerce', 'Core Web Vitals'],
       route: '/projects/asuti',
       previewType: 'asuti'
+    },
+    {
+      slug: 'tinytots',
+      title: 'TinyTots',
+      category: 'Retail & E-Commerce',
+      tagline: 'Modern Baby Essentials Store',
+      description:
+        'Family-centered retail e-commerce platform offering modern parenting essentials, organic babywear, dynamic bundle discounts, and fast checkout.',
+      tech: ['Vanilla ESNext', 'HTML5', 'Modern CSS', 'E-Commerce Cart'],
+      route: '/projects/tinytots',
+      previewType: 'tinytots'
     }
   ],
 

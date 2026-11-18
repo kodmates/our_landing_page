@@ -19,7 +19,7 @@ export const gatepass = {
     'An enterprise-grade physical perimeter security, material transit tracking, and digital visitor authorization platform uniting a centralized REST API, web administration portal, and native Android application.',
   fullDescription:
     'The Gate Pass & Visitor Access Management System (STAGS) is a full-stack perimeter security and access control platform engineered for commercial facilities, industrial complexes, and corporate campuses. It coordinates physical gate operations across security guards, facility administrators, and host employees through digital visitor registration, one-tap mobile arrival approvals, optical QR credential scanning, and material movement tracking.',
-  featured: true,
+  featured: false,
   visual3D: {
     type: 'gatepass-access'
   },

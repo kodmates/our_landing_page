@@ -239,13 +239,13 @@ function getServiceMockupHtml(serviceId) {
             <span style="color: rgba(254, 239, 184, 0.6);">LATENCY: 34ms</span>
           </div>
           <div style="background: rgba(10, 14, 14, 0.85); border: 1px solid rgba(254, 239, 184, 0.1); border-radius: 6px; padding: 8px 10px; font-size: 10.5px; line-height: 1.5;">
-            <div><span style="color: #60A5FA; font-weight: 700;">GET</span> <span style="color: #FEEFB8;">/api/v1/gatepass/entries</span> <span style="color: #34D399;">200 OK</span></div>
-            <div style="color: rgba(240, 242, 238, 0.45); font-size: 9px; margin: 3px 0;">Authorization: Bearer sanctum_token_valid</div>
+            <div><span style="color: #60A5FA; font-weight: 700;">POST</span> <span style="color: #FEEFB8;">/api/v1/fulfillment/dispatch</span> <span style="color: #34D399;">200 OK</span></div>
+            <div style="color: rgba(240, 242, 238, 0.45); font-size: 9px; margin: 3px 0;">Authorization: Bearer bearer_token_valid</div>
             <div style="color: rgba(240, 242, 238, 0.75); font-size: 9.5px;">
               {<br>
-              &nbsp;&nbsp;<span style="color: #FEEFB8;">"status"</span>: <span style="color: #34D399;">"authorized"</span>,<br>
-              &nbsp;&nbsp;<span style="color: #FEEFB8;">"tenant_id"</span>: <span style="color: #60A5FA;">"kp_772"</span>,<br>
-              &nbsp;&nbsp;<span style="color: #FEEFB8;">"turnstile"</span>: <span style="color: #34D399;">true</span><br>
+              &nbsp;&nbsp;<span style="color: #FEEFB8;">"status"</span>: <span style="color: #34D399;">"dispatched"</span>,<br>
+              &nbsp;&nbsp;<span style="color: #FEEFB8;">"order_id"</span>: <span style="color: #60A5FA;">"kc_9941"</span>,<br>
+              &nbsp;&nbsp;<span style="color: #FEEFB8;">"auto_synced"</span>: <span style="color: #34D399;">true</span><br>
               }
             </div>
           </div>
@@ -299,8 +299,8 @@ function getServiceMockupHtml(serviceId) {
               <span style="color: #34D399; font-weight: 700;">1,420 Items Synced</span>
             </div>
             <div style="display: flex; align-items: center; justify-content: space-between; font-size: 9.5px;">
-              <span style="color: #FFFFFF; font-weight: 600;">Perimeter Gatepass Verifier</span>
-              <span style="color: #FEEFB8; font-weight: 700;">Turnstile Relayed</span>
+              <span style="color: #FFFFFF; font-weight: 600;">Automated Inventory Sync</span>
+              <span style="color: #FEEFB8; font-weight: 700;">Multi-Channel Relayed</span>
             </div>
             <div style="display: flex; align-items: center; justify-content: space-between; font-size: 9.5px;">
               <span style="color: #FFFFFF; font-weight: 600;">Forensic Audit Logging</span>
@@ -320,26 +320,25 @@ function getServiceMockupHtml(serviceId) {
  */
 function renderProjectVisual(previewType) {
   switch (previewType) {
-    case 'gatepass':
+    case 'tinytots':
       return `
-        <div class="project-card-visual-canvas" aria-label="GatePass visitor management interface preview">
+        <div class="project-card-visual-canvas" aria-label="TinyTots modern retail e-commerce preview">
           <div class="project-visual-header">
-            <span class="project-visual-code">GATEPASS // SECURE ACCESS CONSOLE</span>
+            <span class="project-visual-code">TINYTOTS // RETAIL COMMERCE</span>
             <span class="project-visual-status">
               <span class="hero-log-item__dot"></span>
-              <span>LIVE CAMERAX</span>
+              <span>SAFE CHECKOUT</span>
             </span>
           </div>
           <div class="project-visual-body">
-            <div style="background: rgba(20, 26, 26, 0.9); border: 1px solid rgba(254, 239, 184, 0.14); border-radius: 8px; padding: 10px; display: flex; gap: 10px; align-items: center;">
-              <!-- QR Code Mockup Graphic -->
-              <div style="width: 44px; height: 44px; background: rgba(8, 10, 10, 0.9); border: 1px solid rgba(254, 239, 184, 0.3); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #FEEFB8; font-size: 16px; flex-shrink: 0;">
-                ⛶
+            <div style="background: rgba(20, 26, 26, 0.9); border: 1px solid rgba(254, 239, 184, 0.14); border-radius: 8px; padding: 10px; display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 8px; letter-spacing: 0.12em; color: #34D399; text-transform: uppercase;">BABY ESSENTIALS</div>
+                <div style="font-size: 11.5px; font-weight: 700; color: #FFFFFF;">Organic Cotton Bundles</div>
+                <div style="font-size: 8.5px; color: rgba(240, 242, 238, 0.55);">Multi-Category Rapid Filtering</div>
               </div>
-              <div style="display: flex; flex-direction: column; gap: 2px;">
-                <div style="font-size: 8px; font-weight: 800; letter-spacing: 0.08em; color: #34D399; text-transform: uppercase;">VERIFIED VISITOR PASS</div>
-                <div style="font-size: 11px; font-weight: 700; color: #FFFFFF;">PASS #GP-8492</div>
-                <div style="font-size: 8.5px; color: rgba(240, 242, 238, 0.6);">Terminal 02 // North Turnstile</div>
+              <div style="background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 6px; padding: 4px 8px; font-size: 8.5px; font-weight: 700; color: #34D399;">
+                CERTIFIED ✓
               </div>
             </div>
           </div>

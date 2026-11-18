@@ -12,11 +12,11 @@ function renderFeaturedVisualPreview(project) {
     return `<img src="${screenshots[0]}" alt="${title} featured preview" class="featured-project__image" loading="lazy" decoding="async" />`;
   }
 
-  // Authentic GatePass Interface Console
-  if (slug === 'gatepass') {
+  // Authentic KoroCraft Interface Console (E-Commerce & Automation)
+  if (slug === 'korocraft') {
     return `
-      <div class="featured-project__console" aria-label="GatePass security console and mobile scanner preview">
-        <!-- Desktop Security Management Console -->
+      <div class="featured-project__console" aria-label="KoroCraft catalog and webhook sync engine preview">
+        <!-- Desktop Sourcing & Fulfillment Console -->
         <div class="featured-project__desktop-shell">
           <div class="featured-project__console-titlebar">
             <div class="featured-project__window-dots" aria-hidden="true">
@@ -24,10 +24,10 @@ function renderFeaturedVisualPreview(project) {
               <span class="featured-project__dot featured-project__dot--yellow"></span>
               <span class="featured-project__dot featured-project__dot--green"></span>
             </div>
-            <span class="featured-project__console-address">stags.internal/perimeter/turnstiles</span>
+            <span class="featured-project__console-address">api.korocraft.com/v1/fulfillment/sync</span>
             <span class="featured-project__console-status">
               <span class="hero-log-item__dot"></span>
-              LIVE GATEWAY
+              2-WAY SYNC
             </span>
           </div>
 
@@ -35,63 +35,76 @@ function renderFeaturedVisualPreview(project) {
             <!-- Telemetry Metrics -->
             <div class="featured-project__console-metrics">
               <div class="featured-project__metric-tile">
-                <span class="featured-project__metric-label">ON-SITE OCCUPANCY</span>
-                <span class="featured-project__metric-val">24 Active</span>
+                <span class="featured-project__metric-label">SUPPLIER SYNC</span>
+                <span class="featured-project__metric-val" style="color: #34D399;">140ms Latency</span>
               </div>
               <div class="featured-project__metric-tile">
-                <span class="featured-project__metric-label">TURNSTILES</span>
-                <span class="featured-project__metric-val" style="color: #34D399;">4 Online</span>
+                <span class="featured-project__metric-label">ACTIVE SKUS</span>
+                <span class="featured-project__metric-val">14,820 Live</span>
               </div>
               <div class="featured-project__metric-tile">
-                <span class="featured-project__metric-label">PASS VALIDATION</span>
-                <span class="featured-project__metric-val">120ms P95</span>
+                <span class="featured-project__metric-label">DISPATCH STATUS</span>
+                <span class="featured-project__metric-val" style="color: var(--km-accent-primary, #FEEFB8);">Auto-Routed</span>
               </div>
             </div>
 
-            <!-- Live Visitor Manifest -->
+            <!-- Live Ingest Manifest -->
             <div class="featured-project__manifest-card">
               <div class="featured-project__manifest-header">
-                <span>RECENT ENTRY MANIFEST</span>
-                <span style="color: var(--km-accent-primary, #FEEFB8);">LIVE AUDIT LOG</span>
+                <span>REAL-TIME INVENTORY & ORDER STREAM</span>
+                <span style="color: var(--km-accent-primary, #FEEFB8);">WEBHOOK DISPATCH</span>
               </div>
               <div class="featured-project__manifest-row">
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <span class="hero-log-item__dot"></span>
-                  <span style="font-weight: 600; color: #FFFFFF;">Alex Mercer // Contractor</span>
+                  <span style="font-weight: 600; color: #FFFFFF;">Order #KC-9941 // Multi-Item</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-family: monospace; font-size: 10px; color: rgba(254, 239, 184, 0.7);">#GP-8492</span>
-                  <span class="featured-project__status-badge">GATE 02 OPEN</span>
+                  <span style="font-family: monospace; font-size: 10px; color: rgba(254, 239, 184, 0.7);">CJ API SYNCED</span>
+                  <span class="featured-project__status-badge">STOCK: 48 IN HUB</span>
                 </div>
               </div>
               <div class="featured-project__manifest-row">
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <span class="hero-log-item__dot"></span>
-                  <span style="font-weight: 600; color: #FFFFFF;">Elena Vance // Logistics</span>
+                  <span style="font-weight: 600; color: #FFFFFF;">Order #KC-9942 // Express Route</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 8px;">
-                  <span style="font-family: monospace; font-size: 10px; color: rgba(254, 239, 184, 0.7);">#GP-8493</span>
-                  <span class="featured-project__status-badge">GATE 01 OPEN</span>
+                  <span style="font-family: monospace; font-size: 10px; color: rgba(254, 239, 184, 0.7);">TRACKING GENERATED</span>
+                  <span class="featured-project__status-badge" style="border-color: #34D399; color: #34D399;">DISPATCHED</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Overlapping Native Android CameraX Handset -->
+        <!-- Overlapping Telemetry Handset -->
         <div class="featured-project__phone-shell" aria-hidden="true">
           <div class="hero-mobile-shell__notch"></div>
           <div class="featured-project__phone-screen">
             <div style="font-size: 8.5px; font-weight: 800; letter-spacing: 0.08em; color: #34D399; margin-bottom: 4px;">
-              CAMERAX OPTICAL QR
+              SUPPLIER INGEST
             </div>
-            <div class="featured-project__phone-qr">⛶</div>
+            <div class="featured-project__phone-qr" style="font-size: 14px; color: var(--km-accent-primary, #FEEFB8);">⚡</div>
             <div style="font-size: 9px; font-weight: 700; color: #FFFFFF; margin-bottom: 2px;">
-              PASS #GP-8492
+              SKU #9941
             </div>
             <div style="font-size: 8px; color: var(--km-accent-primary, #FEEFB8);">
-              Turnstile Relayed
+              140ms Latency
             </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // GatePass Fallback (Legacy)
+  if (slug === 'gatepass') {
+    return `
+      <div class="featured-project__console" aria-label="GatePass security console and mobile scanner preview">
+        <div class="featured-project__desktop-shell">
+          <div class="featured-project__console-titlebar">
+            <span class="featured-project__console-address">stags.internal/perimeter/turnstiles</span>
           </div>
         </div>
       </div>

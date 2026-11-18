@@ -8,11 +8,10 @@ import { tinytots } from './tinytots.js';
  * Complete list of registered projects
  */
 export const projects = [
-  gatepass,
   korocraft,
   asuti,
-  beast,
-  tinytots
+  tinytots,
+  beast
 ];
 
 /**

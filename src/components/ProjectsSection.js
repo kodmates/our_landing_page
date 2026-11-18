@@ -5,14 +5,14 @@
 
 export const PROJECTS_DATA = [
   {
-    id: 'gate-pass',
-    title: 'Gate Pass — Enterprise Visitor & Security Management',
-    category: 'Enterprise Software',
-    categoryFilter: 'enterprise',
-    summary: 'Comprehensive enterprise visitor clearance and security audit platform with QR-code authorization, biometric sync, real-time guard verification, and compliance logging.',
-    metrics: ['350,000+ Clearances Logged', '&lt; 400ms Verification', 'Audit-Compliant'],
-    tech: ['Node.js', 'Android Kotlin', 'WebSockets', 'PostgreSQL', 'Docker'],
-    fullArchitecture: 'Built to replace error-prone manual paper registers at industrial facilities. Incorporates offline pass verification, encrypted QR payloads, real-time sync with on-premises security checkpoints via WebSockets, and role-based administrative audits.'
+    id: 'korocraft',
+    title: 'KoroCraft — Automated E-Commerce & Sourcing Platform',
+    category: 'E-Commerce & Automation',
+    categoryFilter: 'web',
+    summary: 'Automated dropshipping operations, real-time supplier inventory synchronization, sub-second webhook order ingestion, and dynamic tracking dispatch.',
+    metrics: ['14,800+ SKUs Synced', '&lt; 140ms Latency', 'Automated Dispatch'],
+    tech: ['Node.js', 'TypeScript', 'React', 'CJ Dropshipping API', 'PostgreSQL', 'Redis'],
+    fullArchitecture: 'Engineered for high-volume online retailers to eliminate manual order handling and stock discrepancies. Integrates continuous supplier API polling, asynchronous BullMQ order routing, and automated parcel tracking updates.'
   },
   {
     id: 'pos-cloud',
@@ -102,7 +102,7 @@ export function createProjectsSection() {
             Production Software Systems <span class="km-section-title-accent">Built for Demanding Scale</span>
           </h2>
           <p class="km-section-desc">
-            Explore authentic digital systems and enterprise tools engineered by Kodmates. From security gate pass automation to high-throughput point-of-sale platforms.
+            Explore authentic digital systems and enterprise tools engineered by Kodmates. From automated e-commerce & inventory pipelines to high-throughput point-of-sale platforms.
           </p>
         </header>
 
