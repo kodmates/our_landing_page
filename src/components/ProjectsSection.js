@@ -1,120 +1,75 @@
 /**
  * Kodmates Projects Section Component
- * Filterable engineering project showcase with interactive case study architecture previews.
+ * Dedicated showcase for the featured ASUTI project in the portfolio.
  */
 
-export const PROJECTS_DATA = [
-  {
-    id: 'korocraft',
-    title: 'KoroCraft — Automated E-Commerce & Sourcing Platform',
-    category: 'E-Commerce & Automation',
-    categoryFilter: 'web',
-    summary: 'Automated dropshipping operations, real-time supplier inventory synchronization, sub-second webhook order ingestion, and dynamic tracking dispatch.',
-    metrics: ['14,800+ SKUs Synced', '&lt; 140ms Latency', 'Automated Dispatch'],
-    tech: ['Node.js', 'TypeScript', 'React', 'CJ Dropshipping API', 'PostgreSQL', 'Redis'],
-    fullArchitecture: 'Engineered for high-volume online retailers to eliminate manual order handling and stock discrepancies. Integrates continuous supplier API polling, asynchronous BullMQ order routing, and automated parcel tracking updates.'
-  },
-  {
-    id: 'pos-cloud',
-    title: 'Enterprise POS & Multi-Store Retail Cloud',
-    category: 'Web Systems',
-    categoryFilter: 'web',
-    summary: 'Cloud-synced offline-capable multi-terminal point of sale, real-time inventory reconciliation, GST-compliant invoicing, and multi-branch analytics.',
-    metrics: ['99.99% Offline Reliability', 'Multi-Terminal Sync', 'Zero Data Loss'],
-    tech: ['React', 'Express', 'SQLite Offline Cache', 'Redis', 'PostgreSQL'],
-    fullArchitecture: 'Engineered for high-volume retail environments where network disruptions cannot interrupt billing. Uses local SQLite persistence on each cash counter terminal with asynchronous two-way delta sync to the central cloud cluster once connectivity is established.'
-  },
-  {
-    id: 'newsroom-flow',
-    title: 'Live Newsroom & Editorial Media Automation',
-    category: 'Web Systems',
-    categoryFilter: 'web',
-    summary: 'High-concurrency editorial production pipeline orchestrating article approvals, automated asset ingestion, live video streaming, and multi-channel publication.',
-    metrics: ['Sub-second Publication', '10,000 Concurrent Writers', 'Low Latency'],
-    tech: ['Fastify', 'WebSockets', 'Cloudflare Stream', 'Docker', 'Redis'],
-    fullArchitecture: 'Designed for fast-paced digital newsrooms. Handles concurrent real-time collaborative text editing, media transcoding via distributed workers, and instant caching invalidation across global edge CDNs.'
-  },
-  {
-    id: 'logistics-ops',
-    title: 'Industrial Logistics & Telematics Operations',
-    category: 'Mobile Apps',
-    categoryFilter: 'mobile',
-    summary: 'Turnkey fleet dispatch, telematics vehicle tracking, geofenced route optimization, and driver duty-status logging for commercial transport fleets.',
-    metrics: ['Real-Time GPS Tracking', '18% Fuel Route Efficiency', 'Geofence Alarms'],
-    tech: ['Android SDK', 'Go Backend', 'TimescaleDB', 'MQTT', 'Google Maps API'],
-    fullArchitecture: 'Collects high-frequency GPS telemetry and engine metrics from vehicle IoT gateways and mobile driver terminals. Ingests via lightweight MQTT broker into TimescaleDB with real-time alerting for route deviations and geofence perimeter events.'
-  }
-];
-
 export function createProjectsSection() {
-  const cardsHtml = PROJECTS_DATA.map((proj) => {
-    const techChips = proj.tech.map(t => `<span class="project-tech-chip">${t}</span>`).join('');
-    const metricsHtml = proj.metrics.map(m => `
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>${m}</span>
-      </div>
-    `).join('');
-
-    return `
-      <article class="project-card" data-category="${proj.categoryFilter}" id="project-card-${proj.id}">
-        <div class="project-media">
-          <div class="project-media-badge">${proj.category}</div>
-          <svg class="project-media-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div>
-            <div class="project-category">${proj.category}</div>
-            <h3 class="project-title">${proj.title}</h3>
-            <p class="project-summary">${proj.summary}</p>
-            <div class="project-metrics-row">
-              ${metricsHtml}
-            </div>
-            <div class="project-tech-stack" aria-label="Tech Stack">
-              ${techChips}
-            </div>
-          </div>
-          <div class="project-actions">
-            <button type="button" class="project-detail-btn" data-project-id="${proj.id}" aria-label="View architecture for ${proj.title}">
-              <span>View Architecture</span>
-              <span aria-hidden="true">→</span>
-            </button>
-            <a href="#contact" class="service-link" aria-label="Build a system like ${proj.title}">
-              <span>Inquire</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </article>
-    `;
-  }).join('');
-
   return `
     <section class="km-section" id="projects" aria-labelledby="projects-title">
       <div class="km-section-container">
         <header class="km-section-header is-centered">
-          <div class="km-eyebrow">PROVEN ENGINEERING WORK</div>
+          <div class="km-eyebrow">SELECTED WORK</div>
           <h2 class="km-section-title" id="projects-title">
-            Production Software Systems <span class="km-section-title-accent">Built for Demanding Scale</span>
+            Featured Project: <span class="km-section-title-accent">ASUTI</span>
           </h2>
           <p class="km-section-desc">
-            Explore authentic digital systems and enterprise tools engineered by Kodmates. From automated e-commerce & inventory pipelines to high-throughput point-of-sale platforms.
+            An artisanal, high-performance direct-to-consumer digital storefront engineered with soothing aesthetics, sub-second page loads, and seamless checkout conversion.
           </p>
         </header>
 
-        <div class="projects-filter-bar" role="tablist" aria-label="Filter Projects">
-          <button type="button" class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All Systems</button>
-          <button type="button" class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web Systems</button>
-          <button type="button" class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">Mobile Apps</button>
-          <button type="button" class="filter-btn" data-filter="enterprise" role="tab" aria-selected="false">Enterprise Software</button>
-        </div>
+        <div class="featured-projects__collection">
+          <article class="featured-project" data-project-slug="asuti">
+            <div class="featured-project__visual">
+              <img src="/assets/projects/asuti-preview.jpg" alt="ASUTI Minimalist &amp; Aesthetic Skincare project preview" class="featured-project__image" loading="lazy" decoding="async" />
+            </div>
 
-        <div class="projects-grid" id="projects-grid">
-          ${cardsHtml}
+            <div class="featured-project__content">
+              <div class="featured-project__header">
+                <span class="featured-project__eyebrow-tag">D2C E-COMMERCE</span>
+                <span class="featured-project__category">Digital Products &amp; D2C</span>
+              </div>
+
+              <h3 class="featured-project__title">ASUTI</h3>
+              <div class="featured-project__tagline">Minimalist &amp; Aesthetic D2C Skincare Experience</div>
+
+              <div class="featured-project__narrative">
+                <div class="featured-project__narrative-item">
+                  <span class="featured-project__narrative-label">THE PROBLEM</span>
+                  <p class="featured-project__narrative-text">
+                    Boutique beauty brands frequently struggle to balance rich, visually serene editorial aesthetics with mobile performance and conversion speed. Heavy imagery and sluggish transitions cause high bounce rates.
+                  </p>
+                </div>
+                <div class="featured-project__narrative-item">
+                  <span class="featured-project__narrative-label">THE SOLUTION</span>
+                  <p class="featured-project__narrative-text">
+                    Crafted a custom-engineered, lightweight digital storefront centered on serene micro-interactions and rapid page speed. Built with modern CSS custom properties, responsive image delivery, and a distraction-free slide-out cart drawer.
+                  </p>
+                </div>
+              </div>
+
+              <ul class="featured-project__tech-list" aria-label="Verified technologies used">
+                <li class="featured-project__tech-item">JavaScript (ESNext)</li>
+                <li class="featured-project__tech-item">HTML5 / Modern CSS</li>
+                <li class="featured-project__tech-item">Responsive Grid</li>
+                <li class="featured-project__tech-item">Web Performance</li>
+                <li class="featured-project__tech-item">Headless E-Commerce</li>
+                <li class="featured-project__tech-item">Accessible Micro-Interactions</li>
+              </ul>
+
+              <div class="featured-project__actions">
+                <a href="/demos/asuti/" target="_blank" rel="noopener noreferrer" class="cta-button hero-cta-primary" aria-label="View ASUTI Live Website (opens in new tab)">
+                  <span>View Live Demo</span>
+                  <span class="cta-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a href="/projects/asuti" class="featured-project__secondary-link" aria-label="Explore ASUTI Case Study">
+                  <span>Explore Case Study</span>
+                  <svg class="featured-project__external-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path d="M3.5 1.5H10.5V8.5M10.5 1.5L1.5 10.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -122,124 +77,8 @@ export function createProjectsSection() {
 }
 
 /**
- * Initializes project card filtering and modal architecture inspection
+ * Initializes project card interactions
  */
 export function initProjectsSection() {
-  const container = document.getElementById('projects');
-  if (!container) return;
-
-  const filterBtns = container.querySelectorAll('.filter-btn');
-  const projectCards = container.querySelectorAll('.project-card');
-
-  // Filter functionality
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => {
-        b.classList.remove('is-active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      btn.classList.add('is-active');
-      btn.setAttribute('aria-selected', 'true');
-
-      const filter = btn.getAttribute('data-filter');
-      projectCards.forEach((card) => {
-        const cat = card.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  // Modal architecture inspect
-  const detailBtns = container.querySelectorAll('.project-detail-btn');
-  detailBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const projId = btn.getAttribute('data-project-id');
-      const project = PROJECTS_DATA.find(p => p.id === projId);
-      if (project) {
-        openProjectModal(project);
-      }
-    });
-  });
-}
-
-let lastProjectFocusedElement = null;
-
-function openProjectModal(project, triggerElement = null) {
-  lastProjectFocusedElement = triggerElement || document.activeElement;
-  let modal = document.getElementById('project-modal');
-  if (!modal) {
-    modal = document.createElement('div');
-    modal.id = 'project-modal';
-    modal.className = 'km-modal-overlay';
-    modal.innerHTML = `
-      <div class="km-modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
-        <button type="button" class="km-modal-close-btn" id="project-modal-close" aria-label="Close dialog">×</button>
-        <div id="modal-project-body"></div>
-      </div>
-    `;
-    document.body.appendChild(modal);
-
-    modal.querySelector('#project-modal-close').addEventListener('click', () => {
-      closeProjectModal();
-    });
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeProjectModal();
-    });
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-        closeProjectModal();
-      }
-    });
-  }
-
-  const bodyEl = modal.querySelector('#modal-project-body');
-  const techChips = project.tech.map(t => `<span class="project-tech-chip">${t}</span>`).join('');
-  const metrics = project.metrics.map(m => `<li>${m}</li>`).join('');
-
-  bodyEl.innerHTML = `
-    <div class="project-category" style="margin-bottom: 8px;">${project.category}</div>
-    <h3 class="km-section-title" id="modal-project-title" style="font-size: 26px; margin-bottom: 16px;">${project.title}</h3>
-    <p style="font-size: 15px; color: rgba(240,242,238,0.75); line-height: 1.6; margin-bottom: 24px;">${project.summary}</p>
-    
-    <div style="margin-bottom: 24px; padding: 18px; border-radius: 10px; background: rgba(254,239,184,0.04); border: 1px solid rgba(254,239,184,0.12);">
-      <h4 style="font-size: 13px; font-weight: 700; color: var(--km-accent-primary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px;">Technical Architecture & Engineering Highlights</h4>
-      <p style="font-size: 14px; color: rgba(240,242,238,0.85); line-height: 1.65;">${project.fullArchitecture}</p>
-    </div>
-
-    <div style="margin-bottom: 20px;">
-      <h4 style="font-size: 12px; font-weight: 700; color: var(--km-accent-champagne); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px;">Production Metrics</h4>
-      <ul style="color: rgba(240,242,238,0.8); font-size: 13.5px; line-height: 1.7; padding-left: 20px;">
-        ${metrics}
-      </ul>
-    </div>
-
-    <div style="margin-bottom: 28px;">
-      <h4 style="font-size: 12px; font-weight: 700; color: var(--km-accent-champagne); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Stack & Components</h4>
-      <div class="project-tech-stack">${techChips}</div>
-    </div>
-
-    <a href="#contact" class="cta-button" style="display: inline-flex;" onclick="document.getElementById('project-modal').classList.remove('is-open'); document.body.style.overflow = '';">
-      <span>Discuss a Similar System</span>
-      <span aria-hidden="true">→</span>
-    </a>
-  `;
-
-  modal.classList.add('is-open');
-  modal.querySelector('#project-modal-close').focus();
-  document.body.style.overflow = 'hidden';
-}
-
-function closeProjectModal() {
-  const modal = document.getElementById('project-modal');
-  if (modal) {
-    modal.classList.remove('is-open');
-    document.body.style.overflow = '';
-    if (lastProjectFocusedElement && typeof lastProjectFocusedElement.focus === 'function') {
-      lastProjectFocusedElement.focus();
-    }
-  }
+  // Safe listener initialization for portfolio project showcase
 }

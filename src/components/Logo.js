@@ -4,10 +4,10 @@
  * Polished for commanding studio presence and optical balance
  */
 export function createLogo({ withTagline = true } = {}) {
-  const brandHref = '#';
+  const brandHref = '/';
 
   const logoHtml = `
-    <a href="${brandHref}" class="brand-logo" aria-label="Kodmates Home">
+    <a href="${brandHref}" class="brand-logo" aria-label="Subrat Dakua Home">
       <div class="brand-logo__mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Left bracket anchor -->
@@ -19,8 +19,8 @@ export function createLogo({ withTagline = true } = {}) {
         </svg>
       </div>
       <div class="brand-logo__meta">
-        <span class="brand-logo__name">KODMATES</span>
-        ${withTagline ? '<span class="brand-logo__tagline">Building Digital Systems for the Real World.</span>' : ''}
+        <span class="brand-logo__name">SUBRAT DAKUA</span>
+        ${withTagline ? '<span class="brand-logo__tagline">Full-Stack &amp; E-Commerce Developer</span>' : ''}
       </div>
     </a>
   `;

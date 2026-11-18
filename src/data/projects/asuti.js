@@ -12,7 +12,7 @@ export const asuti = {
     'A high-performance direct-to-consumer digital storefront engineered with soothing aesthetics, sub-second page loads, and seamless checkout conversion.',
   fullDescription:
     'ASUTI is an artisanal, luxury skincare brand dedicated to pure, minimalist beauty rituals. KodeMates engineered the complete digital brand experience and e-commerce platform for ASUTI, translating their signature soft lavender and warm butter-yellow visual identity into a fluid, responsive web application. The platform balances high-fashion editorial aesthetics with ultra-fast Core Web Vitals, intuitive product storytelling, ingredient transparency modules, and an optimized mobile-first checkout pipeline.',
-  featured: false,
+  featured: true,
   technologies: [
     'JavaScript (ESNext)',
     'HTML5 / Modern CSS',

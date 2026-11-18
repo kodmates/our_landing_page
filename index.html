@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kodmates — Premium Digital Product Studio &amp; Enterprise Engineering</title>
-  <meta name="description" content="Kodmates architects and engineers mission-critical web applications, native Android software, and cloud infrastructure for growing businesses." />
-  <meta name="keywords" content="software engineering studio, enterprise web apps, Android development, Kotlin, Next.js, POS software, ERP systems, cloud DevOps, Bhubaneswar, Kodmates" />
-  <meta name="author" content="Kodmates" />
+  <title>Subrat Dakua — Full-Stack &amp; E-Commerce Developer | Kodmates</title>
+  <meta name="description" content="Portfolio of Subrat Dakua (Kodmates) — Full-Stack &amp; E-Commerce Developer specializing in high-performance web applications, bespoke D2C storefronts, and modern digital experiences." />
+  <meta name="keywords" content="Subrat Dakua, Kodmates, full-stack developer, e-commerce developer, D2C storefront, ASUTI, web development, frontend engineer, Bhubaneswar, India" />
+  <meta name="author" content="Subrat Dakua" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="theme-color" content="#0B1313" />
   <link rel="canonical" href="https://kodmates.com/" />
@@ -15,12 +15,12 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kodmates.com/" />
-  <meta property="og:site_name" content="Kodmates" />
-  <meta property="og:title" content="Kodmates — Premium Digital Product Studio &amp; Enterprise Engineering" />
-  <meta property="og:description" content="Kodmates architects and engineers mission-critical web applications, native Android software, and cloud infrastructure for growing businesses." />
-  <meta property="og:image" content="https://kodmates.com/assets/hero-bg-landscape.jpg" />
+  <meta property="og:site_name" content="Subrat Dakua Portfolio" />
+  <meta property="og:title" content="Subrat Dakua — Full-Stack &amp; E-Commerce Developer | Kodmates" />
+  <meta property="og:description" content="Portfolio of Subrat Dakua (Kodmates) — Full-Stack &amp; E-Commerce Developer specializing in high-performance web applications, bespoke D2C storefronts, and modern digital experiences." />
+  <meta property="og:image" content="https://kodmates.com/assets/projects/asuti-preview.jpg" />
   <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:height" content="800" />
   <meta property="og:locale" content="en_US" />
 
   <!-- Twitter / X -->
@@ -28,9 +28,9 @@
   <meta name="twitter:url" content="https://kodmates.com/" />
   <meta name="twitter:site" content="@kodmates" />
   <meta name="twitter:creator" content="@kodmates" />
-  <meta name="twitter:title" content="Kodmates — Premium Digital Product Studio &amp; Enterprise Engineering" />
-  <meta name="twitter:description" content="Kodmates architects and engineers mission-critical web applications, native Android software, and cloud infrastructure for growing businesses." />
-  <meta name="twitter:image" content="https://kodmates.com/assets/hero-bg-landscape.jpg" />
+  <meta name="twitter:title" content="Subrat Dakua — Full-Stack &amp; E-Commerce Developer | Kodmates" />
+  <meta name="twitter:description" content="Portfolio of Subrat Dakua (Kodmates) — Full-Stack &amp; E-Commerce Developer specializing in high-performance web applications, bespoke D2C storefronts, and modern digital experiences." />
+  <meta name="twitter:image" content="https://kodmates.com/assets/projects/asuti-preview.jpg" />
 
   <!-- Preload Critical LCP Image -->
   <link rel="preload" as="image" href="/assets/hero-bg-landscape.jpg" fetchpriority="high" />
@@ -61,54 +61,40 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
-        "@id": "https://kodmates.com/#organization",
-        "name": "Kodmates",
-        "legalName": "Kodmates Technologies",
+        "@type": "Person",
+        "@id": "https://kodmates.com/#person",
+        "name": "Subrat Dakua",
+        "jobTitle": "Full-Stack & E-Commerce Developer",
         "url": "https://kodmates.com/",
-        "logo": "https://kodmates.com/logo.svg",
-        "description": "Premium digital product studio and enterprise software engineering consultancy.",
+        "email": "info@kodmates.com",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Kodmates"
+        },
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Bhubaneswar",
           "addressRegion": "Odisha",
           "addressCountry": "IN"
         },
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "sales",
-          "email": "info@kodmates.com"
-        },
-        "sameAs": [
-          "https://github.com/kodmates",
-          "https://twitter.com/kodmates",
-          "https://linkedin.com/company/kodmates"
+        "knowsAbout": [
+          "Web Applications",
+          "E-Commerce & D2C Storefronts",
+          "React",
+          "JavaScript",
+          "Node.js",
+          "Web Performance Optimization",
+          "ASUTI"
         ]
       },
       {
         "@type": "WebSite",
         "@id": "https://kodmates.com/#website",
         "url": "https://kodmates.com/",
-        "name": "Kodmates",
+        "name": "Subrat Dakua Portfolio",
         "publisher": {
-          "@id": "https://kodmates.com/#organization"
+          "@id": "https://kodmates.com/#person"
         }
-      },
-      {
-        "@type": "ProfessionalService",
-        "@id": "https://kodmates.com/#service",
-        "name": "Kodmates Software Engineering",
-        "url": "https://kodmates.com/",
-        "priceRange": "$$",
-        "areaServed": "Worldwide",
-        "knowsAbout": [
-          "Web Applications",
-          "Native Android Software",
-          "Cloud Infrastructure",
-          "High-Throughput APIs",
-          "Database Architecture",
-          "Enterprise ERP and POS Systems"
-        ]
       }
     ]
   }
@@ -116,13 +102,14 @@
 </head>
 <body>
   <div class="page-viewport" id="app">
-    <!-- Header Component (Locked Step 01) mounts here -->
+    <!-- Sticky Header mounts dynamically via Header.js -->
 
-    <!-- STEP 02: Homepage Hero Only -->
+    <!-- Main Content Container -->
     <main class="page-content" id="main-content">
       <div id="home" style="scroll-margin-top: var(--km-header-height);"></div>
-      <section class="hero-section" id="hero" aria-label="Kodmates Hero">
-        <!-- Subtle dark landscape horizon & ambient warm atmospheric illumination -->
+
+      <!-- HERO SECTION -->
+      <section class="hero-section" id="hero" aria-label="Subrat Dakua Hero">
         <div class="hero-ambient-glow" aria-hidden="true"></div>
         <div class="hero-ambient-landscape" aria-hidden="true">
           <img src="/assets/hero-bg-landscape.jpg" alt="" class="hero-landscape-img" loading="eager" fetchpriority="high" />
@@ -130,46 +117,42 @@
 
         <div class="hero-container">
           <div class="hero-main-grid">
-            <!-- Left Column: Typography & CTAs (~46%) -->
+            <!-- Left Column: Bio & CTAs (~46%) -->
             <div class="hero-content-col">
               <div class="hero-eyebrow">
-                DIGITAL SOLUTIONS FOR A SMARTER TOMORROW
+                ● AVAILABLE FOR FREELANCE &amp; CONTRACT WORK
               </div>
 
               <h1 class="hero-title">
-                <span class="hero-title-line">Software Built</span>
-                <span class="hero-title-line">Around <span class="hero-title-accent">Your</span></span>
-                <span class="hero-title-line"><span class="hero-title-accent">Business.</span></span>
+                <span class="hero-title-line">Subrat Dakua</span>
+                <span class="hero-title-line"><span class="hero-title-accent">Full-Stack &amp; E-Commerce</span></span>
+                <span class="hero-title-line">Developer</span>
               </h1>
 
               <p class="hero-description">
-                We design and develop custom web applications, Android apps and business systems that solve real problems and create real growth.
+                Hi, I'm Subrat Dakua (Kodmates). I craft high-performance web applications, bespoke e-commerce storefronts, and clean digital experiences designed to convert and delight.
               </p>
 
               <div class="hero-actions">
-                <a href="#contact" class="cta-button hero-cta-primary" id="hero-primary-cta">
-                  <span>Start a Project</span>
-                  <span class="cta-arrow" aria-hidden="true">→</span>
+                <a href="#projects" class="cta-button hero-cta-primary" id="hero-primary-cta">
+                  <span>Explore Featured Work</span>
+                  <span class="cta-arrow" aria-hidden="true">↓</span>
                 </a>
 
-                <a href="#projects" class="hero-cta-secondary" id="hero-secondary-cta">
-                  <svg class="hero-cta-play-icon" viewBox="0 0 20 20" fill="none" width="18" height="18" aria-hidden="true">
-                    <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/>
-                    <polygon points="8,6.5 14.5,10 8,13.5" fill="currentColor"/>
-                  </svg>
-                  <span>View Our Work</span>
+                <a href="#contact" class="hero-cta-secondary" id="hero-secondary-cta">
+                  <span>Get in Touch</span>
+                  <span class="cta-arrow" aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
 
-            <!-- Right Column: Interactive 3D Software Ecosystem (~54%) -->
+            <!-- Right Column: Interactive 3D Visual (~54%) -->
             <div class="hero-visual-col">
               <div class="hero-3d-wrapper" id="hero-3d-wrapper">
-                <!-- Static Fallback (active on slow connections, reduced motion, or WebGL absence) -->
                 <div class="hero-fallback" id="hero-fallback">
                   <img 
                     src="/assets/hero-fallback.jpg" 
-                    alt="Kodmates Interactive Software Ecosystem" 
+                    alt="Subrat Dakua Interactive Software Ecosystem" 
                     class="hero-fallback-img"
                     width="620" 
                     height="620" 
@@ -198,30 +181,26 @@
                 <span class="capability-label">Web Applications</span>
               </div>
 
-              <div class="capability-item" data-capability-id="android">
+              <div class="capability-item" data-capability-id="ecommerce">
                 <div class="capability-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="5.5" y="3" width="13" height="18" rx="3" stroke="#FEEFB8" stroke-width="1.6"/>
-                    <path d="M10 6H14" stroke="#FEEFB8" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.7"/>
-                    <circle cx="12" cy="18" r="1.1" fill="#FEEFB8"/>
-                    <path d="M9 10L15 10" stroke="#FEEFB8" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.5"/>
-                    <path d="M9 13L13 13" stroke="#FEEFB8" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.5"/>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#FEEFB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
                   </svg>
                 </div>
-                <span class="capability-label">Android Apps</span>
+                <span class="capability-label">E-Commerce Storefronts</span>
               </div>
 
-              <div class="capability-item" data-capability-id="business">
+              <div class="capability-item" data-capability-id="ui">
                 <div class="capability-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="3.5" width="8" height="8" rx="2" stroke="#FEEFB8" stroke-width="1.5"/>
-                    <rect x="13" y="3.5" width="8" height="8" rx="2" stroke="#FEEFB8" stroke-width="1.5"/>
-                    <rect x="3" y="13.5" width="8" height="8" rx="2" stroke="#FEEFB8" stroke-width="1.5"/>
-                    <rect x="13" y="13.5" width="8" height="8" rx="2" stroke="#FEEFB8" stroke-width="1.5"/>
-                    <path d="M7 7.5H7.01M17 7.5H17.01M7 17.5H7.01M17 17.5H17.01" stroke="#FEEFB8" stroke-width="2.5" stroke-linecap="round"/>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#FEEFB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="3" y1="9" x2="21" y2="9"/>
+                    <line x1="9" y1="21" x2="9" y2="9"/>
                   </svg>
                 </div>
-                <span class="capability-label">Business Software</span>
+                <span class="capability-label">UI/UX &amp; Responsive Layouts</span>
               </div>
 
               <div class="capability-item" data-capability-id="api">
@@ -234,778 +213,431 @@
                     <path d="M4 8L7 8M17 8L20 8M4 16L7 16M17 16L20 16" stroke="#FEEFB8" stroke-width="1.5" stroke-linecap="round"/>
                   </svg>
                 </div>
-                <span class="capability-label">APIs & Backend</span>
+                <span class="capability-label">APIs &amp; Backend</span>
               </div>
 
-              <div class="capability-item" data-capability-id="growth">
+              <div class="capability-item" data-capability-id="performance">
                 <div class="capability-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3.5 19.5H20.5" stroke="#FEEFB8" stroke-width="1.5" stroke-linecap="round"/>
-                    <path d="M6 15.5L10.5 10L14.5 13.5L20 6.5" stroke="#FEEFB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M16 6.5H20V10.5" stroke="#FEEFB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#FEEFB8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
                   </svg>
                 </div>
-                <span class="capability-label">SEO & Growth</span>
+                <span class="capability-label">100/100 Core Web Vitals</span>
               </div>
             </div>
           </div>
         </div>
       </section>
-    
-    <section class="km-section" id="services" aria-labelledby="services-title">
-      <div class="km-section-container">
-        <header class="km-section-header">
-          <div class="km-eyebrow">ENGINEERING CAPABILITIES</div>
-          <h2 class="km-section-title" id="services-title">
-            Digital Systems Engineered for <span class="km-section-title-accent">Real-World Operations</span>
-          </h2>
-          <p class="km-section-desc">
-            We don't build superficial website templates. We architect, engineer, and deploy high-reliability software systems that handle operational data, transactions, and business continuity.
-          </p>
-        </header>
 
-        <div class="services-grid">
-          
-      <div class="service-card" data-service-id="web">
-        <div>
-          <div class="service-icon-box" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-      <line x1="8" y1="21" x2="16" y2="21"/>
-      <line x1="12" y1="17" x2="12" y2="21"/>
-    </svg>
-          </div>
-          <h3 class="service-title">Web Applications</h3>
-          <p class="service-desc">High-performance web apps, responsive client portals, SaaS architectures, and interactive digital interfaces built with modern reactive stacks.</p>
-        </div>
-        <div>
-          <div class="service-tags" aria-label="Technologies">
-            <span class="service-tag">Next.js</span><span class="service-tag">React</span><span class="service-tag">Vue</span><span class="service-tag">TypeScript</span><span class="service-tag">WebSockets</span>
-          </div>
-          <a href="#contact" class="service-link" aria-label="Inquire about Web Applications">
-            <span>Discuss Requirements</span>
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="service-card" data-service-id="android">
-        <div>
-          <div class="service-icon-box" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-      <line x1="12" y1="18" x2="12.01" y2="18"/>
-    </svg>
-          </div>
-          <h3 class="service-title">Android & Mobile Apps</h3>
-          <p class="service-desc">Reliable native and cross-platform Android mobile solutions engineered for operational resilience, offline-first sync, and smooth hardware integrations.</p>
-        </div>
-        <div>
-          <div class="service-tags" aria-label="Technologies">
-            <span class="service-tag">Kotlin</span><span class="service-tag">Android SDK</span><span class="service-tag">Jetpack Compose</span><span class="service-tag">Offline Sync</span>
-          </div>
-          <a href="#contact" class="service-link" aria-label="Inquire about Android & Mobile Apps">
-            <span>Discuss Requirements</span>
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="service-card" data-service-id="business">
-        <div>
-          <div class="service-icon-box" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-      <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-    </svg>
-          </div>
-          <h3 class="service-title">Business Software Systems</h3>
-          <p class="service-desc">Custom enterprise ERPs, billing pipelines, real-time inventory tracking, and POS ecosystems designed around actual business workflows.</p>
-        </div>
-        <div>
-          <div class="service-tags" aria-label="Technologies">
-            <span class="service-tag">Custom ERP</span><span class="service-tag">POS Systems</span><span class="service-tag">Billing</span><span class="service-tag">Inventory</span><span class="service-tag">Multi-tenant</span>
-          </div>
-          <a href="#contact" class="service-link" aria-label="Inquire about Business Software Systems">
-            <span>Discuss Requirements</span>
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="service-card" data-service-id="cloud">
-        <div>
-          <div class="service-icon-box" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
-    </svg>
-          </div>
-          <h3 class="service-title">Cloud & DevOps Infrastructure</h3>
-          <p class="service-desc">Scalable cloud architecture, automated CI/CD deployment pipelines, containerization, and zero-downtime microservices hosting.</p>
-        </div>
-        <div>
-          <div class="service-tags" aria-label="Technologies">
-            <span class="service-tag">Docker</span><span class="service-tag">Kubernetes</span><span class="service-tag">AWS</span><span class="service-tag">Cloudflare</span><span class="service-tag">CI/CD</span>
-          </div>
-          <a href="#contact" class="service-link" aria-label="Inquire about Cloud & DevOps Infrastructure">
-            <span>Discuss Requirements</span>
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="service-card" data-service-id="api">
-        <div>
-          <div class="service-icon-box" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-      <polyline points="16 18 22 12 16 6"/>
-      <polyline points="8 6 2 12 8 18"/>
-    </svg>
-          </div>
-          <h3 class="service-title">APIs & Microservices</h3>
-          <p class="service-desc">Low-latency REST and GraphQL APIs, event-driven messaging architectures, and high-concurrency microservices with rigorous authentication.</p>
-        </div>
-        <div>
-          <div class="service-tags" aria-label="Technologies">
-            <span class="service-tag">Node.js</span><span class="service-tag">Go</span><span class="service-tag">GraphQL</span><span class="service-tag">REST</span><span class="service-tag">WebSockets</span><span class="service-tag">OAuth</span>
-          </div>
-          <a href="#contact" class="service-link" aria-label="Inquire about APIs & Microservices">
-            <span>Discuss Requirements</span>
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="service-card" data-service-id="database">
-        <div>
-          <div class="service-icon-box" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-      <ellipse cx="12" cy="5" rx="9" ry="3"/>
-      <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
-      <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-    </svg>
-          </div>
-          <h3 class="service-title">Database Architecture</h3>
-          <p class="service-desc">Fault-tolerant relational and distributed databases, schema design, high-throughput caching layers, and continuous replication.</p>
-        </div>
-        <div>
-          <div class="service-tags" aria-label="Technologies">
-            <span class="service-tag">PostgreSQL</span><span class="service-tag">Redis</span><span class="service-tag">TimescaleDB</span><span class="service-tag">Query Tuning</span>
-          </div>
-          <a href="#contact" class="service-link" aria-label="Inquire about Database Architecture">
-            <span>Discuss Requirements</span>
-            <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    
-        </div>
-      </div>
-    </section>
-  
-
-
-    <section class="km-section" id="projects" aria-labelledby="projects-title">
-      <div class="km-section-container">
-        <header class="km-section-header is-centered">
-          <div class="km-eyebrow">PROVEN ENGINEERING WORK</div>
-          <h2 class="km-section-title" id="projects-title">
-            Production Software Systems <span class="km-section-title-accent">Built for Demanding Scale</span>
-          </h2>
-          <p class="km-section-desc">
-            Explore authentic digital systems and enterprise tools engineered by Kodmates. From automated e-commerce & inventory pipelines to high-throughput point-of-sale platforms.
-          </p>
-        </header>
-
-        <div class="projects-filter-bar" role="tablist" aria-label="Filter Projects">
-          <button type="button" class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All Systems</button>
-          <button type="button" class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web Systems</button>
-          <button type="button" class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">Mobile Apps</button>
-          <button type="button" class="filter-btn" data-filter="enterprise" role="tab" aria-selected="false">E-Commerce &amp; Automation</button>
-        </div>
-
-        <div class="projects-grid" id="projects-grid">
-          
-      <article class="project-card" data-category="enterprise" id="project-card-korocraft">
-        <div class="project-media">
-          <div class="project-media-badge">E-Commerce &amp; Automation</div>
-          <svg class="project-media-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div>
-            <div class="project-category">E-Commerce &amp; Automation</div>
-            <h3 class="project-title">KoroCraft — Automated E-Commerce &amp; Sourcing Platform</h3>
-            <p class="project-summary">Automated dropshipping operations, real-time supplier inventory synchronization, sub-second webhook order ingestion, and dynamic tracking dispatch.</p>
-            <div class="project-metrics-row">
-              
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>14,800+ SKUs Synced</span>
-      </div>
-    
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>&lt; 140ms Latency</span>
-      </div>
-    
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>Automated Dispatch</span>
-      </div>
-    
-            </div>
-            <div class="project-tech-stack" aria-label="Tech Stack">
-              <span class="project-tech-chip">Node.js</span><span class="project-tech-chip">TypeScript</span><span class="project-tech-chip">React</span><span class="project-tech-chip">CJ Dropshipping API</span><span class="project-tech-chip">PostgreSQL</span><span class="project-tech-chip">Redis</span>
-            </div>
-          </div>
-          <div class="project-actions">
-            <button type="button" class="project-detail-btn" data-project-id="korocraft" aria-label="View architecture for KoroCraft — Automated E-Commerce &amp; Sourcing Platform">
-              <span>View Architecture</span>
-              <span aria-hidden="true">→</span>
-            </button>
-            <a href="https://korocraft.com" target="_blank" rel="noopener noreferrer" class="service-link" aria-label="Visit KoroCraft live website">
-              <span>Live Site</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </article>
-    
-      <article class="project-card" data-category="web" id="project-card-pos-cloud">
-        <div class="project-media">
-          <div class="project-media-badge">Web Systems</div>
-          <svg class="project-media-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div>
-            <div class="project-category">Web Systems</div>
-            <h3 class="project-title">Enterprise POS & Multi-Store Retail Cloud</h3>
-            <p class="project-summary">Cloud-synced offline-capable multi-terminal point of sale, real-time inventory reconciliation, GST-compliant invoicing, and multi-branch analytics.</p>
-            <div class="project-metrics-row">
-              
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>99.99% Offline Reliability</span>
-      </div>
-    
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>Multi-Terminal Sync</span>
-      </div>
-    
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>Zero Data Loss</span>
-      </div>
-    
-            </div>
-            <div class="project-tech-stack" aria-label="Tech Stack">
-              <span class="project-tech-chip">React</span><span class="project-tech-chip">Express</span><span class="project-tech-chip">SQLite Offline Cache</span><span class="project-tech-chip">Redis</span><span class="project-tech-chip">PostgreSQL</span>
-            </div>
-          </div>
-          <div class="project-actions">
-            <button type="button" class="project-detail-btn" data-project-id="pos-cloud" aria-label="View architecture for Enterprise POS & Multi-Store Retail Cloud">
-              <span>View Architecture</span>
-              <span aria-hidden="true">→</span>
-            </button>
-            <a href="#contact" class="service-link" aria-label="Build a system like Enterprise POS & Multi-Store Retail Cloud">
-              <span>Inquire</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </article>
-    
-      <article class="project-card" data-category="web" id="project-card-newsroom-flow">
-        <div class="project-media">
-          <div class="project-media-badge">Web Systems</div>
-          <svg class="project-media-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div>
-            <div class="project-category">Web Systems</div>
-            <h3 class="project-title">Live Newsroom & Editorial Media Automation</h3>
-            <p class="project-summary">High-concurrency editorial production pipeline orchestrating article approvals, automated asset ingestion, live video streaming, and multi-channel publication.</p>
-            <div class="project-metrics-row">
-              
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>Sub-second Publication</span>
-      </div>
-    
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>10,000 Concurrent Writers</span>
-      </div>
-    
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>Low Latency</span>
-      </div>
-    
-            </div>
-            <div class="project-tech-stack" aria-label="Tech Stack">
-              <span class="project-tech-chip">Fastify</span><span class="project-tech-chip">WebSockets</span><span class="project-tech-chip">Cloudflare Stream</span><span class="project-tech-chip">Docker</span><span class="project-tech-chip">Redis</span>
-            </div>
-          </div>
-          <div class="project-actions">
-            <button type="button" class="project-detail-btn" data-project-id="newsroom-flow" aria-label="View architecture for Live Newsroom & Editorial Media Automation">
-              <span>View Architecture</span>
-              <span aria-hidden="true">→</span>
-            </button>
-            <a href="#contact" class="service-link" aria-label="Build a system like Live Newsroom & Editorial Media Automation">
-              <span>Inquire</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </article>
-    
-      <article class="project-card" data-category="mobile" id="project-card-logistics-ops">
-        <div class="project-media">
-          <div class="project-media-badge">Mobile Apps</div>
-          <svg class="project-media-preview-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-            <polyline points="2 17 12 22 22 17"/>
-            <polyline points="2 12 12 17 22 12"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div>
-            <div class="project-category">Mobile Apps</div>
-            <h3 class="project-title">Industrial Logistics & Telematics Operations</h3>
-            <p class="project-summary">Turnkey fleet dispatch, telematics vehicle tracking, geofenced route optimization, and driver duty-status logging for commercial transport fleets.</p>
-            <div class="project-metrics-row">
-              
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>Real-Time GPS Tracking</span>
-      </div>
-    
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>18% Fuel Route Efficiency</span>
-      </div>
-    
-      <div class="project-metric">
-        <span class="project-metric-dot" aria-hidden="true"></span>
-        <span>Geofence Alarms</span>
-      </div>
-    
-            </div>
-            <div class="project-tech-stack" aria-label="Tech Stack">
-              <span class="project-tech-chip">Android SDK</span><span class="project-tech-chip">Go Backend</span><span class="project-tech-chip">TimescaleDB</span><span class="project-tech-chip">MQTT</span><span class="project-tech-chip">Google Maps API</span>
-            </div>
-          </div>
-          <div class="project-actions">
-            <button type="button" class="project-detail-btn" data-project-id="logistics-ops" aria-label="View architecture for Industrial Logistics & Telematics Operations">
-              <span>View Architecture</span>
-              <span aria-hidden="true">→</span>
-            </button>
-            <a href="#contact" class="service-link" aria-label="Build a system like Industrial Logistics & Telematics Operations">
-              <span>Inquire</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-      </article>
-    
-        </div>
-      </div>
-    </section>
-  
-
-
-    <section class="km-section" id="process" aria-labelledby="process-title">
-      <div class="km-section-container">
-        <header class="km-section-header">
-          <div class="km-eyebrow">ENGINEERING LIFECYCLE</div>
-          <h2 class="km-section-title" id="process-title">
-            Pragmatic Engineering, <span class="km-section-title-accent">Zero Drama</span>
-          </h2>
-          <p class="km-section-desc">
-            We operate as an elite engineering partner, not a detached agency. Our battle-tested four-phase lifecycle guarantees predictable delivery, robust security, and maintainable systems.
-          </p>
-        </header>
-
-        <div class="process-timeline">
-          
-      <div class="process-card">
-        <div class="process-step-num">01</div>
-        <h3 class="process-title">Discovery & Architecture Blueprint</h3>
-        <p class="process-desc">We map operational workflows, identify throughput bottlenecks, and produce a formal data schema and system design blueprint before a single line of code is written.</p>
-        <div class="process-deliverables-title">Key Deliverables</div>
-        <ul class="process-deliverables-list">
-          <li class="process-deliverable-item">System Architecture Diagram</li><li class="process-deliverable-item">Data Model & Entity Mapping</li><li class="process-deliverable-item">Security & Compliance Plan</li><li class="process-deliverable-item">Milestone Schedule</li>
-        </ul>
-      </div>
-    
-      <div class="process-card">
-        <div class="process-step-num">02</div>
-        <h3 class="process-title">Iterative Sprint Engineering</h3>
-        <p class="process-desc">We deliver working software increments every sprint. High-coverage automated tests, pair programming, and direct transparent communication keep development aligned.</p>
-        <div class="process-deliverables-title">Key Deliverables</div>
-        <ul class="process-deliverables-list">
-          <li class="process-deliverable-item">Bi-weekly Staging Releases</li><li class="process-deliverable-item">Automated CI/CD Pipelines</li><li class="process-deliverable-item">Clean Documented Codebases</li><li class="process-deliverable-item">Direct Engineering Slack/Chat</li>
-        </ul>
-      </div>
-    
-      <div class="process-card">
-        <div class="process-step-num">03</div>
-        <h3 class="process-title">QA & Security Hardening</h3>
-        <p class="process-desc">Thorough stress testing under concurrent load, security penetration audits, edge-case validation, and device matrix testing across real hardware.</p>
-        <div class="process-deliverables-title">Key Deliverables</div>
-        <ul class="process-deliverables-list">
-          <li class="process-deliverable-item">Concurrency Load Reports</li><li class="process-deliverable-item">OWASP Security Verification</li><li class="process-deliverable-item">Cross-Device QA Sign-off</li><li class="process-deliverable-item">Failover & Disaster Recovery</li>
-        </ul>
-      </div>
-    
-      <div class="process-card">
-        <div class="process-step-num">04</div>
-        <h3 class="process-title">Deployment & 24/7 Operations</h3>
-        <p class="process-desc">Zero-downtime cloud migration, telemetry instrumentation, performance monitoring, and rapid response SLAs to ensure ongoing system stability.</p>
-        <div class="process-deliverables-title">Key Deliverables</div>
-        <ul class="process-deliverables-list">
-          <li class="process-deliverable-item">Zero-Downtime Deployment</li><li class="process-deliverable-item">Telemetry & Alert Dashboards</li><li class="process-deliverable-item">Production Runbooks & Training</li><li class="process-deliverable-item">Guaranteed SLA Support</li>
-        </ul>
-      </div>
-    
-        </div>
-      </div>
-    </section>
-  
-
-
-    <section class="km-section" id="about" aria-labelledby="about-title">
-      <div class="km-section-container">
-        <header class="km-section-header">
-          <div class="km-eyebrow">ABOUT KODMATES</div>
-          <h2 class="km-section-title" id="about-title">
-            Engineering Software That Runs <span class="km-section-title-accent">Mission-Critical Business Operations</span>
-          </h2>
-        </header>
-
-        <div class="about-grid">
-          <div class="about-narrative">
-            <p class="about-lead">
-              Kodmates was founded on a simple conviction: software should solve real operational problems, not create new ones.
+      <!-- FEATURED PROJECT SECTION (ASUTI) -->
+      <section class="km-section" id="projects" aria-labelledby="projects-title">
+        <div class="km-section-container">
+          <header class="km-section-header is-centered">
+            <div class="km-eyebrow">SELECTED WORK</div>
+            <h2 class="km-section-title" id="projects-title">
+              Featured Project: <span class="km-section-title-accent">ASUTI</span>
+            </h2>
+            <p class="km-section-desc">
+              An artisanal, high-performance direct-to-consumer digital storefront engineered with soothing aesthetics, sub-second page loads, and seamless checkout conversion.
             </p>
-            <p class="about-body">
-              We specialize in custom web applications, native Android software, and enterprise business systems. While typical agencies build disposable landing pages, our team designs and engineers core business infrastructure—the software that handles high-traffic inventory, security gate verification, real-time dispatch, and daily billing.
-            </p>
-            <p class="about-body">
-              Our culture centers on technical rigor, deep architectural thinking, and direct communication. Every engineer on our team understands database locks, network partitions, and real-world failure modes.
-            </p>
+          </header>
 
-            <div class="about-pillars-grid">
-              <div class="about-pillar-card">
-                <div class="about-pillar-title">Resilient Architecture</div>
-                <div class="about-pillar-desc">Designed from day one to handle network dropouts, database contention, and hardware edge cases.</div>
+          <div class="featured-projects__collection">
+            <article class="featured-project" data-project-slug="asuti">
+              <div class="featured-project__visual">
+                <img src="/assets/projects/asuti-preview.jpg" alt="ASUTI Minimalist &amp; Aesthetic Skincare project preview" class="featured-project__image" loading="lazy" decoding="async" />
               </div>
-              <div class="about-pillar-card">
-                <div class="about-pillar-title">Transparent Delivery</div>
-                <div class="about-pillar-desc">Direct engineer-to-client communication with continuous sprint demo deployments. No account-manager telephone games.</div>
+
+              <div class="featured-project__content">
+                <div class="featured-project__header">
+                  <span class="featured-project__eyebrow-tag">D2C E-COMMERCE</span>
+                  <span class="featured-project__category">Digital Products &amp; D2C</span>
+                </div>
+
+                <h3 class="featured-project__title">ASUTI</h3>
+                <div class="featured-project__tagline">Minimalist &amp; Aesthetic D2C Skincare Experience</div>
+
+                <div class="featured-project__narrative">
+                  <div class="featured-project__narrative-item">
+                    <span class="featured-project__narrative-label">THE PROBLEM</span>
+                    <p class="featured-project__narrative-text">
+                      Boutique beauty brands frequently struggle to balance rich, visually serene editorial aesthetics with mobile performance and conversion speed. Heavy imagery and sluggish transitions often cause high bounce rates and checkout abandonment.
+                    </p>
+                  </div>
+                  <div class="featured-project__narrative-item">
+                    <span class="featured-project__narrative-label">THE SOLUTION</span>
+                    <p class="featured-project__narrative-text">
+                      Crafted a custom-engineered, lightweight digital storefront centered on serene micro-interactions and rapid page speed. Built with modern CSS custom properties, responsive image delivery, and a distraction-free slide-out cart drawer with sub-second LCP speed.
+                    </p>
+                  </div>
+                </div>
+
+                <ul class="featured-project__tech-list" aria-label="Verified technologies used">
+                  <li class="featured-project__tech-item">JavaScript (ESNext)</li>
+                  <li class="featured-project__tech-item">HTML5 / Modern CSS</li>
+                  <li class="featured-project__tech-item">Responsive Grid</li>
+                  <li class="featured-project__tech-item">Web Performance</li>
+                  <li class="featured-project__tech-item">Headless E-Commerce</li>
+                  <li class="featured-project__tech-item">Accessible Micro-Interactions</li>
+                </ul>
+
+                <div class="featured-project__actions">
+                  <a href="/demos/asuti/" target="_blank" rel="noopener noreferrer" class="cta-button hero-cta-primary" aria-label="View ASUTI Live Website (opens in new tab)">
+                    <span>View Live Demo</span>
+                    <span class="cta-arrow" aria-hidden="true">↗</span>
+                  </a>
+                  <a href="/projects/asuti" class="featured-project__secondary-link" aria-label="Explore ASUTI Case Study">
+                    <span>Explore Case Study</span>
+                    <svg class="featured-project__external-icon" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M3.5 1.5H10.5V8.5M10.5 1.5L1.5 10.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
-              <div class="about-pillar-card">
-                <div class="about-pillar-title">Zero Legacy Bloat</div>
-                <div class="about-pillar-desc">Clean, thoroughly tested codebases documented with comprehensive runbooks and zero vendor lock-in.</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS & TOOLKIT SECTION -->
+      <section class="km-section" id="skills" aria-labelledby="skills-title">
+        <div class="km-section-container">
+          <header class="km-section-header is-centered">
+            <div class="km-eyebrow">TECHNICAL EXPERTISE</div>
+            <h2 class="km-section-title" id="skills-title">
+              Skills &amp; <span class="km-section-title-accent">Toolkit</span>
+            </h2>
+            <p class="km-section-desc">
+              Modern technologies, frameworks, and methodologies I use to engineer fast, responsive, and maintainable digital products.
+            </p>
+          </header>
+
+          <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+            <!-- Skill Card 1: Frontend -->
+            <div class="service-card">
+              <div>
+                <div class="service-icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                  </svg>
+                </div>
+                <h3 class="service-title">Frontend Engineering</h3>
+                <p class="service-desc">
+                  Building responsive, accessible, and reactive user interfaces with modern JavaScript, component architectures, and fluid animations.
+                </p>
               </div>
-              <div class="about-pillar-card">
-                <div class="about-pillar-title">Security by Default</div>
-                <div class="about-pillar-desc">Role-based access controls, cryptographic payload validation, and OWASP compliance baked into every layer.</div>
+              <div class="service-tags" aria-label="Frontend Technologies">
+                <span class="service-tag">React</span>
+                <span class="service-tag">JavaScript (ES6+)</span>
+                <span class="service-tag">HTML5 / CSS3</span>
+                <span class="service-tag">Tailwind / Tokens</span>
+                <span class="service-tag">Responsive Grid</span>
+              </div>
+            </div>
+
+            <!-- Skill Card 2: E-Commerce -->
+            <div class="service-card">
+              <div>
+                <div class="service-icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                  </svg>
+                </div>
+                <h3 class="service-title">E-Commerce &amp; Storefronts</h3>
+                <p class="service-desc">
+                  Architecting custom direct-to-consumer digital stores with dynamic cart engines, smooth checkout pipelines, and high conversion velocity.
+                </p>
+              </div>
+              <div class="service-tags" aria-label="E-Commerce Capabilities">
+                <span class="service-tag">D2C Storefronts</span>
+                <span class="service-tag">Mini-Cart Drawers</span>
+                <span class="service-tag">Headless APIs</span>
+                <span class="service-tag">Conversion Rate Opt</span>
+                <span class="service-tag">Product Storytelling</span>
+              </div>
+            </div>
+
+            <!-- Skill Card 3: Backend & APIs -->
+            <div class="service-card">
+              <div>
+                <div class="service-icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                </div>
+                <h3 class="service-title">Backend &amp; APIs</h3>
+                <p class="service-desc">
+                  Developing reliable server-side endpoints, authenticated webhook integrations, real-time event handlers, and structured data persistence.
+                </p>
+              </div>
+              <div class="service-tags" aria-label="Backend Technologies">
+                <span class="service-tag">Node.js</span>
+                <span class="service-tag">Express</span>
+                <span class="service-tag">RESTful APIs</span>
+                <span class="service-tag">Webhooks</span>
+                <span class="service-tag">JSON Pipelines</span>
+                <span class="service-tag">Redis</span>
+              </div>
+            </div>
+
+            <!-- Skill Card 4: Web Performance & Tools -->
+            <div class="service-card">
+              <div>
+                <div class="service-icon-box" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                  </svg>
+                </div>
+                <h3 class="service-title">Performance &amp; Tools</h3>
+                <p class="service-desc">
+                  Sub-second loading times, bundle splitting, modern asset pipelines, and automated deployments with zero friction.
+                </p>
+              </div>
+              <div class="service-tags" aria-label="DevOps and Performance">
+                <span class="service-tag">Vite</span>
+                <span class="service-tag">Git &amp; GitHub</span>
+                <span class="service-tag">Core Web Vitals</span>
+                <span class="service-tag">SEO Schema</span>
+                <span class="service-tag">Hostinger Cloud</span>
+                <span class="service-tag">CI/CD</span>
               </div>
             </div>
           </div>
-
-          <div class="about-stats-panel" aria-label="Operational Metrics">
-            <div class="stat-item">
-              <div class="stat-value">99.98%</div>
-              <div class="stat-label">Average System Uptime Across Production Deployments</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">350k+</div>
-              <div class="stat-label">Daily Operational Events & Transactions Processed</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">&lt; 400ms</div>
-              <div class="stat-label">Peak API Latency SLA on Critical Endpoints</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-value">100%</div>
-              <div class="stat-label">Production Milestone Delivery on Schedule</div>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-  
+      </section>
 
+      <!-- ABOUT ME SECTION -->
+      <section class="km-section" id="about" aria-labelledby="about-title">
+        <div class="km-section-container">
+          <header class="km-section-header">
+            <div class="km-eyebrow">ABOUT SUBRAT</div>
+            <h2 class="km-section-title" id="about-title">
+              Crafting High-Performance <span class="km-section-title-accent">Digital Products</span>
+            </h2>
+          </header>
 
-    <section class="km-section" id="blog" aria-labelledby="blog-title">
-      <div class="km-section-container">
-        <header class="km-section-header">
-          <div class="km-eyebrow">TECHNICAL PERSPECTIVES</div>
-          <h2 class="km-section-title" id="blog-title">
-            Architecture Insights & <span class="km-section-title-accent">Production Engineering Playbooks</span>
-          </h2>
-          <p class="km-section-desc">
-            Direct learnings from the engineering trenches. We publish practical deep-dives on high-concurrency systems, mobile offline sync, and enterprise infrastructure.
-          </p>
-        </header>
-
-        <div class="blog-grid">
-          
-    <article class="blog-card" id="blog-card-offline-android">
-      <div>
-        <div class="blog-meta-row">
-          <span class="blog-category-badge">Mobile Engineering</span>
-          <span class="blog-read-time">6 min read</span>
-        </div>
-        <h3 class="blog-title">Architecting Resilient Offline-First Sync for Industrial Android Apps</h3>
-        <p class="blog-excerpt">How we structured local SQLite caches with idempotent delta queues to guarantee zero data loss across spotty factory Wi-Fi networks in the Gate Pass mobile app.</p>
-      </div>
-      <div>
-        <button type="button" class="blog-read-btn" data-post-id="offline-android" aria-label="Read full article: Architecting Resilient Offline-First Sync for Industrial Android Apps">
-          <span>Read Engineering Article</span>
-          <span aria-hidden="true">→</span>
-        </button>
-      </div>
-    </article>
-  
-    <article class="blog-card" id="blog-card-websockets-scale">
-      <div>
-        <div class="blog-meta-row">
-          <span class="blog-category-badge">Backend Systems</span>
-          <span class="blog-read-time">8 min read</span>
-        </div>
-        <h3 class="blog-title">Scaling Real-Time WebSockets in Node.js: Lessons from 100k Simultaneous Connections</h3>
-        <p class="blog-excerpt">Key memory optimizations, Linux kernel socket tuning, and Redis Pub/Sub broadcast patterns we implemented to sustain high-concurrency editorial updates with sub-millisecond latencies.</p>
-      </div>
-      <div>
-        <button type="button" class="blog-read-btn" data-post-id="websockets-scale" aria-label="Read full article: Scaling Real-Time WebSockets in Node.js: Lessons from 100k Simultaneous Connections">
-          <span>Read Engineering Article</span>
-          <span aria-hidden="true">→</span>
-        </button>
-      </div>
-    </article>
-  
-    <article class="blog-card" id="blog-card-monolith-migration">
-      <div>
-        <div class="blog-meta-row">
-          <span class="blog-category-badge">Cloud & DevOps</span>
-          <span class="blog-read-time">10 min read</span>
-        </div>
-        <h3 class="blog-title">From Legacy Monolith to Scalable Services Without Downtime: A Production Playbook</h3>
-        <p class="blog-excerpt">A practical, step-by-step roadmap for carving independent services out of legacy databases using the Strangler Fig pattern, database shadow-writes, and zero customer downtime.</p>
-      </div>
-      <div>
-        <button type="button" class="blog-read-btn" data-post-id="monolith-migration" aria-label="Read full article: From Legacy Monolith to Scalable Services Without Downtime: A Production Playbook">
-          <span>Read Engineering Article</span>
-          <span aria-hidden="true">→</span>
-        </button>
-      </div>
-    </article>
-  
-        </div>
-      </div>
-    </section>
-  
-
-
-    <section class="km-section" id="contact" aria-labelledby="contact-title">
-      <div class="km-section-container">
-        <div class="contact-grid">
-          <!-- Left Column: Direct Coordinates & SLA -->
-          <div class="contact-info-col">
-            <div>
-              <div class="km-eyebrow">START A PROJECT</div>
-              <h2 class="km-section-title" id="contact-title">
-                Let's Build Something <span class="km-section-title-accent">Exceptional Together</span>
-              </h2>
-              <p class="km-section-desc">
-                Have a complex software challenge, mobile app, or business infrastructure system to engineer? Tell us about your goals, timelines, and technical requirements.
+          <div class="about-grid">
+            <div class="about-narrative">
+              <p class="about-lead">
+                I am Subrat Dakua, a full-stack web and e-commerce developer building under the <strong>Kodmates</strong> banner in Bhubaneswar, India.
+              </p>
+              <p class="about-body">
+                I focus on delivering custom web solutions where design elegance meets engineering performance. Rather than using bloated templates or generic page builders, I craft tailored digital experiences with clean code, sub-second load times, and intuitive interfaces.
+              </p>
+              <p class="about-body">
+                From custom e-commerce storefronts like ASUTI to responsive web applications, my work is built for real users, search visibility, and maximum conversion.
               </p>
 
-              <div class="contact-direct-items">
-                <div class="contact-direct-item">
-                  <div class="contact-direct-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                      <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="contact-direct-label">Direct Engineering Inquiries</div>
-                    <a href="mailto:info@kodmates.com" class="contact-direct-val">info@kodmates.com</a>
-                  </div>
+              <div class="about-pillars-grid">
+                <div class="about-pillar-card">
+                  <div class="about-pillar-title">Performance First</div>
+                  <div class="about-pillar-desc">Sub-second paint times, optimized font loading, and 100/100 Core Web Vitals guaranteed.</div>
                 </div>
-
-                <div class="contact-direct-item">
-                  <div class="contact-direct-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <div class="contact-direct-label">Engineering Hub</div>
-                    <div class="contact-direct-val">Bhubaneswar, Odisha, India • Remote Global Delivery</div>
-                  </div>
+                <div class="about-pillar-card">
+                  <div class="about-pillar-title">Bespoke Design</div>
+                  <div class="about-pillar-desc">Tailored design systems and serene palettes crafted specifically for each brand.</div>
+                </div>
+                <div class="about-pillar-card">
+                  <div class="about-pillar-title">Clean Architecture</div>
+                  <div class="about-pillar-desc">Standards-compliant codebases with zero legacy bloat and effortless maintainability.</div>
+                </div>
+                <div class="about-pillar-card">
+                  <div class="about-pillar-title">Direct Collaboration</div>
+                  <div class="about-pillar-desc">Transparent communication, quick turnarounds, and personal attention to detail.</div>
                 </div>
               </div>
             </div>
 
-            <div class="contact-sla-badge">
-              <span class="contact-sla-dot" aria-hidden="true"></span>
-              <span><strong>Guaranteed Response:</strong> Senior engineers reply within 24 business hours.</span>
+            <div class="about-stats-panel" aria-label="Key Performance Indicators">
+              <div class="stat-item">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Modern Web Standards &amp; Core Web Vitals Compliance</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">&lt; 0.8s</div>
+                <div class="stat-label">Target LCP Speed Across Desktop and Mobile</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">Responsive</div>
+                <div class="stat-label">Tested Across Mobile Handsets, Tablets, and Desktops</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">Direct</div>
+                <div class="stat-label">Personal Turnaround with Direct Engineer Communication</div>
+              </div>
             </div>
-          </div>
-
-          <!-- Right Column: Interactive Contact Form -->
-          <div class="contact-form-card">
-            <form id="contact-project-form" class="contact-form" novalidate>
-              <div class="form-row-2">
-                <div class="form-group">
-                  <label for="contact-name" class="form-label">Full Name *</label>
-                  <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="name" />
-                  <span class="form-feedback" id="name-feedback" aria-live="polite"></span>
-                </div>
-
-                <div class="form-group">
-                  <label for="contact-email" class="form-label">Work Email *</label>
-                  <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@company.com" required autocomplete="email" />
-                  <span class="form-feedback" id="email-feedback" aria-live="polite"></span>
-                </div>
-              </div>
-
-              <div class="form-row-2">
-                <div class="form-group">
-                  <label for="contact-type" class="form-label">System Type *</label>
-                  <select id="contact-type" name="systemType" class="form-select" required>
-                    <option value="Web Applications">Web Applications & SaaS</option>
-                    <option value="Android Apps">Android / Mobile App</option>
-                    <option value="Business Software">Business Software & Custom ERP</option>
-                    <option value="Cloud Infrastructure">Cloud & DevOps Architecture</option>
-                    <option value="API & Microservices">APIs & Microservices</option>
-                    <option value="Architecture Consultation">System Architecture Audit</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="contact-budget" class="form-label">Estimated Budget</label>
-                  <select id="contact-budget" name="budget" class="form-select">
-                    <option value="$5,000 - $15,000">$5,000 – $15,000</option>
-                    <option value="$15,000 - $35,000">$15,000 – $35,000</option>
-                    <option value="$35,000+">$35,000+</option>
-                    <option value="To be determined">To be determined</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="contact-message" class="form-label">Project Overview & Objectives *</label>
-                <textarea id="contact-message" name="message" class="form-textarea" placeholder="Briefly describe your business challenge, required integrations, and current timeline..." required minlength="20"></textarea>
-                <span class="form-feedback" id="message-feedback" aria-live="polite"></span>
-              </div>
-
-              <button type="submit" id="contact-submit-btn" class="form-submit-btn">
-                <span>Send Project Inquiry</span>
-                <span aria-hidden="true">→</span>
-              </button>
-
-              <div id="contact-status-alert" class="form-status-alert" role="status" aria-live="polite"></div>
-            </form>
           </div>
         </div>
-      </div>
-    </section>
-  
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section class="km-section" id="contact" aria-labelledby="contact-title">
+        <div class="km-section-container">
+          <div class="contact-grid">
+            <!-- Left Column: Direct Coordinates & SLA -->
+            <div class="contact-info-col">
+              <div>
+                <div class="km-eyebrow">LET'S CONNECT</div>
+                <h2 class="km-section-title" id="contact-title">
+                  Have a Project in Mind? <span class="km-section-title-accent">Let's Talk</span>
+                </h2>
+                <p class="km-section-desc">
+                  Whether you need a custom e-commerce storefront, a high-performance web application, or design engineering, feel free to reach out. I'm currently available for freelance work and new projects.
+                </p>
+
+                <div class="contact-direct-items">
+                  <div class="contact-direct-item">
+                    <div class="contact-direct-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="contact-direct-label">Direct Contact</div>
+                      <a href="mailto:info@kodmates.com" class="contact-direct-val">info@kodmates.com</a>
+                    </div>
+                  </div>
+
+                  <div class="contact-direct-item">
+                    <div class="contact-direct-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="contact-direct-label">Based in</div>
+                      <div class="contact-direct-val">Bhubaneswar, Odisha, India • Remote Worldwide</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-sla-badge">
+                <span class="contact-sla-dot" aria-hidden="true"></span>
+                <span><strong>Fast Response:</strong> Messages are sent directly to Subrat and answered within 24 hours.</span>
+              </div>
+            </div>
+
+            <!-- Right Column: Interactive Contact Form -->
+            <div class="contact-form-card">
+              <form id="contact-project-form" class="contact-form" novalidate>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="contact-name" class="form-label">Your Name *</label>
+                    <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="name" />
+                    <span class="form-feedback" id="name-feedback" aria-live="polite"></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-email" class="form-label">Your Email *</label>
+                    <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@example.com" required autocomplete="email" />
+                    <span class="form-feedback" id="email-feedback" aria-live="polite"></span>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="contact-type" class="form-label">Project Type *</label>
+                    <select id="contact-type" name="systemType" class="form-select" required>
+                      <option value="E-Commerce & Storefront">E-Commerce &amp; D2C Storefront</option>
+                      <option value="Web Application">Web Application &amp; Frontend</option>
+                      <option value="Landing Page & Portfolio">Landing Page &amp; Product Showcase</option>
+                      <option value="API & Backend Integration">API &amp; Backend Integration</option>
+                      <option value="General Collaboration">General Inquiry / Collaboration</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-budget" class="form-label">Project Scope / Budget</label>
+                    <select id="contact-budget" name="budget" class="form-select">
+                      <option value="Flexible / To be discussed">Flexible / To be discussed</option>
+                      <option value="Small ($500 - $1,500)">Small Project ($500 – $1,500)</option>
+                      <option value="Medium ($1,500 - $5,000)">Medium Project ($1,500 – $5,000)</option>
+                      <option value="Comprehensive ($5,000+)">Comprehensive ($5,000+)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-message" class="form-label">Message / Project Description *</label>
+                  <textarea id="contact-message" name="message" class="form-textarea" placeholder="Tell me a bit about your idea, timeline, or what you're looking to build..." required minlength="20"></textarea>
+                  <span class="form-feedback" id="message-feedback" aria-live="polite"></span>
+                </div>
+
+                <button type="submit" id="contact-submit-btn" class="form-submit-btn">
+                  <span>Send Message</span>
+                  <span aria-hidden="true">→</span>
+                </button>
+
+                <div id="contact-status-alert" class="form-status-alert" role="status" aria-live="polite"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
-    
+    <!-- Footer mounts dynamically via FooterSection.js or static fallback -->
     <footer class="site-footer" id="site-footer" role="contentinfo">
       <div class="km-section-container">
-        <div class="footer-main-grid">
-          <!-- Col 1: Brand & Operational Status -->
+        <div class="footer-main-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 40px;">
+          <!-- Col 1: Brand & Bio -->
           <div class="footer-brand-col">
-            
-    <a href="#" class="brand-logo" aria-label="Kodmates Home">
-      <div class="brand-logo__mark" aria-hidden="true">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Left bracket anchor -->
-          <path d="M10.5 7H9C7.34315 7 6 8.34315 6 10V22C6 23.6569 7.34315 25 9 25H10.5" 
-                stroke="#FEEFB8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <!-- Chevron forming the K glyph -->
-          <path d="M20.5 8L12 16L20.5 24" 
-                stroke="#FEEFB8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="brand-logo__meta">
-        <span class="brand-logo__name">KODMATES</span>
-        <span class="brand-logo__tagline">Building Digital Systems for the Real World.</span>
-      </div>
-    </a>
-  
+            <a href="/" class="brand-logo" aria-label="Subrat Dakua Home">
+              <div class="brand-logo__mark" aria-hidden="true">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5 7H9C7.34315 7 6 8.34315 6 10V22C6 23.6569 7.34315 25 9 25H10.5" stroke="#FEEFB8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M20.5 8L12 16L20.5 24" stroke="#FEEFB8" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="brand-logo__meta">
+                <span class="brand-logo__name">SUBRAT DAKUA</span>
+                <span class="brand-logo__tagline">Full-Stack &amp; E-Commerce Developer</span>
+              </div>
+            </a>
             <p class="footer-tagline">
-              Engineering high-reliability software, web applications, Android systems, and cloud infrastructure for businesses.
+              Crafting high-performance web applications, bespoke e-commerce storefronts, and seamless digital solutions.
             </p>
-            <div class="footer-status-pill" aria-label="System status: All operational">
+            <div class="footer-status-pill" aria-label="Status: Available for work">
               <span class="contact-sla-dot" aria-hidden="true"></span>
-              <span>All Systems Operational</span>
+              <span>Available for Freelance &amp; Contract Work</span>
             </div>
           </div>
 
-          <!-- Col 2: Solutions Directory -->
+          <!-- Col 2: Navigation -->
           <div>
-            <div class="footer-col-title">Engineering Solutions</div>
+            <div class="footer-col-title">Navigation</div>
             <ul class="footer-links-list">
-              <li><a href="#services" class="footer-link">Web Applications</a></li>
-              <li><a href="#services" class="footer-link">Android Mobile Apps</a></li>
-              <li><a href="#services" class="footer-link">Business ERP & POS</a></li>
-              <li><a href="#services" class="footer-link">Cloud & DevOps</a></li>
-              <li><a href="#services" class="footer-link">APIs & Microservices</a></li>
-              <li><a href="#services" class="footer-link">Database Engineering</a></li>
+              <li><a href="#home" class="footer-link">Home</a></li>
+              <li><a href="#projects" class="footer-link">Featured Work</a></li>
+              <li><a href="#skills" class="footer-link">Skills &amp; Toolkit</a></li>
+              <li><a href="#about" class="footer-link">About Me</a></li>
+              <li><a href="#contact" class="footer-link">Contact</a></li>
             </ul>
           </div>
 
-          <!-- Col 3: Company Navigation -->
+          <!-- Col 3: Direct Inquiries -->
           <div>
-            <div class="footer-col-title">Company & Process</div>
-            <ul class="footer-links-list">
-              <li><a href="#projects" class="footer-link">Production Projects</a></li>
-              <li><a href="#process" class="footer-link">Engineering Process</a></li>
-              <li><a href="#about" class="footer-link">About Kodmates</a></li>
-              <li><a href="#blog" class="footer-link">Technical Blog</a></li>
-              <li><a href="#contact" class="footer-link">Start a Project</a></li>
-            </ul>
-          </div>
-
-          <!-- Col 4: Direct Engineering Coordinates -->
-          <div>
-            <div class="footer-col-title">Direct Inquiries</div>
+            <div class="footer-col-title">Get in Touch</div>
             <ul class="footer-links-list">
               <li><a href="mailto:info@kodmates.com" class="footer-link">info@kodmates.com</a></li>
               <li><span style="color: rgba(240,242,238,0.55); font-size: 13px;">Bhubaneswar, Odisha, India</span></li>
-              <li><span style="color: rgba(240,242,238,0.55); font-size: 13px;">Remote Global Operations</span></li>
+              <li><span style="color: var(--km-accent-primary, #FEEFB8); font-size: 13px;">Fast Response Guaranteed</span></li>
             </ul>
           </div>
         </div>
 
         <div class="footer-bottom-bar">
           <div class="footer-copyright">
-            © 2026 Kodmates. All rights reserved. Built with precision and care.
+            © 2026 Subrat Dakua (Kodmates). All rights reserved.
           </div>
           <button type="button" class="footer-back-to-top" id="footer-back-to-top" aria-label="Scroll back to top of page">
             <span>Back to top</span>
@@ -1014,10 +646,9 @@
         </div>
       </div>
     </footer>
-  
-
   </div>
 
+  <!-- Main JavaScript Entrypoint -->
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>

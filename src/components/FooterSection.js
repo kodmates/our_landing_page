@@ -11,58 +11,45 @@ export function createFooterSection() {
   return `
     <footer class="site-footer" id="site-footer" role="contentinfo">
       <div class="km-section-container">
-        <div class="footer-main-grid">
-          <!-- Col 1: Brand & Operational Status -->
+        <div class="footer-main-grid" style="grid-template-columns: 2fr 1fr 1fr; gap: 40px;">
+          <!-- Col 1: Brand & Bio -->
           <div class="footer-brand-col">
             ${logoHtml}
             <p class="footer-tagline">
-              Engineering high-reliability software, web applications, Android systems, and cloud infrastructure for businesses.
+              Crafting high-performance web applications, bespoke e-commerce storefronts, and seamless digital solutions.
             </p>
-            <div class="footer-status-pill" aria-label="System status: All operational">
+            <div class="footer-status-pill" aria-label="Status: Available for work">
               <span class="contact-sla-dot" aria-hidden="true"></span>
-              <span>All Systems Operational</span>
+              <span>Available for Freelance &amp; Contract Work</span>
             </div>
           </div>
 
-          <!-- Col 2: Solutions Directory -->
+          <!-- Col 2: Navigation -->
           <div>
-            <div class="footer-col-title">Engineering Solutions</div>
+            <div class="footer-col-title">Navigation</div>
             <ul class="footer-links-list">
-              <li><a href="#services" class="footer-link">Web Applications</a></li>
-              <li><a href="#services" class="footer-link">Android Mobile Apps</a></li>
-              <li><a href="#services" class="footer-link">Business ERP & POS</a></li>
-              <li><a href="#services" class="footer-link">Cloud & DevOps</a></li>
-              <li><a href="#services" class="footer-link">APIs & Microservices</a></li>
-              <li><a href="#services" class="footer-link">Database Engineering</a></li>
+              <li><a href="#home" class="footer-link">Home</a></li>
+              <li><a href="#projects" class="footer-link">Featured Work</a></li>
+              <li><a href="#skills" class="footer-link">Skills &amp; Toolkit</a></li>
+              <li><a href="#about" class="footer-link">About Me</a></li>
+              <li><a href="#contact" class="footer-link">Contact</a></li>
             </ul>
           </div>
 
-          <!-- Col 3: Company Navigation -->
+          <!-- Col 3: Direct Inquiries -->
           <div>
-            <div class="footer-col-title">Company & Process</div>
-            <ul class="footer-links-list">
-              <li><a href="#projects" class="footer-link">Production Projects</a></li>
-              <li><a href="#process" class="footer-link">Engineering Process</a></li>
-              <li><a href="#about" class="footer-link">About Kodmates</a></li>
-              <li><a href="#blog" class="footer-link">Technical Blog</a></li>
-              <li><a href="#contact" class="footer-link">Start a Project</a></li>
-            </ul>
-          </div>
-
-          <!-- Col 4: Direct Engineering Coordinates -->
-          <div>
-            <div class="footer-col-title">Direct Inquiries</div>
+            <div class="footer-col-title">Get in Touch</div>
             <ul class="footer-links-list">
               <li><a href="mailto:info@kodmates.com" class="footer-link">info@kodmates.com</a></li>
               <li><span style="color: rgba(240,242,238,0.55); font-size: 13px;">Bhubaneswar, Odisha, India</span></li>
-              <li><span style="color: rgba(240,242,238,0.55); font-size: 13px;">Remote Global Operations</span></li>
+              <li><span style="color: var(--km-accent-primary, #FEEFB8); font-size: 13px;">Fast Response Guaranteed</span></li>
             </ul>
           </div>
         </div>
 
         <div class="footer-bottom-bar">
           <div class="footer-copyright">
-            © 2026 Kodmates. All rights reserved. Built with precision and care.
+            © 2026 Subrat Dakua (Kodmates). All rights reserved.
           </div>
           <button type="button" class="footer-back-to-top" id="footer-back-to-top" aria-label="Scroll back to top of page">
             <span>Back to top</span>

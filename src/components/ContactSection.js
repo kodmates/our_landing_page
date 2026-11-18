@@ -11,12 +11,12 @@ export function createContactSection() {
           <!-- Left Column: Direct Coordinates & SLA -->
           <div class="contact-info-col">
             <div>
-              <div class="km-eyebrow">START A PROJECT</div>
+              <div class="km-eyebrow">LET'S CONNECT</div>
               <h2 class="km-section-title" id="contact-title">
-                Let's Build Something <span class="km-section-title-accent">Exceptional Together</span>
+                Have a Project in Mind? <span class="km-section-title-accent">Let's Talk</span>
               </h2>
               <p class="km-section-desc">
-                Have a complex software challenge, mobile app, or business infrastructure system to engineer? Tell us about your goals, timelines, and technical requirements.
+                Whether you need a custom e-commerce storefront, a high-performance web application, or design engineering, feel free to reach out. I'm currently available for freelance work and new projects.
               </p>
 
               <div class="contact-direct-items">
@@ -28,7 +28,7 @@ export function createContactSection() {
                     </svg>
                   </div>
                   <div>
-                    <div class="contact-direct-label">Direct Engineering Inquiries</div>
+                    <div class="contact-direct-label">Direct Contact</div>
                     <a href="mailto:info@kodmates.com" class="contact-direct-val">info@kodmates.com</a>
                   </div>
                 </div>
@@ -41,8 +41,8 @@ export function createContactSection() {
                     </svg>
                   </div>
                   <div>
-                    <div class="contact-direct-label">Engineering Hub</div>
-                    <div class="contact-direct-val">Bhubaneswar, Odisha, India • Remote Global Delivery</div>
+                    <div class="contact-direct-label">Based in</div>
+                    <div class="contact-direct-val">Bhubaneswar, Odisha, India • Remote Worldwide</div>
                   </div>
                 </div>
               </div>
@@ -50,7 +50,7 @@ export function createContactSection() {
 
             <div class="contact-sla-badge">
               <span class="contact-sla-dot" aria-hidden="true"></span>
-              <span><strong>Guaranteed Response:</strong> Senior engineers reply within 24 business hours.</span>
+              <span><strong>Fast Response:</strong> Messages are sent directly to Subrat and answered within 24 hours.</span>
             </div>
           </div>
 
@@ -59,50 +59,49 @@ export function createContactSection() {
             <form id="contact-project-form" class="contact-form" novalidate>
               <div class="form-row-2">
                 <div class="form-group">
-                  <label for="contact-name" class="form-label">Full Name *</label>
+                  <label for="contact-name" class="form-label">Your Name *</label>
                   <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="name" />
                   <span class="form-feedback" id="name-feedback" aria-live="polite"></span>
                 </div>
 
                 <div class="form-group">
-                  <label for="contact-email" class="form-label">Work Email *</label>
-                  <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@company.com" required autocomplete="email" />
+                  <label for="contact-email" class="form-label">Your Email *</label>
+                  <input type="email" id="contact-email" name="email" class="form-input" placeholder="alex@example.com" required autocomplete="email" />
                   <span class="form-feedback" id="email-feedback" aria-live="polite"></span>
                 </div>
               </div>
 
               <div class="form-row-2">
                 <div class="form-group">
-                  <label for="contact-type" class="form-label">System Type *</label>
+                  <label for="contact-type" class="form-label">Project Type *</label>
                   <select id="contact-type" name="systemType" class="form-select" required>
-                    <option value="Web Applications">Web Applications & SaaS</option>
-                    <option value="Android Apps">Android / Mobile App</option>
-                    <option value="Business Software">Business Software & Custom ERP</option>
-                    <option value="Cloud Infrastructure">Cloud & DevOps Architecture</option>
-                    <option value="API & Microservices">APIs & Microservices</option>
-                    <option value="Architecture Consultation">System Architecture Audit</option>
+                    <option value="E-Commerce & Storefront">E-Commerce &amp; D2C Storefront</option>
+                    <option value="Web Application">Web Application &amp; Frontend</option>
+                    <option value="Landing Page & Portfolio">Landing Page &amp; Product Showcase</option>
+                    <option value="API & Backend Integration">API &amp; Backend Integration</option>
+                    <option value="General Collaboration">General Inquiry / Collaboration</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label for="contact-budget" class="form-label">Estimated Budget</label>
+                  <label for="contact-budget" class="form-label">Project Scope / Budget</label>
                   <select id="contact-budget" name="budget" class="form-select">
-                    <option value="$5,000 - $15,000">$5,000 – $15,000</option>
-                    <option value="$15,000 - $35,000">$15,000 – $35,000</option>
-                    <option value="$35,000+">$35,000+</option>
-                    <option value="To be determined">To be determined</option>
+                    <option value="Flexible / To be discussed">Flexible / To be discussed</option>
+                    <option value="Small ($500 - $1,500)">Small Project ($500 – $1,500)</option>
+                    <option value="Medium ($1,500 - $5,000)">Medium Project ($1,500 – $5,000)</option>
+                    <option value="Comprehensive ($5,000+)">Comprehensive ($5,000+)</option>
                   </select>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="contact-message" class="form-label">Project Overview & Objectives *</label>
-                <textarea id="contact-message" name="message" class="form-textarea" placeholder="Briefly describe your business challenge, required integrations, and current timeline..." required minlength="20"></textarea>
+                <label for="contact-message" class="form-label">Message / Project Description *</label>
+                <textarea id="contact-message" name="message" class="form-textarea" placeholder="Tell me a bit about your idea, timeline, or what you're looking to build..." required minlength="20"></textarea>
                 <span class="form-feedback" id="message-feedback" aria-live="polite"></span>
               </div>
 
               <button type="submit" id="contact-submit-btn" class="form-submit-btn">
-                <span>Send Project Inquiry</span>
+                <span>Send Message</span>
                 <span aria-hidden="true">→</span>
               </button>
 
@@ -233,7 +232,7 @@ export function initContactSection() {
             Thank you, <strong>${nameVal}</strong>! Your inquiry has been delivered directly to <strong>info@kodmates.com</strong>.
           </p>
           <p style="font-size: 12.5px; color: var(--km-accent-primary, #FEEFB8); margin: 0;">
-            Our senior engineering team will review your specifications and reply to <strong>${emailVal}</strong> within 24 business hours.
+            Subrat will review your message and reply to <strong>${emailVal}</strong> within 24 hours.
           </p>
         `;
         statusAlert.style.display = 'block';

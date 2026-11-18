@@ -75,7 +75,7 @@ export function createMobileMenu({ activePage = 'Home' } = {}) {
           </span>
         </button>
         <a href="#contact" class="cta-button mobile-cta-button" id="mobile-cta-btn">
-          <span>Start a Project</span>
+          <span>Get in Touch</span>
           <span class="cta-arrow" aria-hidden="true">→</span>
         </a>
       </div>

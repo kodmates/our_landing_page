@@ -16,9 +16,9 @@
  * - 0% fake images or placeholder social preview images
  */
 
-const DEFAULT_HOME_TITLE = 'Kodmates — Building Digital Systems for the Real World';
+const DEFAULT_HOME_TITLE = 'Subrat Dakua — Full-Stack & E-Commerce Developer | Kodmates';
 const DEFAULT_HOME_DESCRIPTION =
-  'We design and develop software, web applications, Android apps and business systems that solve real operational problems.';
+  'Portfolio of Subrat Dakua (Kodmates) — Full-Stack & E-Commerce Developer specializing in high-performance web applications, bespoke D2C storefronts, and modern digital experiences.';
 
 const JSONLD_SCRIPT_ID = 'km-project-jsonld';
 

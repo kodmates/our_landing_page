@@ -4,8 +4,8 @@
  * and JSON-LD structured data for Blog listing and individual articles.
  */
 
-const DEFAULT_TITLE = 'Kodmates — Building Digital Systems for the Real World';
-const DEFAULT_DESC = 'We design and develop software, web applications, Android apps and business systems that solve real operational problems.';
+const DEFAULT_TITLE = 'Subrat Dakua — Full-Stack & E-Commerce Developer | Kodmates';
+const DEFAULT_DESC = 'Portfolio of Subrat Dakua (Kodmates) — Full-Stack & E-Commerce Developer specializing in high-performance web applications, bespoke D2C storefronts, and modern digital experiences.';
 
 /**
  * Updates document meta tag or creates it if not present

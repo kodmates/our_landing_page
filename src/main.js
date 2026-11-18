@@ -16,6 +16,7 @@ import './styles/theme.css';
 import './styles/header.css';
 import './styles/hero.css';
 import './styles/sections.css';
+import './styles/projects.css';
 import './styles/footer.css';
 
 import { initHeader } from './components/Header.js';

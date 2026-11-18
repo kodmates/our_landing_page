@@ -501,6 +501,11 @@
   border-radius: 4px;
 }
 
+[data-theme="light"] .featured-project__eyebrow-tag {
+  color: #FFFFFF;
+  background: #92400E;
+}
+
 .featured-project__category {
   font-size: 11px;
   font-weight: 600;

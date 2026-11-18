@@ -933,6 +933,8 @@
    Component: src/components/FooterSection.js
    ========================================================================== */
 .site-footer {
+  --km-accent-primary: #FEEFB8;
+  --km-accent-primary-hover: #FFF5CE;
   background: #040505;
   border-top: 1px solid rgba(254, 239, 184, 0.08);
   padding: 80px 0 36px;

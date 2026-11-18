@@ -6,9 +6,9 @@
  * Strictly adheres to verified company data and zero-fabrication standards.
  */
 
-const DEFAULT_TITLE = 'Kodmates — Building Digital Systems for the Real World';
+const DEFAULT_TITLE = 'Subrat Dakua — Full-Stack & E-Commerce Developer | Kodmates';
 const DEFAULT_DESCRIPTION =
-  'We design and develop software, web applications, Android apps and business systems that solve real operational problems.';
+  'Portfolio of Subrat Dakua (Kodmates) — Full-Stack & E-Commerce Developer specializing in high-performance web applications, bespoke D2C storefronts, and modern digital experiences.';
 
 const SERVICES_TITLE = 'Services — Digital Solutions & Software Engineering | KodMates';
 const SERVICES_DESCRIPTION =
