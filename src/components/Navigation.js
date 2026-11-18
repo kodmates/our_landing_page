@@ -5,11 +5,10 @@
  */
 
 export const NAV_ITEMS = [
-  { label: 'Home', href: '/', id: 'home' },
-  { label: 'Projects', href: '/#projects', id: 'projects' },
-  { label: 'Skills', href: '/#skills', id: 'skills' },
-  { label: 'About', href: '/#about', id: 'about' },
-  { label: 'Contact', href: '/#contact', id: 'contact' },
+  { label: 'Work', href: '#projects', id: 'projects' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
+  { label: 'About', href: '#about', id: 'about' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
 ];
 
 export function createNavigation({ activePage = 'Home' } = {}) {

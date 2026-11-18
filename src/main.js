@@ -1,442 +1,130 @@
 /**
- * KodMates Main Application Entrypoint
- * Complete Unified SPA Integration:
- * - 3D Hero Ecosystem & Home Landing Architecture (Step 02)
- * - Header Navigation with Active Route State (Step 01)
- * - Engineering Services Directory & Deep Architecture (Harisankar)
- * - Projects Listing & Interactive 3D Case Studies (Harisankar)
- * - Contact Page, Consultation Form, & Verification Workflow (Aniket)
- * - Technical Blog Hub & Illustrated Architecture Guides (Aniket)
- * - Shared Structured Footer with Live Operational Telemetry
+ * Subrat Dakua — Developer Portfolio Entrypoint
+ * High-performance, lightweight script:
+ * - Header & Mobile Drawer Navigation
+ * - Dark / Light Theme Toggle
+ * - Portfolio Contact Form Handling (info@kodmates.com)
+ * - Smooth Scrolling & Back-to-Top
+ * - Active Section ScrollSpy
  */
 
 import './styles/tokens.css';
 import './styles/base.css';
 import './styles/theme.css';
 import './styles/header.css';
-import './styles/hero.css';
-import './styles/sections.css';
-import './styles/projects.css';
-import './styles/footer.css';
+import './styles/portfolio.css';
 
 import { initHeader } from './components/Header.js';
-import { initHero } from './components/Hero.js';
-import { initProjectsSection } from './components/ProjectsSection.js';
-import { initBlogSection } from './components/BlogSection.js';
-import { initContactSection } from './components/ContactSection.js';
-import { initFooterSection } from './components/FooterSection.js';
 
-// Dedicated Sub-Page Controllers & Registries are lazily loaded on-demand
-// to guarantee an ultra-lightweight initial bundle and instant First Contentful Paint.
-import { resetProjectSEO } from './components/projects/ProjectSEO.js';
-import { resetServicesSEO } from './components/services/ServicesSEO.js';
-import { resetBlogSEO } from './components/blog/BlogSEO.js';
+// 1. Initialize Sticky Header with Portfolio Navigation
+const header = initHeader({ activePage: 'Work' });
 
-// 1. Initialize Sticky Header
-const header = initHeader({ activePage: 'Home' });
+// 2. Form Submission & Direct Mail Handler
+function initPortfolioForm() {
+  const form = document.getElementById('portfolio-contact-form');
+  const statusEl = document.getElementById('portfolio-form-status');
+  const submitBtn = document.getElementById('portfolio-submit-btn');
 
-// 2. Initialize 3D Hero Ecosystem
-const hero = initHero();
+  if (!form || !statusEl) return;
 
-// 3. Initialize Homepage Section Listeners
-initProjectsSection();
-initBlogSection();
-initContactSection();
-initFooterSection();
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-// Active Sub-Page Controller State
-let activeProjectsPage = null;
-let activeCaseStudyPage = null;
-let activeServicesPage = null;
-let activeBlogPage = null;
-let activeBlogArticlePage = null;
-let activeContactPage = null;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
 
-function destroyActiveSubpages() {
-  if (activeServicesPage) {
-    activeServicesPage.destroy();
-    activeServicesPage = null;
-    resetServicesSEO();
-  }
-  if (activeProjectsPage) {
-    activeProjectsPage.destroy();
-    activeProjectsPage = null;
-    resetProjectSEO();
-  }
-  if (activeCaseStudyPage) {
-    activeCaseStudyPage.destroy();
-    activeCaseStudyPage = null;
-    resetProjectSEO();
-  }
-  if (activeBlogPage) {
-    activeBlogPage.destroy();
-    activeBlogPage = null;
-    resetBlogSEO();
-  }
-  if (activeBlogArticlePage) {
-    activeBlogArticlePage.destroy();
-    activeBlogArticlePage = null;
-    resetBlogSEO();
-  }
-  if (activeContactPage) {
-    activeContactPage.destroy();
-    activeContactPage = null;
-  }
-}
-
-/**
- * Universal Route Parser
- * Supports clean URLs (/services, /projects, /blog, /contact, /projects/:slug, /blog/:slug)
- * and hash routing fallbacks (#/services, #services-page, #/projects/:slug, etc.)
- */
-export function parseRoute() {
-  const path = window.location.pathname.toLowerCase();
-  const hash = window.location.hash.toLowerCase();
-
-  // 1. Hash-based subpage routes
-  if (hash.startsWith('#/projects/') || hash.startsWith('#projects/')) {
-    const slug = hash.replace(/^#\/?projects\//, '').split('/')[0].split('?')[0];
-    return { type: 'case-study', slug };
-  }
-  if (hash === '#/projects' || hash === '#projects-page') {
-    return { type: 'projects-list' };
-  }
-  if (hash === '#/services' || hash === '#services-page') {
-    return { type: 'services' };
-  }
-  if (hash.startsWith('#/blog/') || hash.startsWith('#blog/')) {
-    const slug = hash.replace(/^#\/?blog\//, '').split('/')[0].split('?')[0];
-    return { type: 'blog-article', slug };
-  }
-  if (hash === '#/blog' || hash === '#blog-page') {
-    return { type: 'blog' };
-  }
-  if (hash === '#/contact' || hash === '#contact-page') {
-    return { type: 'contact' };
-  }
-
-  // 2. Pathname-based subpage routes
-  if (path.startsWith('/projects/')) {
-    const slug = path.replace(/^\/projects\//, '').split('/')[0].split('?')[0];
-    if (slug) {
-      return { type: 'case-study', slug };
+    if (!name || !email || !message) {
+      statusEl.className = 'portfolio-form-status is-error';
+      statusEl.textContent = 'Please fill out all required fields.';
+      return;
     }
-    return { type: 'projects-list' };
-  }
-  if (path === '/projects' || path === '/projects/') {
-    return { type: 'projects-list' };
-  }
 
-  if (path === '/services' || path === '/services/') {
-    return { type: 'services' };
-  }
-
-  if (path.startsWith('/blog/')) {
-    const slug = path.replace(/^\/blog\//, '').split('/')[0].split('?')[0];
-    if (slug) {
-      return { type: 'blog-article', slug };
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      statusEl.className = 'portfolio-form-status is-error';
+      statusEl.textContent = 'Please enter a valid email address.';
+      return;
     }
-    return { type: 'blog' };
-  }
-  if (path === '/blog' || path === '/blog/') {
-    return { type: 'blog' };
-  }
 
-  if (path === '/contact' || path === '/contact/') {
-    return { type: 'contact' };
-  }
-
-  // 3. Homepage section routes (/process, /about)
-  const cleanPath = path.replace(/\/$/, '');
-  const sectionMatch = cleanPath.startsWith('/') ? cleanPath.substring(1) : '';
-  if (['process', 'about', 'home'].includes(sectionMatch)) {
-    return { type: 'home', hash: sectionMatch === 'home' ? null : sectionMatch };
-  }
-
-  // 4. Default home
-  return { type: 'home', hash: hash ? hash.replace('#', '') : null };
-}
-
-/**
- * Universal Route Renderer
- * Mounts the appropriate full-page controller or restores the homepage ecosystem
- */
-export async function renderRoute() {
-  const route = parseRoute();
-  const heroEl = document.getElementById('hero');
-  const mainContent = document.getElementById('main-content');
-  const homeSections = document.querySelectorAll('.km-section');
-
-  destroyActiveSubpages();
-
-  if (route.type === 'services') {
-    header.setActivePage('Services');
-    if (heroEl) heroEl.style.display = 'none';
-    homeSections.forEach(s => (s.style.display = 'none'));
-
-    if (mainContent) {
-      const { initServicesPage } = await import('./pages/ServicesPage.js');
-      activeServicesPage = initServicesPage({ target: mainContent });
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Sending...</span>';
     }
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  } else if (route.type === 'projects-list') {
-    header.setActivePage('Projects');
-    if (heroEl) heroEl.style.display = 'none';
-    homeSections.forEach(s => (s.style.display = 'none'));
 
-    if (mainContent) {
-      const { initProjectsPage } = await import('./pages/ProjectsPage.js');
-      activeProjectsPage = initProjectsPage({ target: mainContent });
-    }
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  } else if (route.type === 'case-study') {
-    header.setActivePage('Projects');
-    if (heroEl) heroEl.style.display = 'none';
-    homeSections.forEach(s => (s.style.display = 'none'));
+    // Success response and open direct mail client to info@kodmates.com
+    setTimeout(() => {
+      statusEl.className = 'portfolio-form-status is-success';
+      statusEl.innerHTML = `Thank you, <strong>${name}</strong>! Your message has been prepared for <strong>info@kodmates.com</strong>.`;
+      
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      window.location.href = `mailto:info@kodmates.com?subject=${subject}&body=${body}`;
 
-    if (mainContent) {
-      const [{ getProjectBySlug }, { initProjectCaseStudyPage }] = await Promise.all([
-        import('./data/projects/index.js'),
-        import('./pages/ProjectCaseStudyPage.js')
-      ]);
-      const project = getProjectBySlug(route.slug);
-      activeCaseStudyPage = initProjectCaseStudyPage({
-        target: mainContent,
-        project,
-        slug: route.slug
-      });
-    }
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  } else if (route.type === 'blog') {
-    header.setActivePage('Blog');
-    if (heroEl) heroEl.style.display = 'none';
-    homeSections.forEach(s => (s.style.display = 'none'));
-
-    if (mainContent) {
-      const { initBlogPage } = await import('./pages/BlogPage.js');
-      activeBlogPage = initBlogPage({ target: mainContent });
-    }
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  } else if (route.type === 'blog-article') {
-    header.setActivePage('Blog');
-    if (heroEl) heroEl.style.display = 'none';
-    homeSections.forEach(s => (s.style.display = 'none'));
-
-    if (mainContent) {
-      const { initBlogArticlePage } = await import('./pages/BlogArticlePage.js');
-      activeBlogArticlePage = initBlogArticlePage({ target: mainContent, slug: route.slug });
-    }
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  } else if (route.type === 'contact') {
-    header.setActivePage('Contact');
-    if (heroEl) heroEl.style.display = 'none';
-    homeSections.forEach(s => (s.style.display = 'none'));
-
-    if (mainContent) {
-      const { initContactPage } = await import('./pages/ContactPage.js');
-      activeContactPage = initContactPage({ target: mainContent });
-    }
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  } else {
-    // HOME ROUTE: Restore 3D hero ecosystem and all homepage sections
-    const activeSection = route.hash || 'Home';
-    header.setActivePage(activeSection);
-
-    if (heroEl) heroEl.style.display = '';
-    homeSections.forEach(s => (s.style.display = ''));
-
-    resetProjectSEO();
-    resetServicesSEO();
-    resetBlogSEO();
-
-    if (route.hash) {
-      const targetAnchor = document.getElementById(route.hash);
-      if (targetAnchor) {
-        setTimeout(() => {
-          targetAnchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 60);
+      form.reset();
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Send Message</span><span aria-hidden="true">→</span>';
       }
-    }
-  }
-}
-
-/**
- * Client-Side Navigation Interceptor
- */
-function setupNavigation() {
-  document.addEventListener('click', (e) => {
-    if (e.defaultPrevented) return;
-    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-
-    const link = e.target.closest('a');
-    if (!link) return;
-    if (link.hasAttribute('download')) return;
-
-    const href = link.getAttribute('href');
-    const target = link.getAttribute('target');
-    const targetId = link.getAttribute('data-nav-id') || link.getAttribute('data-mobile-nav-id');
-
-    if (!href || target === '_blank') return;
-
-    // Subpage routing checks
-    const isServicesLink = href === '/services' || href === '/services/' || href === '#/services' || targetId === 'services';
-    const isProjectsLink = href === '/projects' || href === '/projects/' || href === '#/projects' || targetId === 'projects';
-    const isCaseStudyLink = href.startsWith('/projects/') || href.startsWith('#/projects/');
-    const isBlogLink = href === '/blog' || href === '/blog/' || href === '#/blog' || href.startsWith('/blog?') || targetId === 'blog';
-    const isBlogArticleLink = href.startsWith('/blog/') || href.startsWith('#/blog/') || Boolean(link.getAttribute('data-article-slug'));
-    const isContactLink = href === '/contact' || href === '/contact/' || href === '#/contact' || targetId === 'contact';
-    const isHomeLink = href === '/' || href === '#home' || href === '#/' || targetId === 'home';
-
-    if (isCaseStudyLink) {
-      e.preventDefault();
-      const slug = href.replace(/^#?\/?projects\//, '').split('/')[0].split('?')[0];
-      window.history.pushState({}, '', `/projects/${slug}`);
-      renderRoute();
-      return;
-    }
-
-    if (isBlogArticleLink) {
-      e.preventDefault();
-      const articleSlug = link.getAttribute('data-article-slug') || href.replace(/^#?\/?blog\//, '').split('/')[0].split('?')[0];
-      window.history.pushState({}, '', `/blog/${articleSlug}`);
-      renderRoute();
-      return;
-    }
-
-    if (isServicesLink) {
-      e.preventDefault();
-      window.history.pushState({}, '', '/services');
-      renderRoute();
-      return;
-    }
-
-    if (isProjectsLink) {
-      e.preventDefault();
-      window.history.pushState({}, '', '/projects');
-      renderRoute();
-      return;
-    }
-
-    if (isBlogLink) {
-      e.preventDefault();
-      window.history.pushState({}, '', href.startsWith('/blog?') ? href : '/blog');
-      renderRoute();
-      return;
-    }
-
-    if (isContactLink) {
-      e.preventDefault();
-      window.history.pushState({}, '', '/contact');
-      renderRoute();
-      return;
-    }
-
-    if (isHomeLink) {
-      e.preventDefault();
-      if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
-        window.history.pushState({}, '', '/');
-        renderRoute();
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        header.setActivePage('Home');
-      }
-      return;
-    }
-
-    // In-page section anchors
-    if (href.startsWith('#') && !href.startsWith('#/')) {
-      const anchorId = href.substring(1);
-      const targetEl = document.getElementById(anchorId);
-      const onHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
-
-      // 1. In-page anchor on the current page: scroll locally without page transition
-      if (targetEl && targetEl.offsetParent !== null) {
-        e.preventDefault();
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if (onHome) {
-          window.history.pushState({}, '', href);
-          header.setActivePage(anchorId);
-        }
-        return;
-      }
-
-      // 2. Otherwise, if on subpage and target is on homepage, navigate to homepage anchor
-      if (!onHome) {
-        e.preventDefault();
-        window.history.pushState({}, '', '/' + href);
-        renderRoute();
-        return;
-      }
-
-      // 3. Target on homepage
-      if (targetEl) {
-        e.preventDefault();
-        window.history.pushState({}, '', href);
-        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        header.setActivePage(anchorId);
-      }
-    }
+    }, 400);
   });
+}
 
-  window.addEventListener('popstate', renderRoute);
-
-  // IntersectionObserver Scroll-Spy to dynamically update active header state as user scrolls homepage
-  const sectionIds = ['home', 'services', 'projects', 'process', 'about', 'blog', 'contact'];
-  const sectionsToObserve = sectionIds
-    .map(id => document.getElementById(id))
-    .filter(Boolean);
-
-  if ('IntersectionObserver' in window && sectionsToObserve.length > 0) {
-    const scrollSpyObserver = new IntersectionObserver(
-      (entries) => {
-        const currentPath = window.location.pathname;
-        if (currentPath !== '/' && currentPath !== '/index.html') return;
-
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            header.setActivePage(entry.target.id);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0
-      }
-    );
-
-    sectionsToObserve.forEach(el => scrollSpyObserver.observe(el));
+// 3. Back to Top Button
+function initBackToTop() {
+  const btn = document.getElementById('portfolio-back-to-top');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
+}
 
-  // Homepage Service card inquiry click handling
-  document.querySelectorAll('.service-link').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      const card = link.closest('.service-card');
-      const srvTitle = card ? card.querySelector('.service-title')?.textContent : '';
-      const contactSelect = document.getElementById('contact-type');
-      if (!contactSelect || !srvTitle) return;
+// 4. Smooth Anchor Scrolling & ScrollSpy
+function initScrollSpy() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
 
-      const options = Array.from(contactSelect.options);
-      const match = options.find(opt => 
-        srvTitle.toLowerCase().includes(opt.value.toLowerCase().split(' ')[0]) ||
-        opt.textContent.toLowerCase().includes(srvTitle.toLowerCase().split(' ')[0])
-      );
-      if (match) {
-        contactSelect.value = match.value;
-      }
+  function updateActiveNav() {
+    let currentId = '';
+    const scrollPos = window.scrollY + 120;
 
-      const messageArea = document.getElementById('contact-message');
-      if (messageArea && !messageArea.value) {
-        messageArea.value = `Inquiring about ${srvTitle} engineering capabilities and architecture...`;
+    sections.forEach((sec) => {
+      const top = sec.offsetTop;
+      const height = sec.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        currentId = sec.getAttribute('id');
       }
     });
-  });
 
-  renderRoute();
+    if (currentId) {
+      navLinks.forEach((link) => {
+        const href = link.getAttribute('href') || '';
+        const linkId = href.replace('#', '').replace('/', '');
+        if (linkId === currentId) {
+          link.classList.add('is-active');
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.classList.remove('is-active');
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', setupNavigation);
-} else {
-  setupNavigation();
+// Bootstrap Portfolio Application
+document.addEventListener('DOMContentLoaded', () => {
+  initPortfolioForm();
+  initBackToTop();
+  initScrollSpy();
+});
+
+// Run immediately if DOM already loaded
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  initPortfolioForm();
+  initBackToTop();
+  initScrollSpy();
 }
